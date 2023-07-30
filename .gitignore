@@ -1,0 +1,8 @@
+web_app.log
+nginx.conf
+.vscode
+tmp/
+test/
+conf/config.yaml
+docs/
+.air.toml
