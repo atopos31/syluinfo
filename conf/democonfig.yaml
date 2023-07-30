@@ -1,0 +1,45 @@
+app:
+  name: "web_app_v1.0"
+  mode: "dev"
+  port: 8080
+
+log:
+  level: "debug"
+  filename: "./web_app.log"
+  max_size: 200
+  max_backups: 7
+  max_age: 30
+  Compress: false
+
+mysql:
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: ""
+  dbname: "sylu"
+
+redis:
+  host: "127.0.0.1"
+  password: ""
+  port: 6379
+  db: 0
+
+email:
+  host: "smtp.qq.com"
+  port: 465
+  username: "your email"
+  password: "your email pass"
+  expires: 500
+
+jwt:
+  timeout: 168 #小时
+  issuer: "hackerxiao"
+  secret: "sylu"
+
+snowflake:
+  start_time: "2023-06-16"
+  machine_id: 1
+
+proxy:
+  host: ""
+  port: ""
