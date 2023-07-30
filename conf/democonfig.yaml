@@ -39,7 +39,7 @@ jwt:
 snowflake:
   start_time: "2023-06-16"
   machine_id: 1
-
+# 这里只要有一个不填写，既视为不使用代理
 proxy:
   host: ""
   port: ""
