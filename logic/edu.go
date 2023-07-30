@@ -15,7 +15,10 @@ import (
 )
 
 func getHttpProxy() string {
-	return "http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port
+	if settings.Conf.Proxy.Host != "" && settings.Conf.Proxy.Port != "" {
+		return "http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port
+	}
+	return ""
 }
 
 func BintLogin(userInfo *models.ParamBind, userID int64) (userSyluInfo *models.ReqBind, err error) {
@@ -25,7 +28,10 @@ func BintLogin(userInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 	bindClient := resty.New()
 
 	//设置代理
-	bindClient.SetProxy(getHttpProxy())
+	proxyURL := getHttpProxy()
+	if proxyURL != "" {
+		bindClient.SetProxy(proxyURL)
+	}
 	bindClient.SetCloseConnection(true)
 
 	//获取cookie和csrtoken
@@ -64,7 +70,8 @@ func BintLogin(userInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 	cookies[0] = bindClient.Cookies[1]
 	cookieString := cookiesToString(cookies)
 
-	syluUser, err := collytool.GetInforamation(cookieString, userInfo.StudentID)
+	col := collytool.NewMyCollector()
+	syluUser, err := col.GetInforamation(cookieString, userInfo.StudentID)
 	if err != nil {
 		zap.L().Error("collytool.GetInforamation", zap.String("id", userInfo.StudentID))
 		return

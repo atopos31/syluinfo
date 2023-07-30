@@ -10,21 +10,36 @@ import (
 	"github.com/gocolly/colly"
 )
 
-func getHttpProxy() string {
-	return "http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port
-}
-
 const informationUrl = "https://jxw.sylu.edu.cn/xsxxxggl"
 
-func GetInforamation(cookiestring string, username string) (studentInfo *models.SyluUser, err error) {
-	studentInfo = new(models.SyluUser)
+type MyCollector struct {
+	*colly.Collector
+}
 
+func getProxyURL() (*url.URL, error) {
+	if settings.Conf.Proxy.Host != "" && settings.Conf.Proxy.Port != "" {
+		return url.Parse("http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port)
+	}
+	return nil, nil
+}
+
+func NewMyCollector() *MyCollector {
 	c := colly.NewCollector(
 		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.82"),
 	)
-	c.SetProxyFunc(func(r *http.Request) (*url.URL, error) {
-		return url.Parse(getHttpProxy())
-	})
+
+	proxyURL, _ := getProxyURL()
+	if proxyURL != nil {
+		c.SetProxyFunc(func(r *http.Request) (*url.URL, error) {
+			return proxyURL, nil
+		})
+	}
+
+	return &MyCollector{c}
+}
+
+func (c *MyCollector) GetInforamation(cookiestring string, username string) (studentInfo *models.SyluUser, err error) {
+	studentInfo = new(models.SyluUser)
 
 	queryParams := url.Values{}
 	queryParams.Set("gnmkdm", "N100801")
