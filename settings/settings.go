@@ -99,10 +99,11 @@ func Init() (err error) {
 
 	viper.OnConfigChange(func(in fsnotify.Event) {
 		fmt.Println("config has changed, time:" + time.Now().String())
-		zap.L().Debug("config has changed", zap.Any("new config:", Conf))
 		if err := viper.Unmarshal(Conf); err != nil {
-			fmt.Println("viper umarshal Conf falied,err:" + err.Error())
+			zap.L().Error("viper umarshal Conf falied,Error:", zap.Error(err))
+			return
 		}
+		zap.L().Debug("config has changed", zap.Any("new config:", Conf))
 	})
 
 	return

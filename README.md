@@ -1,7 +1,7 @@
 # SyluInfo
 沈阳理工大学校园服务平台--客户端为基于Uniapp开发的安卓app/微信小程序，预计2023年8月下旬上线。
 # 框架
-- http: GIN
+- 主体：Gin Gorm
 - 爬虫部分: colly resty
 # 功能
 - [x] 教务绑定
