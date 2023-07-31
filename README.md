@@ -10,3 +10,5 @@
 - [ ] 教务通知
 - [ ] 二手交易
 - [ ] 失物招领
+# 接口文档
+接口文档使用swagger框架实现，运行项目后，访问```http://host:port/swagger/index.html```即可查看。
