@@ -62,6 +62,6 @@ func StartServer(p int) {
 }
 
 func showLog(c *gin.Context) {
-	data, _ := ioutil.ReadFile("/home/hackerxiao/go_project/sylu_project/web_app.log")
+	data, _ := ioutil.ReadFile("./web_app.log")
 	c.String(200, string(data))
 }
