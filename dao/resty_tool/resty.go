@@ -46,7 +46,10 @@ func baseHttpHeaders() map[string]string {
 
 // 获取初始cookie与csrftoken
 func GetIndexCookieAndCsrfToken(client *resty.Client) (csrftoken string, err error) {
-
+	/*
+		学校的教务有时候会抽风,重连多次才会有响应，不然会一直超时，这里使用goto语句优化
+		不用担心死循环，一般一次两次就响应成功了，gin框架60秒也会强制推出的
+	*/
 	client.SetTimeout(3 * time.Second)
 lable:
 	initResp, err := client.R().SetHeaders(baseHttpHeaders()).
@@ -190,7 +193,7 @@ func GetGradesByGradesInfo(client *resty.Client, gradesInfo *models.ParamGrades)
 	formData := map[string]string{
 		"xnm":                  gradesInfo.Year,
 		"xqm":                  strconv.Itoa(gradesInfo.Semester),
-		"queryModel.showCount": "30",
+		"queryModel.showCount": "30", //这个参数是成绩的门数，直接拉到30，应该不会有人超过这个数吧
 	}
 
 	response, err := client.R().SetQueryParams(querData).
@@ -250,6 +253,7 @@ func parseWeeks(input string) []int {
 
 		var start int
 		var end int
+		//有些是1-2周 有些是2周这种 分开看待
 		if len(bounds) > 1 {
 			start, _ = strconv.Atoi(bounds[0])
 			end, _ = strconv.Atoi(bounds[1])
@@ -283,6 +287,6 @@ func timeToInt(time string) (intTime int) {
 	case "13-14节":
 		intTime = 7
 	}
-
+	//我觉得应该不会有15-16节吧
 	return
 }

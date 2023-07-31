@@ -15,6 +15,7 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"go.uber.org/zap"
 )
 
 var r *gin.Engine
@@ -62,6 +63,10 @@ func StartServer(p int) {
 }
 
 func showLog(c *gin.Context) {
-	data, _ := ioutil.ReadFile("./web_app.log")
-	c.String(200, string(data))
+	data, err := ioutil.ReadFile("./web_app.log")
+	if err != nil {
+		zap.L().Error("ioutil.ReadFile Error :", zap.Error(err))
+		c.String(http.StatusOK, "日志加载失败")
+	}
+	c.String(http.StatusOK, string(data))
 }
