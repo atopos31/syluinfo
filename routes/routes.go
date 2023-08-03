@@ -51,8 +51,8 @@ func Setup(cfg *settings.AppConfig) {
 		edu.POST("/bind", controller.BingEducationalHandler)
 
 		edu.GET("/cookie", controller.CookieHandler)
-		edu.GET("/courses", controller.CourseHandler)
-		edu.GET("/grades", controller.GradesHandler)
+		edu.POST("/courses", controller.CourseHandler)
+		edu.POST("/grades", controller.GradesHandler)
 	}
 
 	r.GET("/ping", func(c *gin.Context) {

@@ -85,7 +85,7 @@ func CookieHandler(c *gin.Context) {
 // @Param object body models.ParamCourse true "课表参数,必填,其中semester为3或12表示某学期，例如year=2022 semester=3 表示2022-2023学年第一学期"
 // @Success 1000 {object} models.ReqCourse "code=1000,msg="success","
 // @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
-// @Router /edu/courses [get]
+// @Router /edu/courses [post]
 func CourseHandler(c *gin.Context) {
 	bindCourse := new(models.ParamCourse)
 	if err := c.ShouldBindJSON(bindCourse); err != nil {
@@ -119,7 +119,7 @@ func CourseHandler(c *gin.Context) {
 // @Param object body models.ParamGrades true "成绩参数,必填，其中semester为3或12表示某学期，例如year=2022 semester=3 表示2022-2023学年第一学期"
 // @Success 1000 {object} []models.JsonGrades "code=1000,msg="success","
 // @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
-// @Router /edu/grades [get]
+// @Router /edu/grades [post]
 func GradesHandler(c *gin.Context) {
 	bindGrades := new(models.ParamGrades)
 	if err := c.ShouldBindJSON(bindGrades); err != nil {

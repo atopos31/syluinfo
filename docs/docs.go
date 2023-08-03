@@ -318,7 +318,7 @@ const docTemplate = `{
             }
         },
         "/edu/courses": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json"
                 ],
@@ -364,7 +364,7 @@ const docTemplate = `{
             }
         },
         "/edu/grades": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json"
                 ],

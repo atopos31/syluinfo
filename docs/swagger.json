@@ -310,7 +310,7 @@
             }
         },
         "/edu/courses": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json"
                 ],
@@ -356,7 +356,7 @@
             }
         },
         "/edu/grades": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json"
                 ],

@@ -4,5 +4,5 @@ nginx.conf
 tmp/
 test/
 conf/config.yaml
-
+.VSCodeCounter
 .air.toml
