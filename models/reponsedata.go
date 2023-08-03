@@ -51,3 +51,14 @@ type JsonGrades struct {
 	Fraction    float64 `json:"fraction"`
 	Grade       string  `json:"grade"`
 }
+
+type ResCosKey struct {
+	Bucket        string `json:"bucket"`
+	Region        string `json:"region"`
+	AllowsPath    string `json:"allowpath"`
+	TmpSecretId   string `json:"tmpsecretid"`
+	TmpSecretKey  string `json:"tmpsecretkey"`
+	SecurityToken string `json:"securitytoken"`
+	StartTime     int    `json:"starttime"`
+	ExpiredTime   int    `json:"expiredtime"`
+}

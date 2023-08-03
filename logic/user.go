@@ -1,12 +1,14 @@
 package logic
 
 import (
+	"cld/cos"
 	"cld/dao/mysql"
 	"cld/dao/redis"
 	"cld/models"
 	"cld/pkg/jwt"
 	"cld/pkg/sendemail"
 	"cld/pkg/snowflake"
+	"cld/settings"
 	"errors"
 
 	"go.uber.org/zap"
@@ -181,6 +183,26 @@ func ReCoverPass(parmReCover *models.ParamReCover) (err error) {
 	}
 
 	redis.DelCodeByEmail(redis.KeyModeRecover, parmReCover.Email)
+
+	return
+}
+
+func GetCosKey(cfg *settings.CosConfig) (resKey *models.ResCosKey, err error) {
+	res, err := cos.GetKey()
+	if err != nil {
+		return nil, err
+	}
+
+	resKey = &models.ResCosKey{
+		Bucket:        cfg.Resource.Bucket,
+		Region:        cfg.Resource.Region,
+		AllowsPath:    cfg.Resource.AllowPath,
+		TmpSecretId:   res.Credentials.TmpSecretID,
+		TmpSecretKey:  res.Credentials.TmpSecretKey,
+		SecurityToken: res.Credentials.SessionToken,
+		StartTime:     res.StartTime,
+		ExpiredTime:   res.ExpiredTime,
+	}
 
 	return
 }

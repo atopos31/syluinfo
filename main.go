@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cld/cos"
 	"cld/dao/mysql"
 	"cld/dao/redis"
 	"cld/logger"
@@ -50,6 +51,12 @@ func main() {
 	//雪花算法初始化
 	if err := snowflake.Init(settings.Conf.Snowflake.StartTime, settings.Conf.Snowflake.MachineID); err != nil {
 		fmt.Println("snowflake redis failed, err :" + err.Error())
+		return
+	}
+
+	//COS初始化
+	if err := cos.Init(&settings.Conf.Cos); err != nil {
+		fmt.Println("cos init err:" + err.Error())
 		return
 	}
 

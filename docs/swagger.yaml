@@ -257,6 +257,26 @@ info:
   title: sylu项目接口文档
   version: "1.0"
 paths:
+  /auth/coskey:
+    get:
+      parameters:
+      - description: Bearer JWT
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      responses:
+        "1000":
+          description: code=1000,msg="success",data里面是cos临时密钥数据
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+        "1005":
+          description: code=1000+，msg里面是错误信息,data=null
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 获取COS临时密钥接口
+      tags:
+      - auth相关接口
   /auth/login:
     post:
       consumes:

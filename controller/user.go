@@ -5,6 +5,7 @@ import (
 	"cld/dao/redis"
 	"cld/logic"
 	"cld/models"
+	"cld/settings"
 	"errors"
 	"fmt"
 
@@ -161,4 +162,21 @@ func ReCoverPassHandler(c *gin.Context) {
 
 	ResponseSuccess(c, nil)
 	return
+}
+
+// 获取COS临时密钥处理函数
+// @Summary 获取COS临时密钥接口
+// @Tags auth相关接口
+// @Param Authorization header string true "Bearer JWT"
+// @Success 1000 {object} ResponseData "code=1000,msg="success",data里面是cos临时密钥数据"
+// @Failure 1005 {object} ResponseData "code=1000+，msg里面是错误信息,data=null"
+// @Router /auth/coskey [get]
+func GetCosKeyHandler(c *gin.Context) {
+	resKey, err := logic.GetCosKey(&settings.Conf.Cos)
+	if err != nil {
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+
+	ResponseSuccess(c, resKey)
 }

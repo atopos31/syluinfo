@@ -19,8 +19,9 @@ type Config struct {
 	Redis     RedisConfig     `mapstructure:"redis"`
 	Email     EmailConfig     `mapstructure:"email"`
 	Jwt       JwtConfig       `mapstructure:"jwt"`
-	Snowflake SnowflakeConfig `mapstruct:"snowflake"`
-	Proxy     ProxyConfig     `mapstruct:"proxy"`
+	Snowflake SnowflakeConfig `mapstructrue:"snowflake"`
+	Proxy     ProxyConfig     `mapstructrue:"proxy"`
+	Cos       CosConfig       `mapstructrue:"cos"`
 }
 
 type AppConfig struct {
@@ -75,6 +76,25 @@ type SnowflakeConfig struct {
 type ProxyConfig struct {
 	Host string `mapstructure:"host"`
 	Port string `mapstructure:"port"`
+}
+
+type CosConfig struct {
+	TmpSecret TmpSecretConfig `mapstructure:"tmpsecret"`
+	Resource  ResourceConfig  `mapstructure:"resource"`
+	Action    []string        `mapstructure:"action"`
+}
+
+type TmpSecretConfig struct {
+	Id  string `mapstructure:"id"`
+	Key string `mapstructure:"key"`
+}
+
+type ResourceConfig struct {
+	AllowPath string   `mapstructure:"allowpath"`
+	Region    string   `mapstructure:"region"`
+	Appid     string   `mapstructure:"appid"`
+	Bucket    string   `mapstructure:"bucket"`
+	AllowKey  []string `mapstructure:"allow_key"`
 }
 
 func Init() (err error) {
