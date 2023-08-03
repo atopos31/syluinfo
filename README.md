@@ -1,8 +1,8 @@
 # SyluInfo
 沈阳理工大学校园服务平台--基于爬虫获取正方教务系统数据，客户端为基于Uniapp开发的安卓app/微信小程序，预计2023年8月下旬上线。
 # 框架
-- 主体：Gin Gorm
-- 爬虫部分: colly resty
+- 主体：[gin](https://github.com/gin-gonic/gin) [gorm](https://github.com/go-gorm/gorm)
+- 爬虫部分: [colly](https://github.com/gocolly/colly) [resty](https://github.com/go-resty/resty)
 # 功能
 - [x] 教务绑定
 - [x] 成绩查询
