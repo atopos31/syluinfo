@@ -43,3 +43,19 @@ snowflake:
 proxy:
   host: ""
   port: ""
+
+cos:
+  tmpsecret:
+    id: ""
+    key: ""
+  resource:
+    allowpath: ""
+    region: ""
+    appid: ""
+    bucket: ""
+    allow_key:
+      - "/testAvatar/*.jpg"
+      - "/testAvatar/*.png"
+  action:
+    - "name/cos:PostObject"
+    - "name/cos:PutObject"
