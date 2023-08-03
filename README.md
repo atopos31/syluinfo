@@ -13,5 +13,5 @@
 # 接口文档
 接口文档使用swagger框架实现，运行项目后，访问```http://host:port/swagger/index.html```即可查看。
 # 正方教务相关爬虫教程
-- [正方教务系统数据爬取详解（一）登录cookie获取](https://www.hackerxiao.online/archives/schooldatahttps://www.hackerxiao.online/archives/schooldata)
+- [正方教务系统数据爬取详解（一）登录cookie获取](https://www.hackerxiao.online/archives/schooldata)
 - [正方教务系统数据爬取详解（二）数据获取](https://www.hackerxiao.online/archives/school2)
