@@ -92,6 +92,7 @@ func (c *MyCollector) GetGradeDetail(bindInfo *models.ParamGradeDetaile) (resGra
 		"xqm":    strconv.Itoa(bindInfo.Semester),
 	}
 	regex := regexp.MustCompile(`【 (.+?) 】`)
+
 	c.OnHTML("table[id=subtab] tbody tr", func(e *colly.HTMLElement) {
 		scoreItem := new(models.ResGradeDetail)
 		e.ForEach("td", func(i int, el *colly.HTMLElement) {
@@ -104,7 +105,6 @@ func (c *MyCollector) GetGradeDetail(bindInfo *models.ParamGradeDetaile) (resGra
 				scoreItem.Score = el.Text[:len(el.Text)-2]
 			}
 		})
-
 		resGradeDetail = append(resGradeDetail, scoreItem)
 	})
 

@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -24,6 +25,8 @@ func Setup(cfg *settings.AppConfig) {
 	r = gin.Default()
 	//翻译器初始化
 	controller.InitTrans("zh")
+	//跨域
+	r.Use(cors.Default())
 
 	//日志写入中间件
 	r.Use(logger.GinLogger(), logger.GinRecovery(false))
