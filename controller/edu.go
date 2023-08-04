@@ -144,3 +144,35 @@ func GradesHandler(c *gin.Context) {
 
 	ResponseSuccess(c, grades)
 }
+
+// 获取成绩详情请求处理函数
+// @Summary 获取成绩详情接口
+// @Tags sylu相关接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string true "Bearer JWT"
+// @Param object body models.ParamGradeDetaile true "成绩参数,必填，其中semester为3或12表示某学期，例如year=2022 semester=3 表示2022-2023学年第一学期"
+// @Success 1000 {object} []models.ResGradeDetail "code=1000,msg="success","
+// @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
+// @Router /edu/grade/detaile [post]
+func GradeDetaileHandler(c *gin.Context) {
+	bindGradeDetail := new(models.ParamGradeDetaile)
+	if err := c.ShouldBindJSON(bindGradeDetail); err != nil {
+		zap.L().Error("GradesHandler ShouldBindJSON Error", zap.Error(err))
+		ResponseBindError(c, err)
+		return
+	}
+
+	gradeDetail, err := logic.GetGradeDetail(bindGradeDetail)
+	if err != nil {
+		zap.L().Error("GradeDetaileHandler logic.GetGradeDetail Error", zap.Error(err))
+		if errors.Is(err, resty_tool.ErrorLapse) {
+			ResponseError(c, CodeInvalidCookie)
+			return
+		}
+		ResponseErrorWithMsg(c, CodeServerBusy, err.Error())
+		return
+	}
+
+	ResponseSuccess(c, gradeDetail)
+}

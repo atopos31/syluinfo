@@ -115,6 +115,23 @@ definitions:
     - semester
     - year
     type: object
+  models.ParamGradeDetaile:
+    properties:
+      classid:
+        type: string
+      cookie:
+        type: string
+      semester:
+        enum:
+        - 3
+        - 12
+        type: integer
+      year:
+        type: string
+    required:
+    - semester
+    - year
+    type: object
   models.ParamGrades:
     properties:
       cookie:
@@ -247,6 +264,15 @@ definitions:
       studentID:
         default: "2203050212"
         description: 学号
+        type: string
+    type: object
+  models.ResGradeDetail:
+    properties:
+      name:
+        type: string
+      score:
+        type: string
+      weight:
         type: string
     type: object
 info:
@@ -477,6 +503,38 @@ paths:
           schema:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取课表接口
+      tags:
+      - sylu相关接口
+  /edu/grade/detaile:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer JWT
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 成绩参数,必填，其中semester为3或12表示某学期，例如year=2022 semester=3 表示2022-2023学年第一学期
+        in: body
+        name: object
+        required: true
+        schema:
+          $ref: '#/definitions/models.ParamGradeDetaile'
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",
+          schema:
+            items:
+              $ref: '#/definitions/models.ResGradeDetail'
+            type: array
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 获取成绩详情接口
       tags:
       - sylu相关接口
   /edu/grades:

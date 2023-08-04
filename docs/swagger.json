@@ -355,6 +355,55 @@
                 }
             }
         },
+        "/edu/grade/detaile": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sylu相关接口"
+                ],
+                "summary": "获取成绩详情接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "成绩参数,必填，其中semester为3或12表示某学期，例如year=2022 semester=3 表示2022-2023学年第一学期",
+                        "name": "object",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ParamGradeDetaile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.ResGradeDetail"
+                            }
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
         "/edu/grades": {
             "post": {
                 "consumes": [
@@ -567,6 +616,31 @@
                 }
             }
         },
+        "models.ParamGradeDetaile": {
+            "type": "object",
+            "required": [
+                "semester",
+                "year"
+            ],
+            "properties": {
+                "classid": {
+                    "type": "string"
+                },
+                "cookie": {
+                    "type": "string"
+                },
+                "semester": {
+                    "type": "integer",
+                    "enum": [
+                        3,
+                        12
+                    ]
+                },
+                "year": {
+                    "type": "string"
+                }
+            }
+        },
         "models.ParamGrades": {
             "type": "object",
             "required": [
@@ -754,6 +828,20 @@
                     "description": "学号",
                     "type": "string",
                     "default": "2203050212"
+                }
+            }
+        },
+        "models.ResGradeDetail": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "score": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "string"
                 }
             }
         }

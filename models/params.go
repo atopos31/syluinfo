@@ -43,3 +43,10 @@ type ParamGrades struct {
 	Year     string `json:"year" binding:"required"`
 	Semester int    `json:"semester" binding:"required,oneof=3 12"`
 }
+
+type ParamGradeDetaile struct {
+	ClassID  string `json:"classid"`
+	Cookie   string `json:"cookie"`
+	Year     string `json:"year" binding:"required"`
+	Semester int    `json:"semester" binding:"required,oneof=3 12"`
+}

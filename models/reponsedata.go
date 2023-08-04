@@ -62,3 +62,9 @@ type ResCosKey struct {
 	StartTime     int    `json:"starttime"`
 	ExpiredTime   int    `json:"expiredtime"`
 }
+
+type ResGradeDetail struct {
+	Name   string `json:"name"`
+	Weight string `json:"weight"`
+	Score  string `json:"score"`
+}

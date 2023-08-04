@@ -153,6 +153,11 @@ func GetGrades(gradesInfo *models.ParamGrades) (reqGrades []models.JsonGrades, e
 	return resty_tool.GetGradesByGradesInfo(client, gradesInfo)
 }
 
+func GetGradeDetail(gradeDetailInfo *models.ParamGradeDetaile) (resGradeDetail []*models.ResGradeDetail, err error) {
+	col := collytool.NewMyCollector()
+	return col.GetGradeDetail(gradeDetailInfo)
+}
+
 func cookiesToString(cookies []*http.Cookie) string {
 	var cookieStrings []string
 
