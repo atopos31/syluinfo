@@ -355,6 +355,52 @@
                 }
             }
         },
+        "/edu/gpas": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sylu相关接口"
+                ],
+                "summary": "获取绩点接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "此接口响应时间\u003e=4s，暂无优化思路",
+                        "name": "object",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ParamGpa"
+                        }
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResGpa"
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
         "/edu/grade/detaile": {
             "post": {
                 "consumes": [
@@ -521,17 +567,29 @@
         "models.JsonCourse": {
             "type": "object",
             "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "classId": {
+                    "type": "string"
+                },
                 "location": {
+                    "type": "string"
+                },
+                "method": {
                     "type": "string"
                 },
                 "name": {
                     "type": "string"
                 },
+                "section": {
+                    "type": "integer"
+                },
+                "sectionCount": {
+                    "type": "integer"
+                },
                 "teacher": {
                     "type": "string"
-                },
-                "time": {
-                    "type": "integer"
                 },
                 "weekday": {
                     "type": "integer"
@@ -612,6 +670,14 @@
                     ]
                 },
                 "year": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ParamGpa": {
+            "type": "object",
+            "properties": {
+                "cookie": {
                     "type": "string"
                 }
             }
@@ -828,6 +894,17 @@
                     "description": "学号",
                     "type": "string",
                     "default": "2203050212"
+                }
+            }
+        },
+        "models.ResGpa": {
+            "type": "object",
+            "properties": {
+                "allgpa": {
+                    "type": "string"
+                },
+                "degreegpa": {
+                    "type": "string"
                 }
             }
         },

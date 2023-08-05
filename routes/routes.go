@@ -7,7 +7,7 @@ import (
 	"cld/middlewares"
 	"cld/settings"
 	"fmt"
-	"io/ioutil"
+	"os"
 
 	"net/http"
 	"strconv"
@@ -48,7 +48,7 @@ func Setup(cfg *settings.AppConfig) {
 	}
 
 	edu := baseapi.Group("/edu")
-	//加入中间件验证
+	//加入token中间件验证
 	edu.Use(middlewares.JWTAuthMiddleware())
 	{
 		edu.POST("/bind", controller.BingEducationalHandler)
@@ -57,6 +57,7 @@ func Setup(cfg *settings.AppConfig) {
 		edu.POST("/courses", controller.CourseHandler)
 		edu.POST("/grades", controller.GradesHandler)
 		edu.POST("/grade/detaile", controller.GradeDetaileHandler)
+		edu.POST("/gpas", controller.GpaHandler)
 	}
 
 	r.GET("/ping", func(c *gin.Context) {
@@ -69,7 +70,7 @@ func StartServer(p int) {
 }
 
 func showLog(c *gin.Context) {
-	data, err := ioutil.ReadFile("./web_app.log")
+	data, err := os.ReadFile("./web_app.log")
 	if err != nil {
 		zap.L().Error("ioutil.ReadFile Error :", zap.Error(err))
 		c.String(http.StatusOK, "日志加载失败")

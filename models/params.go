@@ -50,3 +50,7 @@ type ParamGradeDetaile struct {
 	Year     string `json:"year" binding:"required"`
 	Semester int    `json:"semester" binding:"required,oneof=3 12"`
 }
+
+type ParamGpa struct {
+	Cookie string `json:"cookie"`
+}

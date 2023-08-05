@@ -176,3 +176,35 @@ func GradeDetaileHandler(c *gin.Context) {
 
 	ResponseSuccess(c, gradeDetail)
 }
+
+// 获取绩点请求处理函数
+// @Summary 获取绩点接口
+// @Tags sylu相关接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string true "Bearer JWT"
+// @Param object body models.ParamGpa true "此接口响应时间>=4s，暂无优化思路"
+// @Success 1000 {object} models.ResGpa "code=1000,msg="success","
+// @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
+// @Router /edu/gpas [post]
+func GpaHandler(c *gin.Context) {
+	bindGpa := new(models.ParamGpa)
+	if err := c.ShouldBindJSON(bindGpa); err != nil {
+		zap.L().Error("GpaHandler ShouldBindJSON Error", zap.Error(err))
+		ResponseBindError(c, err)
+		return
+	}
+
+	resGpa, err := logic.GetGpas(bindGpa)
+	if err != nil {
+		zap.L().Error("GpaHandler logic.GetGpas Error", zap.Error(err))
+		if errors.Is(err, resty_tool.ErrorLapse) {
+			ResponseError(c, CodeInvalidCookie)
+			return
+		}
+		ResponseErrorWithMsg(c, CodeServerBusy, err.Error())
+		return
+	}
+
+	ResponseSuccess(c, resGpa)
+}

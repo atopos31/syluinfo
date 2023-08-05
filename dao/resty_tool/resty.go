@@ -172,7 +172,10 @@ func GetCourseByCourseInfo(client *resty.Client, getCourseInfo *models.ParamCour
 		course.Name = v.Name
 		course.Teacher = v.Teacher
 		course.Location = v.Location
-		course.Time = timeToInt(v.Time)
+		course.Category = v.Category
+		course.Method = v.Method
+		course.ClassID = v.ID
+		course.Section, course.SectionCount = timeToInt(v.Time)
 		course.WeekDay, _ = strconv.Atoi(v.WeekDay)
 		course.WeekS = parseWeeks(v.WeekS)
 		courses.Courses = append(courses.Courses, course)
@@ -270,23 +273,22 @@ func parseWeeks(input string) []int {
 	return weeks
 }
 
-func timeToInt(time string) (intTime int) {
-	switch time {
-	case "1-2节":
-		intTime = 1
-	case "3-4节":
-		intTime = 2
-	case "5-6节":
-		intTime = 3
-	case "7-8节":
-		intTime = 4
-	case "9-10节":
-		intTime = 5
-	case "11-12节":
-		intTime = 6
-	case "13-14节":
-		intTime = 7
+func timeToInt(time string) (section int, sectionCount int) {
+	if len(time) <= 1 {
+		var err error
+		section, err = strconv.Atoi(time)
+		if err != nil {
+			section = 0
+		}
+		sectionCount = 0
+		return
 	}
+
+	sections := strings.Split(time, "-")
+	section, _ = strconv.Atoi(sections[0])
+	lastTime, _ := strconv.Atoi(sections[1])
+	sectionCount = lastTime - section + 1
+
 	//我觉得应该不会有15-16节吧
 	return
 }

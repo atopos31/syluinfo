@@ -15,6 +15,7 @@ import (
 
 const informationUrl = "https://jxw.sylu.edu.cn/xsxxxggl"
 const gradeUrl = "https://jxw.sylu.edu.cn/cjcx"
+const gpaUrl = "https://jxw.sylu.edu.cn/xsxy"
 
 type MyCollector struct {
 	*colly.Collector
@@ -117,6 +118,41 @@ func (c *MyCollector) GetGradeDetail(bindInfo *models.ParamGradeDetaile) (resGra
 		return nil, errPost
 	}
 
+	c.Wait()
+
+	return
+}
+
+func (c *MyCollector) GetGpas(cookies string) (resGpa *models.ResGpa, err error) {
+	queryParams := url.Values{}
+	queryParams.Add("gnmkdm", "N105515")
+
+	c.AllowURLRevisit = false
+	c.Async = true
+	c.MaxDepth = 1
+
+	c.OnRequest(func(r *colly.Request) {
+		r.URL.RawQuery = queryParams.Encode()
+		r.Headers.Add("Cookie", cookies)
+	})
+
+	resGpa = new(models.ResGpa)
+
+	c.OnHTML("#alertBox", func(e *colly.HTMLElement) {
+		fonts := e.DOM.Find("font").Find("font")
+		resGpa.AllGpa = fonts.Eq(0).Text()
+		resGpa.DegreeGpa = fonts.Eq(1).Text()
+		return
+	})
+
+	c.OnHTML("title", func(h *colly.HTMLElement) {
+		err = resty_tool.ErrorLapse
+	})
+
+	errVisit := c.Visit(gpaUrl + "/xsxyqk_cxXsxyqkIndex.html")
+	if errVisit != nil {
+		return nil, errVisit
+	}
 	c.Wait()
 
 	return

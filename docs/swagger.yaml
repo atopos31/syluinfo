@@ -51,14 +51,22 @@ definitions:
     type: object
   models.JsonCourse:
     properties:
+      category:
+        type: string
+      classId:
+        type: string
       location:
+        type: string
+      method:
         type: string
       name:
         type: string
+      section:
+        type: integer
+      sectionCount:
+        type: integer
       teacher:
         type: string
-      time:
-        type: integer
       weekday:
         type: integer
       weeks:
@@ -114,6 +122,11 @@ definitions:
     required:
     - semester
     - year
+    type: object
+  models.ParamGpa:
+    properties:
+      cookie:
+        type: string
     type: object
   models.ParamGradeDetaile:
     properties:
@@ -264,6 +277,13 @@ definitions:
       studentID:
         default: "2203050212"
         description: 学号
+        type: string
+    type: object
+  models.ResGpa:
+    properties:
+      allgpa:
+        type: string
+      degreegpa:
         type: string
     type: object
   models.ResGradeDetail:
@@ -503,6 +523,36 @@ paths:
           schema:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取课表接口
+      tags:
+      - sylu相关接口
+  /edu/gpas:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer JWT
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 此接口响应时间>=4s，暂无优化思路
+        in: body
+        name: object
+        required: true
+        schema:
+          $ref: '#/definitions/models.ParamGpa'
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",
+          schema:
+            $ref: '#/definitions/models.ResGpa'
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 获取绩点接口
       tags:
       - sylu相关接口
   /edu/grade/detaile:

@@ -167,3 +167,8 @@ func cookiesToString(cookies []*http.Cookie) string {
 
 	return strings.Join(cookieStrings, "; ")
 }
+
+func GetGpas(bindGpa *models.ParamGpa) (resGpa *models.ResGpa, err error) {
+	col := collytool.NewMyCollector()
+	return col.GetGpas(bindGpa.Cookie)
+}

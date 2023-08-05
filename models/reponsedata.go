@@ -32,12 +32,16 @@ type Time struct {
 }
 
 type JsonCourse struct {
-	Name     string `json:"name"`
-	Teacher  string `json:"teacher"`
-	Location string `json:"location"`
-	Time     int    `json:"time"`
-	WeekDay  int    `json:"weekday"`
-	WeekS    []int  `json:"weeks"`
+	ClassID      string `json:"classId"`
+	Name         string `json:"name"`
+	Teacher      string `json:"teacher"`
+	Category     string `json:"category"`
+	Method       string `json:"method"`
+	Location     string `json:"location"`
+	Section      int    `json:"section"`
+	SectionCount int    `json:"sectionCount"`
+	WeekDay      int    `json:"weekday"`
+	WeekS        []int  `json:"weeks"`
 }
 
 type JsonGrades struct {
@@ -67,4 +71,9 @@ type ResGradeDetail struct {
 	Name   string `json:"name"`
 	Weight string `json:"weight"`
 	Score  string `json:"score"`
+}
+
+type ResGpa struct {
+	AllGpa    string `json:"allgpa"`
+	DegreeGpa string `json:"degreegpa"`
 }

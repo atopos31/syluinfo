@@ -1,6 +1,7 @@
 web_app.log
 nginx.conf
 .vscode
+restest
 tmp/
 test/
 conf/config.yaml
