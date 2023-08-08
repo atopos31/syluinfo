@@ -40,7 +40,7 @@ func Setup(cfg *settings.AppConfig) {
 	{
 		authen.POST("/login", controller.LoginHandler)
 		authen.POST("/signup", controller.SignUpHandler)
-		authen.POST("/sendemail", controller.SendEmailHandler)
+		authen.GET("/sendemail", controller.SendEmailHandler)
 		authen.POST("/resetpass", controller.ReSetPassHandler)
 		authen.POST("/recoverpass", controller.ReCoverPassHandler)
 

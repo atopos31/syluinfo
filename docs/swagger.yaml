@@ -391,7 +391,7 @@ paths:
       tags:
       - auth相关接口
   /auth/sendemail:
-    post:
+    get:
       parameters:
       - in: query
         name: email

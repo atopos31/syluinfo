@@ -156,7 +156,7 @@ const docTemplate = `{
             }
         },
         "/auth/sendemail": {
-            "post": {
+            "get": {
                 "tags": [
                     "auth相关接口"
                 ],

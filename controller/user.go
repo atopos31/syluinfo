@@ -81,7 +81,7 @@ func SignUpHandler(c *gin.Context) {
 // @Param object query models.QuerySendEmail true "邮件参数,模式->注册：sign ->找回密码->recoverpass"
 // @Success 1000 {object} ResponseData "code=1000,msg="success",data=null"
 // @Failure 1005 {object} ResponseData "code=1000+，msg里面是错误信息,data=null"
-// @Router /auth/sendemail [post]
+// @Router /auth/sendemail [get]
 func SendEmailHandler(c *gin.Context) {
 	fmt.Println(c.Request.Body)
 	queryEmail := new(models.QuerySendEmail)
