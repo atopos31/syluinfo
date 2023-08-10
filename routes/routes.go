@@ -27,15 +27,15 @@ func Setup(cfg *settings.AppConfig) {
 	controller.InitTrans("zh")
 	//跨域
 	r.Use(cors.Default())
-
 	//日志写入中间件
 	r.Use(logger.GinLogger(), logger.GinRecovery(false))
 	//接口文档UI
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
-
+	//路由组
 	baseapi := r.Group("/api/v1")
+	//日志对外显示接口 dev阶段
 	baseapi.GET("/log", showLog)
-
+	//auth相关
 	authen := baseapi.Group("/auth")
 	{
 		authen.POST("/login", controller.LoginHandler)
@@ -46,14 +46,14 @@ func Setup(cfg *settings.AppConfig) {
 
 		authen.GET("/coskey", middlewares.JWTAuthMiddleware(), controller.GetCosKeyHandler)
 	}
-
+	//edu相关
 	edu := baseapi.Group("/edu")
 	//加入token中间件验证
 	edu.Use(middlewares.JWTAuthMiddleware())
 	{
-		edu.POST("/bind", controller.BingEducationalHandler)
-
 		edu.GET("/cookie", controller.CookieHandler)
+
+		edu.POST("/bind", controller.BingEducationalHandler)
 		edu.POST("/courses", controller.CourseHandler)
 		edu.POST("/grades", controller.GradesHandler)
 		edu.POST("/grade/detaile", controller.GradeDetaileHandler)

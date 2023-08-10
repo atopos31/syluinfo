@@ -670,7 +670,7 @@
                     ]
                 },
                 "year": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },
@@ -725,7 +725,7 @@
                     ]
                 },
                 "year": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },

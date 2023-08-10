@@ -118,7 +118,7 @@ definitions:
         - 12
         type: integer
       year:
-        type: string
+        type: integer
     required:
     - semester
     - year
@@ -155,7 +155,7 @@ definitions:
         - 12
         type: integer
       year:
-        type: string
+        type: integer
     required:
     - semester
     - year

@@ -34,13 +34,13 @@ type ParamBind struct {
 
 type ParamCourse struct {
 	Cookie   string `json:"cookie"`
-	Year     string `json:"year" binding:"required"`
+	Year     int    `json:"year" binding:"required"`
 	Semester int    `json:"semester" binding:"required,oneof=3 12"`
 }
 
 type ParamGrades struct {
 	Cookie   string `json:"cookie"`
-	Year     string `json:"year" binding:"required"`
+	Year     int    `json:"year" binding:"required"`
 	Semester int    `json:"semester" binding:"required,oneof=3 12"`
 }
 

@@ -147,10 +147,18 @@ func GetCourse(courseInfo *models.ParamCourse) (reqCourse *models.ReqCourse, err
 	return resty_tool.GetCourseByCourseInfo(client, courseInfo)
 }
 
-func GetGrades(gradesInfo *models.ParamGrades) (reqGrades []models.JsonGrades, err error) {
+func GetGrades(gradesInfo *models.ParamGrades) (resGrades *models.ResGrades, err error) {
+	resGrades = new(models.ResGrades)
+	resGrades.Year = getYear(gradesInfo.Year)
+	resGrades.Semester = getSemester(gradesInfo.Semester)
 	client := resty.New()
 	client.SetProxy(getHttpProxy())
-	return resty_tool.GetGradesByGradesInfo(client, gradesInfo)
+	List, err := resty_tool.GetGradesByGradesInfo(client, gradesInfo)
+	if err != nil {
+		return nil, err
+	}
+	resGrades.GradesList = List
+	return
 }
 
 func GetGradeDetail(gradeDetailInfo *models.ParamGradeDetaile) (resGradeDetail []*models.ResGradeDetail, err error) {

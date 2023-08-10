@@ -44,6 +44,12 @@ type JsonCourse struct {
 	WeekS        []int  `json:"weeks"`
 }
 
+type ResGrades struct {
+	Year       string       `json:"year"`
+	Semester   string       `json:"semester"`
+	GradesList []JsonGrades `json:"gradesList"`
+}
+
 type JsonGrades struct {
 	Name        string  `json:"name"`
 	ClassID     string  `json:"classid"`

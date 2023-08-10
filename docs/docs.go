@@ -678,7 +678,7 @@ const docTemplate = `{
                     ]
                 },
                 "year": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },
@@ -733,7 +733,7 @@ const docTemplate = `{
                     ]
                 },
                 "year": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },

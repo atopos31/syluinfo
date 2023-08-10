@@ -138,7 +138,7 @@ func GetCourseByCourseInfo(client *resty.Client, getCourseInfo *models.ParamCour
 	defer client.GetClient().CloseIdleConnections()
 
 	formData := map[string]string{
-		"xnm":    getCourseInfo.Year,
+		"xnm":    strconv.Itoa(getCourseInfo.Year),
 		"zs":     "1",
 		"doType": " app",
 		"xqm":    strconv.Itoa(getCourseInfo.Semester),
@@ -194,7 +194,7 @@ func GetGradesByGradesInfo(client *resty.Client, gradesInfo *models.ParamGrades)
 	}
 
 	formData := map[string]string{
-		"xnm":                  gradesInfo.Year,
+		"xnm":                  strconv.Itoa(gradesInfo.Year),
 		"xqm":                  strconv.Itoa(gradesInfo.Semester),
 		"queryModel.showCount": "30", //这个参数是成绩的门数，直接拉到30，应该不会有人超过这个数吧
 	}
