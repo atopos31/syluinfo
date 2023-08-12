@@ -67,8 +67,8 @@ func BintLogin(userInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 	}
 
 	//更换cookie为string形式
-	cookies[0] = bindClient.Cookies[1]
-	cookieString := cookiesToString(cookies)
+	bindClient.Cookies[0] = cookies[1]
+	cookieString := cookiesToString(bindClient.Cookies)
 
 	col := collytool.NewMyCollector()
 	syluUser, err := col.GetInforamation(cookieString, userInfo.StudentID)
@@ -111,7 +111,6 @@ func GetCookie(userID int64) (cookieString string, err error) {
 	if err != nil {
 		return "", err
 	}
-
 	//获取公匙
 	publicKey, err := resty_tool.GetPublicKey(bindClient)
 	if err != nil {
@@ -128,16 +127,15 @@ func GetCookie(userID int64) (cookieString string, err error) {
 	if err != nil {
 		return "", err
 	}
-
 	//登录
 	cookies, err := resty_tool.SyluLogin(bindClient, userInfo, csrfToken)
 	if err != nil {
 		return "", err
 	}
-
 	//更换cookie为string形式
-	cookies[0] = bindClient.Cookies[1]
-	cookieString = cookiesToString(cookies)
+
+	bindClient.Cookies[0] = cookies[1]
+	cookieString = cookiesToString(bindClient.Cookies)
 	return
 }
 
@@ -168,7 +166,6 @@ func GetGradeDetail(gradeDetailInfo *models.ParamGradeDetaile) (resGradeDetail [
 
 func cookiesToString(cookies []*http.Cookie) string {
 	var cookieStrings []string
-
 	for _, cookie := range cookies {
 		cookieStrings = append(cookieStrings, fmt.Sprintf("%s=%s", cookie.Name, cookie.Value))
 	}

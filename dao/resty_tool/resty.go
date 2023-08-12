@@ -62,7 +62,6 @@ lable:
 	}
 	Findcsrftoken := regexp.MustCompile(`id="csrftoken" name="csrftoken" value="([^"]+)"`)
 	csrftoken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
-
 	client.Cookies = initResp.Cookies()
 	return
 }

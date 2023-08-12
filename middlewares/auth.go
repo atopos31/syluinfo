@@ -25,7 +25,7 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 			c.Abort()
 			return
 		}
-		// parts[1]是获取到的tokenString，我们使用之前定义好的解析JWT的函数来解析它
+		// 解析JWT
 		mc, err := jwt.ParseToken(parts[1])
 		if err != nil {
 			controller.ResponseError(c, controller.CodeInvalidToken)
