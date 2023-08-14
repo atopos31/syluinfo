@@ -76,6 +76,15 @@ func CookieHandler(c *gin.Context) {
 	ResponseSuccess(c, cookisString)
 }
 
+// 获取学期请求处理函数
+// @Summary 获取学期接口
+// @Tags sylu相关接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string true "Bearer JWT"
+// @Success 1000 {object} models.ResSemeSter "code=1000,msg="success","
+// @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
+// @Router /edu/semester [get]
 func SemesterHandler(c *gin.Context) {
 	userID, err := getCurrentUser(c)
 	if err != nil {

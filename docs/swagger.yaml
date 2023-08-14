@@ -295,6 +295,24 @@ definitions:
       weight:
         type: string
     type: object
+  models.ResSemeSter:
+    properties:
+      index:
+        type: integer
+      list:
+        items:
+          $ref: '#/definitions/models.SemeSterList'
+        type: array
+    type: object
+  models.SemeSterList:
+    properties:
+      month:
+        type: integer
+      name:
+        type: string
+      year:
+        type: integer
+    type: object
 info:
   contact:
     name: hakcerxiao
@@ -617,6 +635,30 @@ paths:
           schema:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取成绩接口
+      tags:
+      - sylu相关接口
+  /edu/semester:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer JWT
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",
+          schema:
+            $ref: '#/definitions/models.ResSemeSter'
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 获取学期接口
       tags:
       - sylu相关接口
 swagger: "2.0"

@@ -8,9 +8,8 @@ type ReqLogin struct {
 }
 
 type ResSemeSter struct {
-	Index     int             `json:"index"`
-	IndexYear int             `json:"indexyear"`
-	List      []*SemeSterList `json:"list"`
+	Index int             `json:"index"`
+	List  []*SemeSterList `json:"list"`
 }
 
 type SemeSterList struct {

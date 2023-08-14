@@ -506,6 +506,43 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/edu/semester": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sylu相关接口"
+                ],
+                "summary": "获取学期接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResSemeSter"
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -927,6 +964,34 @@ const docTemplate = `{
                 },
                 "weight": {
                     "type": "string"
+                }
+            }
+        },
+        "models.ResSemeSter": {
+            "type": "object",
+            "properties": {
+                "index": {
+                    "type": "integer"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.SemeSterList"
+                    }
+                }
+            }
+        },
+        "models.SemeSterList": {
+            "type": "object",
+            "properties": {
+                "month": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "year": {
+                    "type": "integer"
                 }
             }
         }
