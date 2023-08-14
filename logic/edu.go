@@ -14,6 +14,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// 获取代理
 func getHttpProxy() string {
 	if settings.Conf.Proxy.Host != "" && settings.Conf.Proxy.Port != "" {
 		return "http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port
@@ -21,6 +22,7 @@ func getHttpProxy() string {
 	return ""
 }
 
+// 绑定教务处理
 func BintLogin(userInfo *models.ParamBind, userID int64) (userSyluInfo *models.ReqBind, err error) {
 	//保存原密码
 	oPassword := userInfo.Password
@@ -95,6 +97,7 @@ func BintLogin(userInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 	return
 }
 
+// 根据学号获取学期列表
 func GetSemeSter(userID int64) (semeList *models.ResSemeSter, err error) {
 	syluPass, err := mysql.GetSyluPassByUuid(userID)
 	if err != nil {
@@ -115,6 +118,7 @@ func GetSemeSter(userID int64) (semeList *models.ResSemeSter, err error) {
 
 }
 
+// 获取教务cookie
 func GetCookie(userID int64) (cookieString string, err error) {
 	syluPass, err := mysql.GetSyluPassByUuid(userID)
 	if err != nil {
@@ -158,12 +162,14 @@ func GetCookie(userID int64) (cookieString string, err error) {
 	return
 }
 
+// 获取课程表
 func GetCourse(courseInfo *models.ParamCourse) (reqCourse *models.ReqCourse, err error) {
 	client := resty.New()
 	client.SetProxy(getHttpProxy())
 	return resty_tool.GetCourseByCourseInfo(client, courseInfo)
 }
 
+// 根据学期获取成绩列表
 func GetGrades(gradesInfo *models.ParamGrades) (resGrades *models.ResGrades, err error) {
 	resGrades = new(models.ResGrades)
 	resGrades.Year = getYear(gradesInfo.Year)
@@ -179,11 +185,19 @@ func GetGrades(gradesInfo *models.ParamGrades) (resGrades *models.ResGrades, err
 	return
 }
 
+// 根据课程id获取成绩详情
 func GetGradeDetail(gradeDetailInfo *models.ParamGradeDetaile) (resGradeDetail []*models.ResGradeDetail, err error) {
 	col := collytool.NewMyCollector()
 	return col.GetGradeDetail(gradeDetailInfo)
 }
 
+// 获取全部课程平均绩点和学位课平均绩点
+func GetGpas(bindGpa *models.ParamGpa) (resGpa *models.ResGpa, err error) {
+	col := collytool.NewMyCollector()
+	return col.GetGpas(bindGpa.Cookie)
+}
+
+// 将cookie转string
 func cookiesToString(cookies []*http.Cookie) string {
 	var cookieStrings []string
 	for _, cookie := range cookies {
@@ -191,9 +205,4 @@ func cookiesToString(cookies []*http.Cookie) string {
 	}
 
 	return strings.Join(cookieStrings, "; ")
-}
-
-func GetGpas(bindGpa *models.ParamGpa) (resGpa *models.ResGpa, err error) {
-	col := collytool.NewMyCollector()
-	return col.GetGpas(bindGpa.Cookie)
 }

@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"strconv"
 	"time"
+
+	"go.uber.org/zap"
 )
 
 func getSemeList(id string) ([]*models.SemeSterList, error) {
@@ -13,11 +15,12 @@ func getSemeList(id string) ([]*models.SemeSterList, error) {
 
 	num, err := strconv.Atoi(indexYear)
 	if err != nil {
+		zap.L().Error("getSemeList Error", zap.String("ID", id))
 		return nil, err
 	}
-	var month = 3
-	semList := make([]*models.SemeSterList, 0, 8)
 
+	semList := make([]*models.SemeSterList, 0, 8)
+	var month = 3
 	for i := 0; i < 8; i++ {
 		var semeSter models.SemeSterList
 		semeSter.Name = getYear(num) + " " + getSemester(month)
@@ -49,7 +52,6 @@ func getIndesSeme(id string) (int, error) {
 	month := int(now.Month())
 
 	yearFormated := year % 100
-
 	monthFormated := month
 
 	var semenum int

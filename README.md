@@ -3,6 +3,8 @@
 # 框架
 - 主体：[gin](https://github.com/gin-gonic/gin) [gorm](https://github.com/go-gorm/gorm)
 - 爬虫部分: [colly](https://github.com/gocolly/colly) [resty](https://github.com/go-resty/resty)
+# 存储
+基于腾讯云COS服务保存静态文件。
 # 功能(开发中)
 - [x] 教务绑定
 - [x] 成绩查询
