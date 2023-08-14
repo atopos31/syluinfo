@@ -52,6 +52,7 @@ func Setup(cfg *settings.AppConfig) {
 	edu.Use(middlewares.JWTAuthMiddleware())
 	{
 		edu.GET("/cookie", controller.CookieHandler)
+		edu.GET("/semester", controller.SemesterHandler)
 
 		edu.POST("/bind", controller.BingEducationalHandler)
 		edu.POST("/courses", controller.CourseHandler)

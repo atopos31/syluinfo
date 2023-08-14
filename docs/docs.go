@@ -711,7 +711,7 @@ const docTemplate = `{
                     ]
                 },
                 "year": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },

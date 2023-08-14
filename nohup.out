@@ -1,0 +1,1683 @@
+
+  __    _   ___  
+ / /\  | | | |_) 
+/_/--\ |_| |_| \_ , built with Go 
+
+watching .
+watching conf
+watching controller
+watching cos
+watching dao
+watching dao/colly_tool
+watching dao/mysql
+watching dao/redis
+watching dao/resty_tool
+!exclude docs
+watching logger
+watching logic
+watching middlewares
+watching models
+watching pkg
+watching pkg/jwt
+watching pkg/sendemail
+watching pkg/snowflake
+watching pkg/tool
+watching restest
+watching routes
+watching settings
+watching test
+!exclude tmp
+building...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 00:04:05 Generate swagger docs....
+2023/08/13 00:04:05 Generate general API Info, search dir:./
+2023/08/13 00:04:05 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 00:04:05 Generating models.ParamBind
+2023/08/13 00:04:05 Generating models.ReqBind
+2023/08/13 00:04:05 Generating models.ReqSyluInfo
+2023/08/13 00:04:05 Generating controller.ResponseData
+2023/08/13 00:04:05 Generating controller.ResCode
+2023/08/13 00:04:05 Generating models.ParamCourse
+2023/08/13 00:04:05 Generating models.ReqCourse
+2023/08/13 00:04:05 Generating models.JsonCourse
+2023/08/13 00:04:05 Generating models.ParamGrades
+2023/08/13 00:04:05 Generating models.JsonGrades
+2023/08/13 00:04:05 Generating models.ParamGradeDetaile
+2023/08/13 00:04:05 Generating models.ResGradeDetail
+2023/08/13 00:04:05 Generating models.ParamGpa
+2023/08/13 00:04:05 Generating models.ResGpa
+2023/08/13 00:04:05 Generating models.ParamLogin
+2023/08/13 00:04:05 Generating controller._ResponseLoginData
+2023/08/13 00:04:05 Generating models.ReqLogin
+2023/08/13 00:04:05 Generating models.ParamSignUp
+2023/08/13 00:04:05 Generating models.QuerySendEmail
+2023/08/13 00:04:05 Generating models.ParamReSet
+2023/08/13 00:04:05 Generating models.ParamReCover
+2023/08/13 00:04:05 create docs.go at docs/docs.go
+2023/08/13 00:04:05 create swagger.json at docs/swagger.json
+2023/08/13 00:04:05 create swagger.yaml at docs/swagger.yaml
+failed to build, error: exit status 127
+running...
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2023/08/13 - 00:04:35 |[97;42m 200 [0m|     305.612µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/index.html"
+[GIN] 2023/08/13 - 00:04:35 |[97;42m 200 [0m|     334.221µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/swagger-ui.css"
+[GIN] 2023/08/13 - 00:04:35 |[97;42m 200 [0m|     923.678µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/swagger-ui-bundle.js"
+[GIN] 2023/08/13 - 00:04:35 |[97;42m 200 [0m|     446.174µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/swagger-ui-standalone-preset.js"
+[GIN] 2023/08/13 - 00:04:35 |[97;42m 200 [0m|     323.813µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/doc.json"
+[GIN] 2023/08/13 - 00:04:35 |[97;42m 200 [0m|     195.016µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/favicon-32x32.png"
+[GIN] 2023/08/13 - 00:04:56 |[97;42m 200 [0m|  488.039951ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:05:03 |[97;42m 200 [0m|  529.457683ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:05:05 |[97;42m 200 [0m|  508.819796ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:05:08 |[97;42m 200 [0m|  585.390624ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:05:10 |[97;42m 200 [0m|  580.229847ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:05:12 |[97;42m 200 [0m|  539.590521ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:05:13 |[97;42m 200 [0m|  539.379994ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:06:35 |[97;42m 200 [0m|  486.883419ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:08:32 |[97;42m 200 [0m|  575.266404ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:09:55 |[97;42m 200 [0m|  557.853041ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:11:38 |[97;42m 200 [0m|  602.272286ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:11:39 |[97;42m 200 [0m|  554.843922ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:11:42 |[97;42m 200 [0m|  499.919606ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:11:45 |[97;42m 200 [0m|  516.105666ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:11:53 |[97;42m 200 [0m|  522.965583ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:12:18 |[97;42m 200 [0m|  541.768148ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:12:27 |[97;42m 200 [0m|  564.735817ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:12:31 |[97;42m 200 [0m|   503.55167ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:13:07 |[97;42m 200 [0m|  535.865862ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:13:12 |[97;42m 200 [0m|     579.237ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:13:55 |[97;42m 200 [0m|  581.240025ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:14:36 |[97;42m 200 [0m|  526.837079ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:14:44 |[97;42m 200 [0m|  601.933808ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:14:51 |[97;42m 200 [0m|  522.395305ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:15:20 |[97;42m 200 [0m|  509.790777ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:18:20 |[90;43m 404 [0m|     102.113µs |   205.210.31.40 |[97;44m GET     [0m "/"
+[GIN] 2023/08/13 - 00:22:14 |[97;42m 200 [0m|   653.84483ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 00:45:21 |[90;43m 404 [0m|      99.128µs |   45.79.181.104 |[97;44m GET     [0m "/"
+[GIN] 2023/08/13 - 01:34:43 |[90;43m 404 [0m|      83.642µs |  192.241.195.48 |[97;44m GET     [0m "/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application"
+[GIN] 2023/08/13 - 05:35:18 |[90;43m 404 [0m|      94.281µs |  185.233.19.203 |[97;44m GET     [0m "/"
+[GIN] 2023/08/13 - 07:48:08 |[97;42m 200 [0m|         176µs |  119.116.200.32 |[97;44m GET     [0m "/swagger/index.html"
+[GIN] 2023/08/13 - 07:48:08 |[97;42m 200 [0m|     257.497µs |  119.116.200.32 |[97;44m GET     [0m "/swagger/swagger-ui.css"
+[GIN] 2023/08/13 - 07:48:08 |[97;42m 200 [0m|     318.633µs |  119.116.200.32 |[97;44m GET     [0m "/swagger/swagger-ui-standalone-preset.js"
+[GIN] 2023/08/13 - 07:48:08 |[97;42m 200 [0m|      754.58µs |  119.116.200.32 |[97;44m GET     [0m "/swagger/swagger-ui-bundle.js"
+[GIN] 2023/08/13 - 07:48:09 |[97;42m 200 [0m|     232.568µs |  119.116.200.32 |[97;44m GET     [0m "/swagger/doc.json"
+[GIN] 2023/08/13 - 07:54:07 |[97;42m 204 [0m|       5.804µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/courses"
+[GIN] 2023/08/13 - 07:54:40 |[97;42m 204 [0m|      11.156µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/courses"
+[GIN] 2023/08/13 - 07:54:59 |[97;42m 204 [0m|       8.623µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/courses"
+[GIN] 2023/08/13 - 07:57:49 |[97;42m 200 [0m|     250.136µs |  119.116.200.32 |[97;46m POST    [0m "/api/v1/auth/login"
+[GIN] 2023/08/13 - 07:57:52 |[97;42m 200 [0m|     159.458µs |  119.116.200.32 |[97;46m POST    [0m "/api/v1/auth/login"
+[GIN] 2023/08/13 - 07:58:30 |[97;42m 204 [0m|       6.188µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/courses"
+[GIN] 2023/08/13 - 07:58:46 |[97;42m 204 [0m|       5.634µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/auth/login"
+[GIN] 2023/08/13 - 07:58:46 |[97;42m 200 [0m|     1.16444ms |  119.116.200.32 |[97;46m POST    [0m "/api/v1/auth/login"
+[GIN] 2023/08/13 - 07:58:49 |[97;42m 204 [0m|       5.534µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/courses"
+[GIN] 2023/08/13 - 07:59:35 |[97;42m 200 [0m|     160.144µs |  119.116.200.32 |[97;46m POST    [0m "/api/v1/edu/courses"
+[GIN] 2023/08/13 - 08:00:26 |[97;42m 204 [0m|      23.586µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/courses"
+[GIN] 2023/08/13 - 08:01:30 |[97;42m 204 [0m|       8.246µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/courses?cookie=1&semester=3&year=2022"
+[GIN] 2023/08/13 - 08:02:04 |[97;42m 200 [0m|     176.574µs |  119.116.200.32 |[97;44m GET     [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 08:02:43 |[97;42m 204 [0m|      16.002µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 08:03:09 |[97;42m 204 [0m|       6.406µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 08:03:38 |[97;42m 200 [0m|    1.114158ms |  119.116.200.32 |[97;46m POST    [0m "/api/v1/auth/login"
+[GIN] 2023/08/13 - 08:05:33 |[97;42m 204 [0m|       5.984µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 08:05:42 |[97;42m 204 [0m|       7.021µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 08:06:03 |[97;42m 204 [0m|       6.197µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 08:06:18 |[97;42m 204 [0m|       7.285µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 08:06:54 |[97;42m 204 [0m|      12.315µs |  119.116.200.32 |[90;47m OPTIONS [0m "/api/v1/edu/cookie"
+[GIN] 2023/08/13 - 09:01:31 |[97;42m 200 [0m|  698.770647ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:03:31 |[97;42m 200 [0m|  760.259196ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:08:51 |[90;43m 404 [0m|      87.181µs |   138.68.188.72 |[97;44m GET     [0m "/ab2g"
+[GIN] 2023/08/13 - 09:08:52 |[90;43m 404 [0m|      69.286µs |   138.68.188.72 |[97;44m GET     [0m "/ab2h"
+[GIN] 2023/08/13 - 09:09:01 |[90;43m 404 [0m|     119.176µs |   138.68.188.72 |[97;44m GET     [0m "/"
+[GIN] 2023/08/13 - 09:09:03 |[90;43m 404 [0m|      72.136µs |   138.68.188.72 |[97;44m GET     [0m "/t4"
+[GIN] 2023/08/13 - 09:09:05 |[90;43m 404 [0m|      59.475µs |   138.68.188.72 |[97;44m GET     [0m "/favicon.ico"
+[GIN] 2023/08/13 - 09:09:07 |[90;43m 404 [0m|      85.282µs |   138.68.188.72 |[97;44m GET     [0m "/"
+[GIN] 2023/08/13 - 09:10:44 |[97;42m 200 [0m|    647.9327ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:10:46 |[97;42m 200 [0m|  582.829337ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:10:48 |[97;42m 200 [0m|  596.901103ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:10:52 |[97;42m 200 [0m|  632.584396ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:10:54 |[97;42m 200 [0m|  582.215459ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:10:55 |[97;42m 200 [0m|   554.77824ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:10:57 |[97;42m 200 [0m|  607.569468ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:10:59 |[97;42m 200 [0m|  579.953951ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:11:00 |[97;42m 200 [0m|  638.347083ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:11:01 |[97;42m 200 [0m|  548.383916ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:11:03 |[97;42m 200 [0m|  537.194512ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:16:37 |[97;42m 200 [0m|  601.056005ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:17:05 |[97;42m 200 [0m|  559.762881ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:17:32 |[97;42m 200 [0m|   527.12558ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:17:34 |[97;42m 200 [0m|  524.118627ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:23:29 |[97;42m 200 [0m|  597.338105ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:23:40 |[97;42m 200 [0m|  563.522505ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:23:42 |[97;42m 200 [0m|  567.629392ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:26:02 |[97;42m 200 [0m|  547.402452ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:26:51 |[90;43m 404 [0m|      66.239µs |     65.49.20.69 |[97;44m GET     [0m "/"
+[GIN] 2023/08/13 - 09:29:14 |[97;42m 200 [0m|   505.78119ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:29:26 |[97;42m 200 [0m|  538.512462ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:29:44 |[97;42m 200 [0m|  551.666047ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:31:48 |[97;42m 200 [0m|  552.144622ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:32:04 |[97;42m 200 [0m|  524.531551ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:32:48 |[97;42m 200 [0m|  520.164661ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:35:02 |[90;43m 404 [0m|      68.834µs |     65.49.20.69 |[97;44m GET     [0m "/favicon.ico"
+[GIN] 2023/08/13 - 09:37:57 |[90;43m 404 [0m|      72.212µs |     65.49.20.69 |[97;44m GET     [0m "/dns-query?name=dnsscan.shadowserver.org&type=A"
+[GIN] 2023/08/13 - 09:38:25 |[97;42m 200 [0m|     1.14891ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/auth/login"
+[GIN] 2023/08/13 - 09:38:30 |[97;42m 200 [0m|   507.70443ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:39:12 |[97;42m 200 [0m|  526.965082ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:39:24 |[97;42m 200 [0m|  531.364332ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:41:30 |[97;42m 200 [0m|          1m0s | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:41:51 |[97;42m 200 [0m|          1m0s | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:41:57 |[97;42m 200 [0m|  524.922081ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:42:21 |[97;42m 200 [0m|  512.258012ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:42:58 |[90;43m 404 [0m|      78.554µs |     65.49.20.69 |[97;44m GET     [0m "/geoserver/web/"
+[GIN] 2023/08/13 - 09:43:38 |[97;42m 200 [0m|  501.945334ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:44:02 |[90;43m 404 [0m|      65.517µs |     65.49.20.69 |[97;44m GET     [0m "/.git/config"
+[GIN] 2023/08/13 - 09:44:12 |[97;42m 200 [0m|  490.283352ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:48:17 |[97;42m 200 [0m|  533.779612ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:51:23 |[97;42m 200 [0m|  524.571365ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 09:54:01 |[90;43m 404 [0m|      78.033µs |     83.97.73.87 |[97;44m GET     [0m "/?XDEBUG_SESSION_START=phpstorm"
+[GIN] 2023/08/13 - 09:55:34 |[97;42m 200 [0m|  517.572502ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:01:03 |[97;42m 200 [0m|  643.591606ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:08:45 |[97;42m 200 [0m|   592.35708ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:12:16 |[97;42m 200 [0m|  593.156982ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:12:33 |[97;42m 200 [0m|  611.750049ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:21:02 |[97;42m 200 [0m|  571.913782ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:22:25 |[97;42m 200 [0m|  691.916532ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:22:40 |[97;42m 200 [0m|  618.684406ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:23:07 |[97;42m 200 [0m|  618.562703ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:23:20 |[97;42m 200 [0m|  617.816959ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:27:40 |[97;42m 200 [0m|  555.966228ms |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:28:06 |[97;42m 200 [0m|  699.149986ms |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 10:28:29 |[97;42m 200 [0m|  331.346073ms |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/13 - 10:28:46 |[97;42m 200 [0m|     150.942µs |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grade/detaile"
+models/params.go has changed
+building...
+/bin/sh: 1: go: not found
+models/params.go has changed
+/bin/sh: 1: go: not found
+2023/08/13 10:29:18 Generate swagger docs....
+2023/08/13 10:29:18 Generate general API Info, search dir:./
+2023/08/13 10:29:18 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 10:29:18 Generating models.ParamBind
+2023/08/13 10:29:18 Generating models.ReqBind
+2023/08/13 10:29:18 Generating models.ReqSyluInfo
+2023/08/13 10:29:18 Generating controller.ResponseData
+2023/08/13 10:29:18 Generating controller.ResCode
+2023/08/13 10:29:18 Generating models.ParamCourse
+2023/08/13 10:29:18 Generating models.ReqCourse
+2023/08/13 10:29:18 Generating models.JsonCourse
+2023/08/13 10:29:18 Generating models.ParamGrades
+2023/08/13 10:29:18 Generating models.JsonGrades
+2023/08/13 10:29:18 Generating models.ParamGradeDetaile
+2023/08/13 10:29:18 Generating models.ResGradeDetail
+2023/08/13 10:29:18 Generating models.ParamGpa
+2023/08/13 10:29:18 Generating models.ResGpa
+2023/08/13 10:29:18 Generating models.ParamLogin
+2023/08/13 10:29:18 Generating controller._ResponseLoginData
+2023/08/13 10:29:18 Generating models.ReqLogin
+2023/08/13 10:29:18 Generating models.ParamSignUp
+2023/08/13 10:29:18 Generating models.QuerySendEmail
+2023/08/13 10:29:18 Generating models.ParamReSet
+2023/08/13 10:29:18 Generating models.ParamReCover
+2023/08/13 10:29:18 create docs.go at docs/docs.go
+2023/08/13 10:29:18 create swagger.json at docs/swagger.json
+2023/08/13 10:29:18 create swagger.yaml at docs/swagger.yaml
+failed to build, error: exit status 127
+running...
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+dao/colly_tool/colly.go has changed
+building...
+dao/colly_tool/colly.go has changed
+building...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 10:29:41 Generate swagger docs....
+2023/08/13 10:29:41 Generate general API Info, search dir:./
+2023/08/13 10:29:41 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 10:29:41 Generate swagger docs....
+2023/08/13 10:29:41 Generate general API Info, search dir:./
+2023/08/13 10:29:41 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 10:29:41 Generating models.ParamBind
+2023/08/13 10:29:41 Generating models.ParamBind
+2023/08/13 10:29:41 Generating models.ReqBind
+2023/08/13 10:29:41 Generating models.ReqSyluInfo
+2023/08/13 10:29:41 Generating controller.ResponseData
+2023/08/13 10:29:41 Generating controller.ResCode
+2023/08/13 10:29:41 Generating models.ParamCourse
+2023/08/13 10:29:41 Generating models.ReqCourse
+2023/08/13 10:29:41 Generating models.ReqBind
+2023/08/13 10:29:41 Generating models.ReqSyluInfo
+2023/08/13 10:29:41 Generating controller.ResponseData
+2023/08/13 10:29:41 Generating controller.ResCode
+2023/08/13 10:29:41 Generating models.ParamCourse
+2023/08/13 10:29:41 Generating models.ReqCourse
+2023/08/13 10:29:41 Generating models.JsonCourse
+2023/08/13 10:29:41 Generating models.ParamGrades
+2023/08/13 10:29:41 Generating models.JsonGrades
+2023/08/13 10:29:41 Generating models.ParamGradeDetaile
+2023/08/13 10:29:41 Generating models.ResGradeDetail
+2023/08/13 10:29:41 Generating models.JsonCourse
+2023/08/13 10:29:41 Generating models.ParamGpa
+2023/08/13 10:29:41 Generating models.ParamGrades
+2023/08/13 10:29:41 Generating models.ResGpa
+2023/08/13 10:29:41 Generating models.ParamLogin
+2023/08/13 10:29:41 Generating controller._ResponseLoginData
+2023/08/13 10:29:41 Generating models.JsonGrades
+2023/08/13 10:29:41 Generating models.ReqLogin
+2023/08/13 10:29:41 Generating models.ParamSignUp
+2023/08/13 10:29:41 Generating models.ParamGradeDetaile
+2023/08/13 10:29:41 Generating models.QuerySendEmail
+2023/08/13 10:29:41 Generating models.ResGradeDetail
+2023/08/13 10:29:41 Generating models.ParamGpa
+2023/08/13 10:29:41 Generating models.ResGpa
+2023/08/13 10:29:41 Generating models.ParamLogin
+2023/08/13 10:29:41 Generating controller._ResponseLoginData
+2023/08/13 10:29:41 Generating models.ReqLogin
+2023/08/13 10:29:41 Generating models.ParamSignUp
+2023/08/13 10:29:41 Generating models.QuerySendEmail
+2023/08/13 10:29:41 Generating models.ParamReSet
+2023/08/13 10:29:41 Generating models.ParamReCover
+2023/08/13 10:29:41 Generating models.ParamReSet
+2023/08/13 10:29:41 Generating models.ParamReCover
+2023/08/13 10:29:41 create docs.go at docs/docs.go
+2023/08/13 10:29:41 create docs.go at docs/docs.go
+2023/08/13 10:29:41 create swagger.json at docs/swagger.json
+2023/08/13 10:29:41 create swagger.json at docs/swagger.json
+2023/08/13 10:29:41 create swagger.yaml at docs/swagger.yaml
+failed to build, error: exit status 127
+running...
+2023/08/13 10:29:41 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2023/08/13 - 10:29:50 |[97;42m 200 [0m|     240.996µs |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/13 - 10:29:55 |[97;42m 200 [0m|     162.882µs |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/13 - 10:29:57 |[97;42m 200 [0m|      222.63µs |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/13 - 10:29:58 |[97;42m 200 [0m|     189.913µs |       127.0.0.1 |[97;46m POST    [0m "/api/v1/edu/grade/detaile"
+Terminated
+models/reponsedata.go has changed
+building...
+failed to build, error: exit status 127
+running...
+models/reponsedata.go has changed
+building...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 21:52:36 Generate swagger docs....
+2023/08/13 21:52:36 Generate general API Info, search dir:./
+2023/08/13 21:52:36 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 21:52:36 Generating models.ParamBind
+2023/08/13 21:52:36 Generating models.ReqBind
+2023/08/13 21:52:36 Generating models.ReqSyluInfo
+2023/08/13 21:52:36 Generating controller.ResponseData
+2023/08/13 21:52:36 Generating controller.ResCode
+2023/08/13 21:52:36 Generating models.ParamCourse
+2023/08/13 21:52:36 Generating models.ReqCourse2023/08/13 21:52:36 Generate swagger docs....
+2023/08/13 21:52:36 Generating models.JsonCourse
+2023/08/13 21:52:36 Generate general API Info, search dir:./
+2023/08/13 21:52:36 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+
+2023/08/13 21:52:36 Generating models.ParamGrades
+2023/08/13 21:52:36 Generating models.JsonGrades
+2023/08/13 21:52:36 Generating models.ParamGradeDetaile
+2023/08/13 21:52:36 Generating models.ResGradeDetail
+2023/08/13 21:52:36 Generating models.ParamGpa
+2023/08/13 21:52:36 Generating models.ResGpa
+2023/08/13 21:52:36 Generating models.ParamLogin
+2023/08/13 21:52:36 Generating controller._ResponseLoginData
+2023/08/13 21:52:36 Generating models.ReqLogin
+2023/08/13 21:52:36 Generating models.ParamSignUp
+2023/08/13 21:52:36 Generating models.QuerySendEmail
+2023/08/13 21:52:36 Generating models.ParamReSet
+2023/08/13 21:52:36 Generating models.ParamReCover
+2023/08/13 21:52:36 create docs.go at docs/docs.go
+2023/08/13 21:52:36 create swagger.json at docs/swagger.json
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+2023/08/13 21:52:36 create swagger.yaml at docs/swagger.yaml
+failed to build, error: exit status 127
+running...
+2023/08/13 21:52:36 Generating models.ParamBind
+2023/08/13 21:52:36 Generating models.ReqBind
+2023/08/13 21:52:36 Generating models.ReqSyluInfo
+2023/08/13 21:52:36 Generating controller.ResponseData
+2023/08/13 21:52:36 Generating controller.ResCode
+2023/08/13 21:52:36 Generating models.ParamCourse
+2023/08/13 21:52:36 Generating models.ReqCourse
+2023/08/13 21:52:36 Generating models.JsonCourse
+2023/08/13 21:52:36 Generating models.ParamGrades
+2023/08/13 21:52:36 Generating models.JsonGrades
+2023/08/13 21:52:36 Generating models.ParamGradeDetaile
+2023/08/13 21:52:36 Generating models.ResGradeDetail
+2023/08/13 21:52:36 Generating models.ParamGpa
+2023/08/13 21:52:36 Generating models.ResGpa
+2023/08/13 21:52:36 Generating models.ParamLogin
+2023/08/13 21:52:36 Generating controller._ResponseLoginData
+2023/08/13 21:52:36 Generating models.ReqLogin
+2023/08/13 21:52:36 Generating models.ParamSignUp
+2023/08/13 21:52:36 Generating models.QuerySendEmail
+2023/08/13 21:52:36 Generating models.ParamReSet
+2023/08/13 21:52:36 Generating models.ParamReCover
+2023/08/13 21:52:36 create docs.go at docs/docs.go
+2023/08/13 21:52:36 create swagger.json at docs/swagger.json
+2023/08/13 21:52:36 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [ERROR] listen tcp :8080: bind: address already in use
+panic: reflect: call of reflect.Value.Close on zero Value
+
+goroutine 1 [running]:
+reflect.flag.mustBe(...)
+	/usr/local/go/src/reflect/value.go:223
+reflect.Value.Close({0x0?, 0x0?, 0xc000107040?})
+	/usr/local/go/src/reflect/value.go:1182 +0xed
+cld/dao/mysql.Close()
+	/home/hackerxiao/go_project/sylu_project/dao/mysql/mysql.go:50 +0x30
+main.main()
+	/home/hackerxiao/go_project/sylu_project/main.go:68 +0x21d
+[GIN] 2023/08/13 - 22:10:45 |[90;43m 404 [0m|      79.014µs |   167.94.138.51 |[97;44m GET     [0m "/"
+[GIN] 2023/08/13 - 22:10:46 |[90;43m 404 [0m|      92.408µs |   167.94.138.51 |[97;44m GET     [0m "/"
+logic/edu.go has changed
+building...
+failed to build, error: exit status 127
+running...
+controller/edu.go has changed
+building...
+models/reponsedata.go has changed
+logic/until.go has changed
+building...
+logic/edu.go has changed
+controller/edu.go has changed
+building...
+models/reponsedata.go has changed
+logic/until.go has changed
+building...
+/bin/sh: 1: go: not found
+routes/routes.go has changed
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:16:01 Generate swagger docs....
+2023/08/13 22:16:01 Generate general API Info, search dir:./
+2023/08/13 22:16:01 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:16:01 Generate swagger docs..../bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+
+2023/08/13 22:16:01 Generate general API Info, search dir:./
+2023/08/13 22:16:01 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:16:01 Generate swagger docs..../bin/sh: 1: go: not found
+
+2023/08/13 22:16:01 Generate general API Info, search dir:./
+2023/08/13 22:16:01 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:16:01 Generate swagger docs....2023/08/13 22:16:01 Generating models.ParamBind
+2023/08/13 22:16:01 Generating models.ReqBind
+2023/08/13 22:16:01 Generating models.ReqSyluInfo
+2023/08/13 22:16:01 Generating controller.ResponseData
+2023/08/13 22:16:01 Generating controller.ResCode
+2023/08/13 22:16:01 Generating models.ParamCourse
+2023/08/13 22:16:01 Generating models.ReqCourse
+2023/08/13 22:16:01 Generate general API Info, search dir:./
+2023/08/13 22:16:01 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:2023/08/13 22:16:01 Generate swagger docs....
+2023/08/13 22:16:01 Generate general API Info, search dir:./
+2023/08/13 22:16:01 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+
+
+2023/08/13 22:16:01 Generating models.JsonCourse
+2023/08/13 22:16:01 Generating models.ParamGrades
+2023/08/13 22:16:01 Generating models.JsonGrades
+2023/08/13 22:16:01 Generating models.ParamGradeDetaile
+2023/08/13 22:16:01 Generating models.ResGradeDetail
+2023/08/13 22:16:01 Generating models.ParamGpa
+2023/08/13 22:16:01 Generating models.ResGpa
+2023/08/13 22:16:01 Generating models.ParamLogin
+2023/08/13 22:16:01 Generating controller._ResponseLoginData2023/08/13 22:16:01 Generating models.ParamBind
+2023/08/13 22:16:01 Generating models.ReqLogin
+2023/08/13 22:16:01 Generating models.ParamSignUp
+2023/08/13 22:16:01 Generating models.QuerySendEmail
+2023/08/13 22:16:01 Generating models.ParamReSet
+2023/08/13 22:16:01 Generating models.ParamReCover
+
+2023/08/13 22:16:01 Generating models.ReqBind
+2023/08/13 22:16:01 Generating models.ReqSyluInfo
+2023/08/13 22:16:01 Generating controller.ResponseData
+2023/08/13 22:16:01 Generating controller.ResCode
+2023/08/13 22:16:01 Generating models.ParamBind2023/08/13 22:16:01 Generating models.ParamCourse2023/08/13 22:16:01 Generating models.ParamBind2023/08/13 22:16:01 Generating models.ParamBind
+2023/08/13 22:16:02 Generating models.ReqCourse
+2023/08/13 22:16:02 Generating models.JsonCourse
+2023/08/13 22:16:02 Generating models.ReqBind
+
+2023/08/13 22:16:02 Generating models.ReqSyluInfo
+2023/08/13 22:16:02 Generating controller.ResponseData
+2023/08/13 22:16:02 Generating controller.ResCode
+2023/08/13 22:16:02 Generating models.ParamCourse
+2023/08/13 22:16:02 Generating models.ReqCourse2023/08/13 22:16:02 Generating models.ParamGrades
+2023/08/13 22:16:02 Generating models.JsonGrades
+2023/08/13 22:16:02 Generating models.JsonCourse
+
+2023/08/13 22:16:02 Generating models.ParamGradeDetaile
+2023/08/13 22:16:02 Generating models.ResGradeDetail
+2023/08/13 22:16:02 Generating models.ParamGpa
+2023/08/13 22:16:02 Generating models.ResGpa2023/08/13 22:16:02 Generating models.ParamGrades
+2023/08/13 22:16:02 Generating models.JsonGrades
+
+2023/08/13 22:16:02 Generating models.ParamGradeDetaile
+2023/08/13 22:16:02 Generating models.ResGradeDetail
+2023/08/13 22:16:02 Generating models.ParamGpa
+2023/08/13 22:16:02 Generating models.ResGpa
+2023/08/13 22:16:02 Generating models.ParamLogin
+2023/08/13 22:16:02 create docs.go at docs/docs.go2023/08/13 22:16:02 Generating controller._ResponseLoginData
+2023/08/13 22:16:02 Generating models.ParamLogin
+
+2023/08/13 22:16:02 Generating controller._ResponseLoginData
+2023/08/13 22:16:02 Generating models.ReqLogin
+2023/08/13 22:16:02 Generating models.ParamSignUp
+2023/08/13 22:16:02 Generating models.QuerySendEmail
+2023/08/13 22:16:02 Generating models.ParamReSet
+2023/08/13 22:16:02 Generating models.ReqBind
+2023/08/13 22:16:02 Generating models.ParamReCover
+2023/08/13 22:16:02 Generating models.ReqSyluInfo
+2023/08/13 22:16:02 Generating controller.ResponseData
+2023/08/13 22:16:02 Generating models.ReqLogin
+
+2023/08/13 22:16:02 Generating models.ParamSignUp
+2023/08/13 22:16:02 Generating models.QuerySendEmail
+2023/08/13 22:16:02 Generating models.ParamReSet
+2023/08/13 22:16:02 Generating models.ParamReCover
+2023/08/13 22:16:02 Generating controller.ResCode
+2023/08/13 22:16:02 Generating models.ParamCourse
+2023/08/13 22:16:02 Generating models.ReqCourse
+2023/08/13 22:16:02 Generating models.JsonCourse
+2023/08/13 22:16:02 Generating models.ParamGrades
+
+2023/08/13 22:16:02 Generating models.JsonGrades
+2023/08/13 22:16:02 Generating models.ParamGradeDetaile2023/08/13 22:16:02 Generating models.ReqBind
+2023/08/13 22:16:02 Generating models.ReqSyluInfo
+2023/08/13 22:16:02 Generating controller.ResponseData
+2023/08/13 22:16:02 Generating controller.ResCode
+2023/08/13 22:16:02 Generating models.ParamCourse
+2023/08/13 22:16:02 Generating models.ResGradeDetail
+2023/08/13 22:16:02 Generating models.ParamGpa
+2023/08/13 22:16:02 Generating models.ReqCourse
+
+2023/08/13 22:16:02 Generating models.JsonCourse2023/08/13 22:16:02 Generating models.ResGpa
+2023/08/13 22:16:02 Generating models.ParamGrades
+2023/08/13 22:16:02 Generating models.ParamLogin
+2023/08/13 22:16:02 Generating controller._ResponseLoginData
+2023/08/13 22:16:02 Generating models.JsonGrades
+2023/08/13 22:16:02 Generating models.ReqLogin2023/08/13 22:16:02 create swagger.json at docs/swagger.json
+2023/08/13 22:16:02 Generating models.ParamSignUp
+2023/08/13 22:16:02 Generating models.ParamGradeDetaile
+2023/08/13 22:16:02 Generating models.QuerySendEmail
+2023/08/13 22:16:02 Generating models.ResGradeDetail
+2023/08/13 22:16:02 Generating models.ParamReSet
+2023/08/13 22:16:02 Generating models.ParamGpa
+2023/08/13 22:16:02 Generating models.ParamReCover
+2023/08/13 22:16:02 Generating models.ResGpa
+2023/08/13 22:16:02 Generating models.ParamLogin
+
+2023/08/13 22:16:02 Generating controller._ResponseLoginData
+
+2023/08/13 22:16:02 Generating models.ReqLogin
+2023/08/13 22:16:02 Generating models.ParamSignUp
+2023/08/13 22:16:02 Generating models.QuerySendEmail
+2023/08/13 22:16:02 Generating models.ParamReSet
+2023/08/13 22:16:02 Generating models.ParamReCover2023/08/13 22:16:02 create docs.go at docs/docs.go
+
+2023/08/13 22:16:02 create docs.go at docs/docs.go
+2023/08/13 22:16:02 create docs.go at docs/docs.go
+2023/08/13 22:16:02 create swagger.json at docs/swagger.json2023/08/13 22:16:02 create swagger.json at docs/swagger.json
+
+2023/08/13 22:16:02 create docs.go at docs/docs.go
+2023/08/13 22:16:02 create swagger.json at docs/swagger.json
+2023/08/13 22:16:02 create swagger.json at docs/swagger.json
+2023/08/13 22:16:02 create swagger.yaml at docs/swagger.yaml2023/08/13 22:16:02 create swagger.yaml at docs/swagger.yaml
+
+failed to build, error: exit status 127
+running...
+2023/08/13 22:16:02 create swagger.yaml at docs/swagger.yaml
+2023/08/13 22:16:02 create swagger.yaml at docs/swagger.yaml
+2023/08/13 22:16:02 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+routes/routes.go has changed
+building...
+failed to build, error: exit status 127
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+running...
+routes/routes.go has changed
+building...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+2023/08/13 22:16:36 Generate swagger docs....
+2023/08/13 22:16:36 Generate general API Info, search dir:./
+2023/08/13 22:16:36 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+/bin/sh: 1: go: not found
+2023/08/13 22:16:36 Generate swagger docs....
+2023/08/13 22:16:36 Generate general API Info, search dir:./
+2023/08/13 22:16:36 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:16:36 Generating models.ParamBind
+2023/08/13 22:16:36 Generating models.ReqBind
+2023/08/13 22:16:36 Generating models.ReqSyluInfo
+2023/08/13 22:16:36 Generating controller.ResponseData
+2023/08/13 22:16:36 Generating controller.ResCode
+2023/08/13 22:16:36 Generating models.ParamCourse
+2023/08/13 22:16:36 Generating models.ReqCourse
+2023/08/13 22:16:36 Generating models.JsonCourse
+2023/08/13 22:16:36 Generating models.ParamGrades
+2023/08/13 22:16:36 Generating models.JsonGrades
+2023/08/13 22:16:36 Generating models.ParamGradeDetaile
+2023/08/13 22:16:36 Generating models.ResGradeDetail
+2023/08/13 22:16:36 Generating models.ParamGpa
+2023/08/13 22:16:36 Generating models.ResGpa
+2023/08/13 22:16:36 Generating models.ParamLogin
+2023/08/13 22:16:36 Generating controller._ResponseLoginData
+2023/08/13 22:16:36 Generating models.ReqLogin
+2023/08/13 22:16:36 Generating models.ParamSignUp
+2023/08/13 22:16:36 Generating models.QuerySendEmail
+2023/08/13 22:16:36 Generating models.ParamReSet
+2023/08/13 22:16:36 Generating models.ParamReCover
+2023/08/13 22:16:36 Generating models.ParamBind2023/08/13 22:16:36 create docs.go at docs/docs.go
+
+2023/08/13 22:16:36 Generating models.ReqBind
+2023/08/13 22:16:36 Generating models.ReqSyluInfo
+2023/08/13 22:16:36 Generating controller.ResponseData
+2023/08/13 22:16:36 Generating controller.ResCode
+2023/08/13 22:16:36 Generating models.ParamCourse
+2023/08/13 22:16:36 Generating models.ReqCourse
+2023/08/13 22:16:36 Generating models.JsonCourse
+2023/08/13 22:16:36 Generating models.ParamGrades
+2023/08/13 22:16:36 Generating models.JsonGrades
+2023/08/13 22:16:36 Generating models.ParamGradeDetaile
+2023/08/13 22:16:36 Generating models.ResGradeDetail
+2023/08/13 22:16:36 Generating models.ParamGpa
+2023/08/13 22:16:36 Generating models.ResGpa
+2023/08/13 22:16:36 Generating models.ParamLogin2023/08/13 22:16:36 create swagger.json at docs/swagger.json
+
+2023/08/13 22:16:36 Generating controller._ResponseLoginData
+2023/08/13 22:16:36 Generating models.ReqLogin
+2023/08/13 22:16:36 Generating models.ParamSignUp
+2023/08/13 22:16:36 Generating models.QuerySendEmail
+2023/08/13 22:16:36 Generating models.ParamReSet
+2023/08/13 22:16:36 Generating models.ParamReCover
+2023/08/13 22:16:36 create docs.go at docs/docs.go
+2023/08/13 22:16:36 create swagger.yaml at docs/swagger.yaml
+2023/08/13 22:16:36 create swagger.json at docs/swagger.json
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+2023/08/13 22:16:37 create swagger.yaml at docs/swagger.yaml
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+routes/routes.go has changed
+building...
+failed to build, error: exit status 127
+running...
+routes/routes.go has changed
+building...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:16:42 Generate swagger docs..../bin/sh: 1: go: not found
+
+2023/08/13 22:16:42 Generate general API Info, search dir:./
+2023/08/13 22:16:42 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+/bin/sh: 1: go: not found
+2023/08/13 22:16:42 Generating models.ParamBind2023/08/13 22:16:42 Generate swagger docs....
+2023/08/13 22:16:42 Generate general API Info, search dir:./
+2023/08/13 22:16:42 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+
+2023/08/13 22:16:42 Generating models.ReqBind
+2023/08/13 22:16:42 Generating models.ReqSyluInfo
+2023/08/13 22:16:42 Generating controller.ResponseData
+2023/08/13 22:16:42 Generating controller.ResCode
+2023/08/13 22:16:42 Generating models.ParamCourse
+2023/08/13 22:16:42 Generating models.ReqCourse
+2023/08/13 22:16:42 Generating models.JsonCourse
+2023/08/13 22:16:42 Generating models.ParamGrades
+2023/08/13 22:16:42 Generating models.JsonGrades
+2023/08/13 22:16:42 Generating models.ParamGradeDetaile
+2023/08/13 22:16:42 Generating models.ResGradeDetail
+2023/08/13 22:16:42 Generating models.ParamGpa
+2023/08/13 22:16:42 Generating models.ResGpa
+2023/08/13 22:16:42 Generating models.ParamLogin
+2023/08/13 22:16:42 Generating controller._ResponseLoginData
+2023/08/13 22:16:42 Generating models.ReqLogin
+2023/08/13 22:16:42 Generating models.ParamSignUp
+2023/08/13 22:16:42 Generating models.QuerySendEmail
+2023/08/13 22:16:42 Generating models.ParamReSet
+2023/08/13 22:16:42 Generating models.ParamReCover
+2023/08/13 22:16:42 Generating models.ParamBind2023/08/13 22:16:42 create docs.go at docs/docs.go
+2023/08/13 22:16:42 Generating models.ReqBind
+
+2023/08/13 22:16:42 Generating models.ReqSyluInfo
+2023/08/13 22:16:42 Generating controller.ResponseData
+2023/08/13 22:16:42 Generating controller.ResCode
+2023/08/13 22:16:42 Generating models.ParamCourse
+2023/08/13 22:16:42 Generating models.ReqCourse
+2023/08/13 22:16:42 Generating models.JsonCourse
+2023/08/13 22:16:42 create swagger.json at docs/swagger.json2023/08/13 22:16:42 Generating models.ParamGrades
+2023/08/13 22:16:42 Generating models.JsonGrades
+2023/08/13 22:16:42 Generating models.ParamGradeDetaile
+2023/08/13 22:16:42 Generating models.ResGradeDetail
+2023/08/13 22:16:42 Generating models.ParamGpa
+2023/08/13 22:16:42 Generating models.ResGpa
+2023/08/13 22:16:42 Generating models.ParamLogin
+2023/08/13 22:16:42 Generating controller._ResponseLoginData
+
+2023/08/13 22:16:42 Generating models.ReqLogin
+2023/08/13 22:16:42 Generating models.ParamSignUp
+2023/08/13 22:16:42 Generating models.QuerySendEmail
+2023/08/13 22:16:42 Generating models.ParamReSet
+2023/08/13 22:16:42 Generating models.ParamReCover
+2023/08/13 22:16:42 create docs.go at docs/docs.go
+2023/08/13 22:16:42 create swagger.json at docs/swagger.json
+2023/08/13 22:16:42 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+2023/08/13 22:16:42 create swagger.yaml at docs/swagger.yaml
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2023/08/13 - 22:16:50 |[97;42m 200 [0m|    1.261135ms |       127.0.0.1 |[97;46m POST    [0m "/api/v1/auth/login"
+[GIN] 2023/08/13 - 22:17:18 |[90;43m 404 [0m|      69.206µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semster"
+[GIN] 2023/08/13 - 22:17:25 |[90;43m 404 [0m|      71.695µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semster"
+[GIN] 2023/08/13 - 22:17:47 |[90;43m 404 [0m|      75.243µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu//semester"
+Terminated
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:19:49 Generate swagger docs....
+2023/08/13 22:19:49 Generate general API Info, search dir:./
+2023/08/13 22:19:49 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:19:49 Generate swagger docs....
+2023/08/13 22:19:49 Generate general API Info, search dir:./2023/08/13 22:19:49 Generating models.ParamBind
+2023/08/13 22:19:49 Generating models.ReqBind
+2023/08/13 22:19:49 Generating models.ReqSyluInfo
+2023/08/13 22:19:49 Generating controller.ResponseData
+2023/08/13 22:19:49 Generating controller.ResCode
+2023/08/13 22:19:49 Generating models.ParamCourse
+2023/08/13 22:19:49 Generating models.ReqCourse
+2023/08/13 22:19:49 Generating models.JsonCourse
+2023/08/13 22:19:49 Generating models.ParamGrades
+2023/08/13 22:19:49 Generating models.JsonGrades
+2023/08/13 22:19:49 Generating models.ParamGradeDetaile
+2023/08/13 22:19:49 Generating models.ResGradeDetail
+2023/08/13 22:19:49 Generating models.ParamGpa
+2023/08/13 22:19:49 Generating models.ResGpa
+2023/08/13 22:19:49 Generating models.ParamLogin
+2023/08/13 22:19:49 Generating controller._ResponseLoginData
+2023/08/13 22:19:49 Generating models.ReqLogin
+2023/08/13 22:19:49 Generating models.ParamSignUp
+2023/08/13 22:19:49 Generating models.QuerySendEmail
+2023/08/13 22:19:49 Generating models.ParamReSet
+2023/08/13 22:19:49 Generating models.ParamReCover
+
+2023/08/13 22:19:49 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:19:49 create docs.go at docs/docs.go
+2023/08/13 22:19:49 Generating models.ParamBind
+2023/08/13 22:19:49 Generating models.ReqBind
+2023/08/13 22:19:49 Generating models.ReqSyluInfo
+2023/08/13 22:19:49 Generating controller.ResponseData
+2023/08/13 22:19:49 Generating controller.ResCode
+2023/08/13 22:19:49 Generating models.ParamCourse
+2023/08/13 22:19:49 Generating models.ReqCourse
+2023/08/13 22:19:49 Generating models.JsonCourse
+2023/08/13 22:19:49 Generating models.ParamGrades
+2023/08/13 22:19:49 create swagger.json at docs/swagger.json
+2023/08/13 22:19:49 Generating models.JsonGrades
+2023/08/13 22:19:49 Generating models.ParamGradeDetaile
+2023/08/13 22:19:49 Generating models.ResGradeDetail
+2023/08/13 22:19:49 Generating models.ParamGpa
+2023/08/13 22:19:49 Generating models.ResGpa
+2023/08/13 22:19:49 Generating models.ParamLogin
+2023/08/13 22:19:49 Generating controller._ResponseLoginData
+2023/08/13 22:19:49 Generating models.ReqLogin
+2023/08/13 22:19:49 Generating models.ParamSignUp
+2023/08/13 22:19:49 Generating models.QuerySendEmail
+2023/08/13 22:19:49 Generating models.ParamReSet
+2023/08/13 22:19:49 Generating models.ParamReCover
+2023/08/13 22:19:49 create swagger.yaml at docs/swagger.yaml
+2023/08/13 22:19:49 create docs.go at docs/docs.go
+2023/08/13 22:19:49 create swagger.json at docs/swagger.json
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+2023/08/13 22:19:49 create swagger.yaml at docs/swagger.yaml
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2023/08/13 - 22:19:53 |[97;42m 200 [0m|     876.814µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semester"
+logic/until.go has changed
+building...
+logic/until.go has changed
+building...
+/bin/sh: 1: go: not found
+failed to build, error: exit status 127
+running...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:22:33 Generate swagger docs....
+2023/08/13 22:22:33 Generate general API Info, search dir:./
+2023/08/13 22:22:33 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:22:33 Generate swagger docs....
+2023/08/13 22:22:33 Generate general API Info, search dir:./
+2023/08/13 22:22:33 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:22:33 Generating models.ParamBind
+2023/08/13 22:22:33 Generating models.ReqBind
+2023/08/13 22:22:33 Generating models.ReqSyluInfo
+2023/08/13 22:22:33 Generating controller.ResponseData
+2023/08/13 22:22:33 Generating controller.ResCode2023/08/13 22:22:33 Generating models.ParamBind
+2023/08/13 22:22:33 Generating models.ParamCourse
+2023/08/13 22:22:33 Generating models.ReqCourse
+
+2023/08/13 22:22:33 Generating models.JsonCourse
+2023/08/13 22:22:33 Generating models.ParamGrades
+2023/08/13 22:22:33 Generating models.ReqBind2023/08/13 22:22:33 Generating models.JsonGrades
+2023/08/13 22:22:33 Generating models.ParamGradeDetaile
+
+2023/08/13 22:22:33 Generating models.ReqSyluInfo
+2023/08/13 22:22:33 Generating controller.ResponseData
+2023/08/13 22:22:33 Generating controller.ResCode
+2023/08/13 22:22:33 Generating models.ParamCourse
+2023/08/13 22:22:33 Generating models.ReqCourse
+2023/08/13 22:22:33 Generating models.JsonCourse2023/08/13 22:22:33 Generating models.ResGradeDetail
+2023/08/13 22:22:33 Generating models.ParamGpa
+2023/08/13 22:22:33 Generating models.ResGpa
+2023/08/13 22:22:33 Generating models.ParamLogin
+2023/08/13 22:22:33 Generating controller._ResponseLoginData
+2023/08/13 22:22:33 Generating models.ReqLogin
+2023/08/13 22:22:33 Generating models.ParamSignUp
+2023/08/13 22:22:33 Generating models.QuerySendEmail
+2023/08/13 22:22:33 Generating models.ParamReSet
+2023/08/13 22:22:33 Generating models.ParamReCover
+
+2023/08/13 22:22:33 Generating models.ParamGrades
+2023/08/13 22:22:33 Generating models.JsonGrades
+2023/08/13 22:22:33 Generating models.ParamGradeDetaile
+2023/08/13 22:22:33 Generating models.ResGradeDetail
+2023/08/13 22:22:33 Generating models.ParamGpa
+2023/08/13 22:22:33 Generating models.ResGpa
+2023/08/13 22:22:33 Generating models.ParamLogin
+2023/08/13 22:22:33 Generating controller._ResponseLoginData
+2023/08/13 22:22:33 Generating models.ReqLogin
+2023/08/13 22:22:33 Generating models.ParamSignUp
+2023/08/13 22:22:33 Generating models.QuerySendEmail
+2023/08/13 22:22:33 Generating models.ParamReSet
+2023/08/13 22:22:33 Generating models.ParamReCover
+2023/08/13 22:22:33 create docs.go at docs/docs.go
+2023/08/13 22:22:33 create docs.go at docs/docs.go
+2023/08/13 22:22:33 create swagger.json at docs/swagger.json
+2023/08/13 22:22:33 create swagger.json at docs/swagger.json
+2023/08/13 22:22:33 create swagger.yaml at docs/swagger.yaml配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+
+
+2023/08/13 22:22:33 create swagger.yaml at docs/swagger.yaml
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [ERROR] listen tcp :8080: bind: address already in use
+panic: reflect: call of reflect.Value.Close on zero Value
+
+goroutine 1 [running]:
+reflect.flag.mustBe(...)
+	/usr/local/go/src/reflect/value.go:223
+reflect.Value.Close({0x0?, 0x0?, 0xc00012a4e0?})
+	/usr/local/go/src/reflect/value.go:1182 +0xed
+cld/dao/mysql.Close()
+	/home/hackerxiao/go_project/sylu_project/dao/mysql/mysql.go:50 +0x30
+main.main()
+	/home/hackerxiao/go_project/sylu_project/main.go:68 +0x21d
+[GIN] 2023/08/13 - 22:22:38 |[97;42m 200 [0m|      830.51µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semester"
+logic/until.go has changed
+building...
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:23:35 Generate swagger docs....
+2023/08/13 22:23:35 Generate general API Info, search dir:./
+2023/08/13 22:23:35 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+/bin/sh: 1: go: not found
+2023/08/13 22:23:35 Generate swagger docs....
+2023/08/13 22:23:35 Generate general API Info, search dir:./
+2023/08/13 22:23:35 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:23:35 Generating models.ParamBind
+2023/08/13 22:23:35 Generating models.ReqBind
+2023/08/13 22:23:35 Generating models.ReqSyluInfo
+2023/08/13 22:23:35 Generating controller.ResponseData
+2023/08/13 22:23:35 Generating controller.ResCode
+2023/08/13 22:23:35 Generating models.ParamCourse
+2023/08/13 22:23:35 Generating models.ReqCourse
+2023/08/13 22:23:35 Generating models.JsonCourse
+2023/08/13 22:23:35 Generating models.ParamGrades
+2023/08/13 22:23:35 Generating models.JsonGrades
+2023/08/13 22:23:35 Generating models.ParamGradeDetaile
+2023/08/13 22:23:35 Generating models.ResGradeDetail
+2023/08/13 22:23:35 Generating models.ParamGpa
+2023/08/13 22:23:35 Generating models.ResGpa
+2023/08/13 22:23:35 Generating models.ParamLogin
+2023/08/13 22:23:35 Generating controller._ResponseLoginData
+2023/08/13 22:23:35 Generating models.ReqLogin
+2023/08/13 22:23:35 Generating models.ParamSignUp
+2023/08/13 22:23:35 Generating models.QuerySendEmail
+2023/08/13 22:23:35 Generating models.ParamReSet
+2023/08/13 22:23:35 Generating models.ParamReCover
+2023/08/13 22:23:35 Generating models.ParamBind
+2023/08/13 22:23:35 Generating models.ReqBind
+2023/08/13 22:23:35 Generating models.ReqSyluInfo
+2023/08/13 22:23:35 Generating controller.ResponseData
+2023/08/13 22:23:35 Generating controller.ResCode
+2023/08/13 22:23:35 Generating models.ParamCourse
+2023/08/13 22:23:35 Generating models.ReqCourse
+2023/08/13 22:23:35 Generating models.JsonCourse
+2023/08/13 22:23:35 Generating models.ParamGrades
+2023/08/13 22:23:35 Generating models.JsonGrades
+2023/08/13 22:23:35 Generating models.ParamGradeDetaile
+2023/08/13 22:23:35 Generating models.ResGradeDetail2023/08/13 22:23:35 create docs.go at docs/docs.go
+
+2023/08/13 22:23:35 Generating models.ParamGpa
+2023/08/13 22:23:35 Generating models.ResGpa
+2023/08/13 22:23:35 Generating models.ParamLogin
+2023/08/13 22:23:35 Generating controller._ResponseLoginData
+2023/08/13 22:23:35 Generating models.ReqLogin
+2023/08/13 22:23:35 Generating models.ParamSignUp
+2023/08/13 22:23:35 Generating models.QuerySendEmail
+2023/08/13 22:23:35 Generating models.ParamReSet
+2023/08/13 22:23:35 Generating models.ParamReCover
+2023/08/13 22:23:35 create swagger.json at docs/swagger.json
+2023/08/13 22:23:35 create docs.go at docs/docs.go2023/08/13 22:23:35 create swagger.yaml at docs/swagger.yaml
+
+2023/08/13 22:23:35 create swagger.json at docs/swagger.json
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+2023/08/13 22:23:35 create swagger.yaml at docs/swagger.yaml
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [ERROR] listen tcp :8080: bind: address already in use
+panic: reflect: call of reflect.Value.Close on zero Value
+
+goroutine 1 [running]:
+reflect.flag.mustBe(...)
+	/usr/local/go/src/reflect/value.go:223
+reflect.Value.Close({0x0?, 0x0?, 0xc0000b29c0?})
+	/usr/local/go/src/reflect/value.go:1182 +0xed
+cld/dao/mysql.Close()
+	/home/hackerxiao/go_project/sylu_project/dao/mysql/mysql.go:50 +0x30
+main.main()
+	/home/hackerxiao/go_project/sylu_project/main.go:68 +0x21d
+logic/until.go has changed
+building...
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:23:41 Generate swagger docs....
+2023/08/13 22:23:41 Generate general API Info, search dir:./
+2023/08/13 22:23:41 Generate swagger docs....
+2023/08/13 22:23:41 Generate general API Info, search dir:./
+2023/08/13 22:23:41 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:23:41 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:23:41 Generating models.ParamBind
+2023/08/13 22:23:41 Generating models.ReqBind
+2023/08/13 22:23:41 Generating models.ReqSyluInfo
+2023/08/13 22:23:41 Generating controller.ResponseData
+2023/08/13 22:23:41 Generating controller.ResCode
+2023/08/13 22:23:41 Generating models.ParamCourse
+2023/08/13 22:23:41 Generating models.ReqCourse
+2023/08/13 22:23:41 Generating models.JsonCourse
+2023/08/13 22:23:41 Generating models.ParamGrades
+2023/08/13 22:23:41 Generating models.JsonGrades
+2023/08/13 22:23:41 Generating models.ParamGradeDetaile
+2023/08/13 22:23:41 Generating models.ResGradeDetail
+2023/08/13 22:23:41 Generating models.ParamGpa
+2023/08/13 22:23:41 Generating models.ResGpa
+2023/08/13 22:23:41 Generating models.ParamLogin
+2023/08/13 22:23:41 Generating controller._ResponseLoginData
+2023/08/13 22:23:41 Generating models.ReqLogin
+2023/08/13 22:23:41 Generating models.ParamSignUp
+2023/08/13 22:23:41 Generating models.QuerySendEmail
+2023/08/13 22:23:41 Generating models.ParamReSet
+2023/08/13 22:23:41 Generating models.ParamReCover
+2023/08/13 22:23:41 Generating models.ParamBind
+2023/08/13 22:23:41 Generating models.ReqBind
+2023/08/13 22:23:41 Generating models.ReqSyluInfo
+2023/08/13 22:23:41 Generating controller.ResponseData
+2023/08/13 22:23:41 Generating controller.ResCode
+2023/08/13 22:23:41 Generating models.ParamCourse
+2023/08/13 22:23:41 Generating models.ReqCourse
+2023/08/13 22:23:41 Generating models.JsonCourse
+2023/08/13 22:23:41 Generating models.ParamGrades
+2023/08/13 22:23:41 Generating models.JsonGrades
+2023/08/13 22:23:41 Generating models.ParamGradeDetaile
+2023/08/13 22:23:41 Generating models.ResGradeDetail
+2023/08/13 22:23:41 Generating models.ParamGpa
+2023/08/13 22:23:41 Generating models.ResGpa
+2023/08/13 22:23:41 Generating models.ParamLogin
+2023/08/13 22:23:41 Generating controller._ResponseLoginData
+2023/08/13 22:23:41 Generating models.ReqLogin
+2023/08/13 22:23:41 Generating models.ParamSignUp2023/08/13 22:23:41 create docs.go at docs/docs.go
+
+2023/08/13 22:23:41 Generating models.QuerySendEmail
+2023/08/13 22:23:41 Generating models.ParamReSet
+2023/08/13 22:23:41 Generating models.ParamReCover
+2023/08/13 22:23:41 create swagger.json at docs/swagger.json
+2023/08/13 22:23:41 create docs.go at docs/docs.go
+2023/08/13 22:23:41 create swagger.json at docs/swagger.json
+2023/08/13 22:23:41 create swagger.yaml at docs/swagger.yaml
+2023/08/13 22:23:41 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [ERROR] listen tcp :8080: bind: address already in use
+panic: reflect: call of reflect.Value.Close on zero Value
+
+goroutine 1 [running]:
+reflect.flag.mustBe(...)
+	/usr/local/go/src/reflect/value.go:223
+reflect.Value.Close({0x0?, 0x0?, 0xc0000b2d00?})
+	/usr/local/go/src/reflect/value.go:1182 +0xed
+cld/dao/mysql.Close()
+	/home/hackerxiao/go_project/sylu_project/dao/mysql/mysql.go:50 +0x30
+main.main()
+	/home/hackerxiao/go_project/sylu_project/main.go:68 +0x21d
+[GIN] 2023/08/13 - 22:23:46 |[97;42m 200 [0m|     887.107µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semester"
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 22:23:52 Generate swagger docs....
+2023/08/13 22:23:52 Generate general API Info, search dir:./
+2023/08/13 22:23:52 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+2023/08/13 22:23:52 Generating models.ParamBind
+/bin/sh: 1: go: not found
+2023/08/13 22:23:52 Generating models.ReqBind
+2023/08/13 22:23:52 Generating models.ReqSyluInfo
+2023/08/13 22:23:53 Generating controller.ResponseData
+2023/08/13 22:23:53 Generating controller.ResCode
+2023/08/13 22:23:53 Generating models.ParamCourse
+2023/08/13 22:23:53 Generating models.ReqCourse
+2023/08/13 22:23:53 Generating models.JsonCourse
+2023/08/13 22:23:53 Generating models.ParamGrades
+2023/08/13 22:23:53 Generating models.JsonGrades
+2023/08/13 22:23:53 Generating models.ParamGradeDetaile
+2023/08/13 22:23:53 Generating models.ResGradeDetail
+2023/08/13 22:23:53 Generating models.ParamGpa
+2023/08/13 22:23:53 Generating models.ResGpa2023/08/13 22:23:53 Generate swagger docs....
+2023/08/13 22:23:53 Generate general API Info, search dir:./
+
+2023/08/13 22:23:53 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/13 22:23:53 Generating models.ParamLogin
+2023/08/13 22:23:53 Generating controller._ResponseLoginData
+2023/08/13 22:23:53 Generating models.ReqLogin
+2023/08/13 22:23:53 Generating models.ParamSignUp
+2023/08/13 22:23:53 Generating models.QuerySendEmail
+2023/08/13 22:23:53 Generating models.ParamReSet
+2023/08/13 22:23:53 Generating models.ParamReCover
+2023/08/13 22:23:53 Generating models.ParamBind
+2023/08/13 22:23:53 Generating models.ReqBind
+2023/08/13 22:23:53 Generating models.ReqSyluInfo
+2023/08/13 22:23:53 Generating controller.ResponseData
+2023/08/13 22:23:53 Generating controller.ResCode
+2023/08/13 22:23:53 Generating models.ParamCourse
+2023/08/13 22:23:53 Generating models.ReqCourse
+2023/08/13 22:23:53 Generating models.JsonCourse
+2023/08/13 22:23:53 Generating models.ParamGrades
+2023/08/13 22:23:53 Generating models.JsonGrades
+2023/08/13 22:23:53 Generating models.ParamGradeDetaile2023/08/13 22:23:53 create docs.go at docs/docs.go
+
+2023/08/13 22:23:53 Generating models.ResGradeDetail
+2023/08/13 22:23:53 Generating models.ParamGpa
+2023/08/13 22:23:53 Generating models.ResGpa
+2023/08/13 22:23:53 Generating models.ParamLogin
+2023/08/13 22:23:53 Generating controller._ResponseLoginData
+2023/08/13 22:23:53 Generating models.ReqLogin
+2023/08/13 22:23:53 Generating models.ParamSignUp
+2023/08/13 22:23:53 Generating models.QuerySendEmail
+2023/08/13 22:23:53 Generating models.ParamReSet
+2023/08/13 22:23:53 Generating models.ParamReCover
+2023/08/13 22:23:53 create swagger.json at docs/swagger.json
+2023/08/13 22:23:53 create docs.go at docs/docs.go
+2023/08/13 22:23:53 create swagger.json at docs/swagger.json
+2023/08/13 22:23:53 create swagger.yaml at docs/swagger.yaml
+2023/08/13 22:23:53 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2023/08/13 - 22:23:57 |[97;42m 200 [0m|     776.816µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semester"
+[GIN] 2023/08/13 - 22:27:34 |[97;42m 200 [0m|  665.463287ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+[GIN] 2023/08/13 - 22:27:37 |[97;42m 200 [0m|  398.818174ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/13 - 22:34:14 |[97;42m 200 [0m|     793.007µs | 119.115.202.139 |[97;44m GET     [0m "/api/v1/edu/semester"
+[GIN] 2023/08/13 - 22:34:14 |[97;42m 200 [0m|     687.796µs | 119.115.202.139 |[97;44m GET     [0m "/api/v1/edu/semester"
+[GIN] 2023/08/13 - 22:34:49 |[97;42m 200 [0m|     735.218µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semester"
+[GIN] 2023/08/13 - 22:34:50 |[97;42m 200 [0m|     762.466µs |       127.0.0.1 |[97;44m GET     [0m "/api/v1/edu/semester"
+Terminated
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+logic/until.go has changed
+building...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/13 23:16:47 Generate swagger docs....
+2023/08/13 23:16:47 Generate general API Info, search dir:./
+2023/08/13 23:16:47 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+/bin/sh: 1: go: not found
+2023/08/13 23:16:47 Generating models.ParamBind
+/bin/sh: 1: go: not found
+2023/08/13 23:16:47 Generate swagger docs....
+2023/08/13 23:16:47 Generate general API Info, search dir:./2023/08/13 23:16:47 Generating models.ReqBind
+2023/08/13 23:16:47 Generating models.ReqSyluInfo
+2023/08/13 23:16:47 Generating controller.ResponseData
+2023/08/13 23:16:47 Generating controller.ResCode
+2023/08/13 23:16:47 Generating models.ParamCourse
+2023/08/13 23:16:47 Generating models.ReqCourse
+2023/08/13 23:16:47 Generating models.JsonCourse
+2023/08/13 23:16:47 Generating models.ParamGrades
+2023/08/13 23:16:47 Generating models.JsonGrades
+2023/08/13 23:16:47 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+
+2023/08/13 23:16:47 Generating models.ParamGradeDetaile
+2023/08/13 23:16:47 Generating models.ResGradeDetail
+2023/08/13 23:16:47 Generating models.ParamGpa
+2023/08/13 23:16:47 Generating models.ResGpa
+2023/08/13 23:16:47 Generating models.ParamLogin
+2023/08/13 23:16:47 Generating controller._ResponseLoginData
+2023/08/13 23:16:47 Generating models.ReqLogin
+2023/08/13 23:16:47 Generating models.ParamSignUp
+2023/08/13 23:16:47 Generating models.QuerySendEmail
+2023/08/13 23:16:47 Generating models.ParamReSet
+2023/08/13 23:16:47 Generating models.ParamReCover
+2023/08/13 23:16:47 Generating models.ParamBind
+2023/08/13 23:16:47 Generating models.ReqBind
+2023/08/13 23:16:47 Generating models.ReqSyluInfo
+2023/08/13 23:16:47 Generating controller.ResponseData
+2023/08/13 23:16:47 Generating controller.ResCode
+2023/08/13 23:16:47 Generating models.ParamCourse
+2023/08/13 23:16:47 Generating models.ReqCourse
+2023/08/13 23:16:47 Generating models.JsonCourse
+2023/08/13 23:16:47 Generating models.ParamGrades
+2023/08/13 23:16:47 Generating models.JsonGrades
+2023/08/13 23:16:47 Generating models.ParamGradeDetaile
+2023/08/13 23:16:47 Generating models.ResGradeDetail
+2023/08/13 23:16:47 Generating models.ParamGpa
+2023/08/13 23:16:47 Generating models.ResGpa
+2023/08/13 23:16:47 Generating models.ParamLogin
+2023/08/13 23:16:47 Generating controller._ResponseLoginData
+2023/08/13 23:16:47 Generating models.ReqLogin
+2023/08/13 23:16:47 Generating models.ParamSignUp
+2023/08/13 23:16:47 Generating models.QuerySendEmail
+2023/08/13 23:16:47 Generating models.ParamReSet
+2023/08/13 23:16:47 Generating models.ParamReCover
+2023/08/13 23:16:47 create docs.go at docs/docs.go
+2023/08/13 23:16:47 create docs.go at docs/docs.go
+2023/08/13 23:16:47 create swagger.json at docs/swagger.json
+2023/08/13 23:16:47 create swagger.json at docs/swagger.json
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}2023/08/13 23:16:47 create swagger.yaml at docs/swagger.yaml
+2023/08/13 23:16:47 create swagger.yaml at docs/swagger.yaml
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2023/08/13 - 23:17:08 |[97;42m 200 [0m|    1.001997ms | 119.115.202.139 |[97;44m GET     [0m "/api/v1/edu/semester"
+[GIN] 2023/08/13 - 23:17:09 |[97;42m 200 [0m|  543.158781ms | 119.115.202.139 |[97;46m POST    [0m "/api/v1/edu/grades"
+Terminated
+models/reponsedata.go has changed
+building...
+models/reponsedata.go has changed
+building...
+failed to build, error: exit status 127
+running...
+failed to build, error: exit status 127
+running...
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+/bin/sh: 1: go: not found
+2023/08/14 16:46:05 Generate swagger docs....
+2023/08/14 16:46:05 Generate general API Info, search dir:./
+2023/08/14 16:46:05 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+/bin/sh: 1: go: not found
+2023/08/14 16:46:05 Generating models.ParamBind
+2023/08/14 16:46:05 Generating models.ReqBind
+2023/08/14 16:46:05 Generating models.ReqSyluInfo
+2023/08/14 16:46:05 Generating controller.ResponseData
+2023/08/14 16:46:05 Generating controller.ResCode
+2023/08/14 16:46:05 Generating models.ParamCourse
+2023/08/14 16:46:05 Generating models.ReqCourse
+2023/08/14 16:46:05 Generating models.JsonCourse2023/08/14 16:46:05 Generate swagger docs....
+2023/08/14 16:46:05 Generating models.ParamGrades
+2023/08/14 16:46:05 Generating models.JsonGrades
+2023/08/14 16:46:05 Generating models.ParamGradeDetaile
+2023/08/14 16:46:05 Generating models.ResGradeDetail
+2023/08/14 16:46:05 Generating models.ParamGpa
+2023/08/14 16:46:05 Generating models.ResGpa
+2023/08/14 16:46:05 Generating models.ParamLogin
+2023/08/14 16:46:05 Generating controller._ResponseLoginData
+2023/08/14 16:46:05 Generating models.ReqLogin
+2023/08/14 16:46:05 Generating models.ParamSignUp
+2023/08/14 16:46:05 Generating models.QuerySendEmail
+2023/08/14 16:46:05 Generating models.ParamReSet
+2023/08/14 16:46:05 Generating models.ParamReCover
+
+2023/08/14 16:46:05 Generate general API Info, search dir:./
+2023/08/14 16:46:05 warning: failed to get package name in dir: ./, error: execute go list command, exec: "go": executable file not found in $PATH, stdout:, stderr:
+2023/08/14 16:46:05 create docs.go at docs/docs.go
+2023/08/14 16:46:05 create swagger.json at docs/swagger.json2023/08/14 16:46:05 Generating models.ParamBind
+2023/08/14 16:46:05 Generating models.ReqBind
+2023/08/14 16:46:05 Generating models.ReqSyluInfo
+2023/08/14 16:46:05 Generating controller.ResponseData
+2023/08/14 16:46:05 Generating controller.ResCode
+2023/08/14 16:46:05 Generating models.ParamCourse
+2023/08/14 16:46:05 Generating models.ReqCourse
+2023/08/14 16:46:05 Generating models.JsonCourse
+2023/08/14 16:46:05 Generating models.ParamGrades
+
+2023/08/14 16:46:05 Generating models.JsonGrades
+2023/08/14 16:46:05 Generating models.ParamGradeDetaile
+2023/08/14 16:46:05 Generating models.ResGradeDetail
+2023/08/14 16:46:05 Generating models.ParamGpa
+2023/08/14 16:46:05 Generating models.ResGpa
+2023/08/14 16:46:05 Generating models.ParamLogin
+2023/08/14 16:46:05 Generating controller._ResponseLoginData
+2023/08/14 16:46:05 Generating models.ReqLogin
+2023/08/14 16:46:05 Generating models.ParamSignUp
+2023/08/14 16:46:05 Generating models.QuerySendEmail
+2023/08/14 16:46:05 Generating models.ParamReSet
+2023/08/14 16:46:05 Generating models.ParamReCover
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+2023/08/14 16:46:05 create docs.go at docs/docs.go
+2023/08/14 16:46:05 create swagger.json at docs/swagger.json
+2023/08/14 16:46:05 create swagger.yaml at docs/swagger.yaml
+2023/08/14 16:46:05 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [ERROR] listen tcp :8080: bind: address already in use
+panic: reflect: call of reflect.Value.Close on zero Value
+
+goroutine 1 [running]:
+reflect.flag.mustBe(...)
+	/usr/local/go/src/reflect/value.go:223
+reflect.Value.Close({0x0?, 0x0?, 0xc0001051e0?})
+	/usr/local/go/src/reflect/value.go:1182 +0xed
+cld/dao/mysql.Close()
+	/home/hackerxiao/go_project/sylu_project/dao/mysql/mysql.go:50 +0x30
+main.main()
+	/home/hackerxiao/go_project/sylu_project/main.go:68 +0x21d

@@ -7,6 +7,18 @@ type ReqLogin struct {
 	SyluInfo *ReqSyluInfo `json:"syluinfo"`
 }
 
+type ResSemeSter struct {
+	Index     int             `json:"index"`
+	IndexYear int             `json:"indexyear"`
+	List      []*SemeSterList `json:"list"`
+}
+
+type SemeSterList struct {
+	Name  string `json:"name"`
+	Year  int    `json:"year"`
+	Month int    `json:"month"`
+}
+
 type ReqBind struct {
 	Cookie   string       `json:"cookie"`
 	SyluInfo *ReqSyluInfo `json:"syluinfo"`

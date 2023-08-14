@@ -4,6 +4,7 @@ import (
 	"cld/dao/resty_tool"
 	"cld/models"
 	"cld/settings"
+	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -11,6 +12,10 @@ import (
 	"strconv"
 
 	"github.com/gocolly/colly"
+)
+
+var (
+	ErrProxyUPLNotExit = errors.New("No Set Proxy")
 )
 
 const informationUrl = "https://jxw.sylu.edu.cn/xsxxxggl"
@@ -25,7 +30,7 @@ func getProxyURL() (*url.URL, error) {
 	if settings.Conf.Proxy.Host != "" && settings.Conf.Proxy.Port != "" {
 		return url.Parse("http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port)
 	}
-	return nil, nil
+	return nil, ErrProxyUPLNotExit
 }
 
 func NewMyCollector() *MyCollector {
@@ -33,8 +38,8 @@ func NewMyCollector() *MyCollector {
 		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.82"),
 	)
 
-	proxyURL, _ := getProxyURL()
-	if proxyURL != nil {
+	proxyURL, err := getProxyURL()
+	if err == nil {
 		c.SetProxyFunc(func(r *http.Request) (*url.URL, error) {
 			return proxyURL, nil
 		})
@@ -89,7 +94,7 @@ func (c *MyCollector) GetGradeDetail(bindInfo *models.ParamGradeDetaile) (resGra
 
 	form := map[string]string{
 		"jxb_id": bindInfo.ClassID,
-		"xnm":    bindInfo.Year,
+		"xnm":    strconv.Itoa(bindInfo.Year),
 		"xqm":    strconv.Itoa(bindInfo.Semester),
 	}
 	regex := regexp.MustCompile(`【 (.+?) 】`)

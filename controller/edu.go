@@ -76,6 +76,27 @@ func CookieHandler(c *gin.Context) {
 	ResponseSuccess(c, cookisString)
 }
 
+func SemesterHandler(c *gin.Context) {
+	userID, err := getCurrentUser(c)
+	if err != nil {
+		ResponseError(c, CodeNeedLogin)
+		return
+	}
+
+	semeSterRes, err := logic.GetSemeSter(userID)
+	if err != nil {
+		zap.L().Error("SemesterHandler logic.GetSemeSter Error", zap.Error(err))
+		if errors.Is(err, mysql.ErrorUnbound) {
+			ResponseError(c, CodeUnbound)
+			return
+		}
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+
+	ResponseSuccess(c, semeSterRes)
+}
+
 // 获取课表请求处理函数
 // @Summary 获取课表接口
 // @Tags sylu相关接口

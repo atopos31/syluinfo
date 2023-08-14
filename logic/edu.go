@@ -95,6 +95,26 @@ func BintLogin(userInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 	return
 }
 
+func GetSemeSter(userID int64) (semeList *models.ResSemeSter, err error) {
+	syluPass, err := mysql.GetSyluPassByUuid(userID)
+	if err != nil {
+		return nil, err
+	}
+
+	semeList = new(models.ResSemeSter)
+	semeList.Index, err = getIndesSeme(syluPass.StudentID)
+	if err != nil {
+		return nil, err
+	}
+	semeList.List, err = getSemeList(syluPass.StudentID)
+	if err != nil {
+		return nil, err
+	}
+
+	return
+
+}
+
 func GetCookie(userID int64) (cookieString string, err error) {
 	syluPass, err := mysql.GetSyluPassByUuid(userID)
 	if err != nil {
@@ -133,7 +153,6 @@ func GetCookie(userID int64) (cookieString string, err error) {
 		return "", err
 	}
 	//更换cookie为string形式
-
 	bindClient.Cookies[0] = cookies[1]
 	cookieString = cookiesToString(bindClient.Cookies)
 	return
@@ -149,6 +168,7 @@ func GetGrades(gradesInfo *models.ParamGrades) (resGrades *models.ResGrades, err
 	resGrades = new(models.ResGrades)
 	resGrades.Year = getYear(gradesInfo.Year)
 	resGrades.Semester = getSemester(gradesInfo.Semester)
+
 	client := resty.New()
 	client.SetProxy(getHttpProxy())
 	List, err := resty_tool.GetGradesByGradesInfo(client, gradesInfo)

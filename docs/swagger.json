@@ -703,7 +703,7 @@
                     ]
                 },
                 "year": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },
