@@ -1,4 +1,4 @@
-# SyluInfo
+# SYLU-EOA
 沈阳理工大学校园一体化服务平台--基于爬虫获取正方教务系统数据，客户端为基于Uniapp开发的安卓app/微信小程序，预计2023年8月下旬上线。
 # 框架
 - 主体：[gin](https://github.com/gin-gonic/gin) [gorm](https://github.com/go-gorm/gorm)
@@ -13,6 +13,7 @@
 - [ ] 失物招领
 - [ ] 绩点排行榜
 - [ ] 课程讨论区
+- [ ] 青年大截图
 # 接口文档
 接口文档使用swagger框架实现，运行项目后，访问```http://host:port/swagger/index.html```即可查看。
 # 正方教务相关爬虫教程
