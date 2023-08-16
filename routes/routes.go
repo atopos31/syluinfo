@@ -55,6 +55,7 @@ func Setup(cfg *settings.AppConfig) {
 		edu.GET("/semester", controller.SemesterHandler)
 
 		edu.POST("/bind", controller.BingEducationalHandler)
+		edu.GET("/courses/auto", controller.AutoCourseHandler)
 		edu.POST("/courses", controller.CourseHandler)
 		edu.POST("/grades", controller.GradesHandler)
 		edu.POST("/grade/detaile", controller.GradeDetaileHandler)

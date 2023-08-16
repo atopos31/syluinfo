@@ -543,6 +543,35 @@ paths:
       summary: 获取课表接口
       tags:
       - sylu相关接口
+  /edu/courses/auto:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer JWT
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: query一个cookie即可，自动推断当前学期
+        in: query
+        name: cookie
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",
+          schema:
+            $ref: '#/definitions/models.ReqCourse'
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 自动获取课表接口
+      tags:
+      - sylu相关接口
   /edu/gpas:
     post:
       consumes:

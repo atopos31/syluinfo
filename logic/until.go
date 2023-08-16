@@ -9,6 +9,23 @@ import (
 	"go.uber.org/zap"
 )
 
+func GetNowSem() (semyear, sem int) {
+	now := time.Now()
+	month := now.Month()
+	if month >= 2 && month <= 7 {
+		sem = 12
+	} else {
+		sem = 3
+	}
+
+	semyear = now.Year()
+
+	if sem == 12 {
+		semyear--
+	}
+	return
+}
+
 func getSemeList(id string) ([]*models.SemeSterList, error) {
 	firstTwo := id[:2]
 	indexYear := "20" + firstTwo

@@ -140,6 +140,42 @@ func CourseHandler(c *gin.Context) {
 	ResponseSuccess(c, courses)
 }
 
+// 自动获取课表请求处理函数
+// @Summary 自动获取课表接口
+// @Tags sylu相关接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string true "Bearer JWT"
+// @Param cookie  query string  true "query一个cookie即可，自动推断当前学期"
+// @Success 1000 {object} models.ReqCourse "code=1000,msg="success","
+// @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
+// @Router /edu/courses/auto [get]
+func AutoCourseHandler(c *gin.Context) {
+	cookie := c.Query("cookie")
+	semyear, sem := logic.GetNowSem()
+	bindCourse := &models.ParamCourse{
+		Cookie:   cookie,
+		Year:     semyear,
+		Semester: sem,
+	}
+
+	courses, err := logic.GetCourse(bindCourse)
+	if err != nil {
+		zap.L().Error("CourseHandler logic.GetCourse Error", zap.Error(err))
+		if errors.Is(err, resty_tool.ErrorLapse) {
+			ResponseError(c, CodeInvalidCookie)
+			return
+		} else if errors.Is(err, resty_tool.ErrorCourseNoOpen) {
+			ResponseError(c, CodeNotData)
+			return
+		}
+		ResponseErrorWithMsg(c, CodeServerBusy, err.Error())
+		return
+	}
+
+	ResponseSuccess(c, courses)
+}
+
 // 获取某学期全部成绩请求处理函数
 // @Summary 获取成绩接口
 // @Tags sylu相关接口
