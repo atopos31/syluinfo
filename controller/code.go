@@ -43,7 +43,7 @@ var codeMsgMap = map[ResCode]string{
 	CodeServerBusy:               "服务繁忙",
 	CodeInvalidToken:             "无效的token",
 	CodeNeedLogin:                "需要登陆",
-	CodeInvalidCookie:            "cookie无效",
+	CodeInvalidCookie:            "cookie无效，请重新进入小程序",
 	CodeNotData:                  "数据不存在",
 }
 

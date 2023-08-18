@@ -12,7 +12,6 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -26,10 +25,7 @@ func Setup(cfg *settings.AppConfig) {
 	//翻译器初始化
 	controller.InitTrans("zh")
 	//跨域
-	config := cors.DefaultConfig()
-	config.AllowHeaders = []string{"Origin", "Content-Length", "Content-Type", "Authorization"}
-	config.AllowOrigins = []string{"*"}
-	r.Use(cors.New(config))
+	r.Use(middlewares.AllAlowCors())
 	//日志写入中间件
 	r.Use(logger.GinLogger(), logger.GinRecovery(false))
 	//接口文档UI
