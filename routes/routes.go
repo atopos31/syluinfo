@@ -26,7 +26,10 @@ func Setup(cfg *settings.AppConfig) {
 	//翻译器初始化
 	controller.InitTrans("zh")
 	//跨域
-	r.Use(cors.Default())
+	config := cors.DefaultConfig()
+	config.AllowHeaders = []string{"Origin", "Content-Length", "Content-Type", "Authorization"}
+	config.AllowOrigins = []string{"*"}
+	r.Use(cors.New(config))
 	//日志写入中间件
 	r.Use(logger.GinLogger(), logger.GinRecovery(false))
 	//接口文档UI
@@ -35,6 +38,8 @@ func Setup(cfg *settings.AppConfig) {
 	baseapi := r.Group("/api/v1")
 	//日志对外显示接口 dev阶段
 	baseapi.GET("/log", showLog)
+	//关于页面
+	baseapi.StaticFile("/about", "./about/about.md")
 	//auth相关
 	authen := baseapi.Group("/auth")
 	{
@@ -65,6 +70,7 @@ func Setup(cfg *settings.AppConfig) {
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, cfg.Name)
 	})
+
 }
 
 func StartServer(p int) {

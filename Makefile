@@ -1,4 +1,4 @@
 run:
 	@go fmt ./...
 	@swag init
-	@go run ./
+	@go run ./main.go

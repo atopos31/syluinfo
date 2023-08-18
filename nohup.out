@@ -2097,3 +2097,331 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN] 2023/08/14 - 16:58:57 |[97;42m 200 [0m|     331.751µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/swagger-ui-standalone-preset.js"
 [GIN] 2023/08/14 - 16:58:57 |[97;42m 200 [0m|     352.747µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/doc.json"
 [GIN] 2023/08/14 - 16:58:58 |[97;42m 200 [0m|     142.571µs | 119.115.202.139 |[97;44m GET     [0m "/swagger/favicon-32x32.png"
+2023/08/17 23:56:49 Generate swagger docs....
+2023/08/17 23:56:49 Generate general API Info, search dir:./
+2023/08/17 23:56:50 Generating models.ParamBind
+2023/08/17 23:56:50 Generating models.ReqBind
+2023/08/17 23:56:50 Generating models.ReqSyluInfo
+2023/08/17 23:56:50 Generating controller.ResponseData
+2023/08/17 23:56:50 Generating controller.ResCode
+2023/08/17 23:56:50 Generating models.ResSemeSter
+2023/08/17 23:56:50 Generating models.SemeSterList
+2023/08/17 23:56:50 Generating models.ParamCourse
+2023/08/17 23:56:50 Generating models.ReqCourse
+2023/08/17 23:56:50 Generating models.JsonCourse
+2023/08/17 23:56:50 Generating models.ParamGrades
+2023/08/17 23:56:50 Generating models.JsonGrades
+2023/08/17 23:56:50 Generating models.ParamGradeDetaile
+2023/08/17 23:56:50 Generating models.ResGradeDetail
+2023/08/17 23:56:50 Generating models.ParamGpa
+2023/08/17 23:56:50 Generating models.ResGpa
+2023/08/17 23:56:50 Generating models.ParamLogin
+2023/08/17 23:56:50 Generating controller._ResponseLoginData
+2023/08/17 23:56:50 Generating models.ReqLogin
+2023/08/17 23:56:50 Generating models.ParamSignUp
+2023/08/17 23:56:50 Generating models.QuerySendEmail
+2023/08/17 23:56:50 Generating models.ParamReSet
+2023/08/17 23:56:50 Generating models.ParamReCover
+2023/08/17 23:56:50 create docs.go at docs/docs.go
+2023/08/17 23:56:50 create swagger.json at docs/swagger.json
+2023/08/17 23:56:50 create swagger.yaml at docs/swagger.yaml
+配置信息为&{{web_app_v1.0 dev 8080} {debug ./web_app.log 200 7 30 false} {127.0.0.1 3306 root xiaojiaxing678 sylu} {127.0.0.1 6379 980845 0} {smtp.qq.com 465 2945294768@qq.com swgjuartlnicdfdj 500} {168 hackerxiao sylu} {2023-06-16 1} {43.143.213.228 8888} {{AKIDsdFkBbtvw1wb1HQNePAnHYfbKp7LOKBo kbLwKWWJ0bypfKxRh3EJBudGhx1shVBo} {testAvatar ap-beijing 1314358296 sylu-1314358296 [/testAvatar/*.jpg /testAvatar/*.png]} [name/cos:PostObject name/cos:PutObject name/cos:GetObject]}}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /api/v1/log               --> cld/routes.showLog (6 handlers)
+[GIN-debug] GET    /api/v1/about             --> github.com/gin-gonic/gin.(*RouterGroup).StaticFile.func1 (6 handlers)
+[GIN-debug] HEAD   /api/v1/about             --> github.com/gin-gonic/gin.(*RouterGroup).StaticFile.func1 (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> cld/controller.LoginHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/signup       --> cld/controller.SignUpHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/sendemail    --> cld/controller.SendEmailHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/resetpass    --> cld/controller.ReSetPassHandler (6 handlers)
+[GIN-debug] POST   /api/v1/auth/recoverpass  --> cld/controller.ReCoverPassHandler (6 handlers)
+[GIN-debug] GET    /api/v1/auth/coskey       --> cld/controller.GetCosKeyHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/cookie        --> cld/controller.CookieHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/semester      --> cld/controller.SemesterHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/bind          --> cld/controller.BingEducationalHandler (7 handlers)
+[GIN-debug] GET    /api/v1/edu/courses/auto  --> cld/controller.AutoCourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/courses       --> cld/controller.CourseHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grades        --> cld/controller.GradesHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/grade/detaile --> cld/controller.GradeDetaileHandler (7 handlers)
+[GIN-debug] POST   /api/v1/edu/gpas          --> cld/controller.GpaHandler (7 handlers)
+[GIN-debug] GET    /ping                     --> cld/routes.Setup.func1 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2023/08/17 - 23:57:08 | 200 |     3.57147ms |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/17 - 23:58:08 | 200 |  629.445662ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/17 - 23:58:16 | 200 |      109.65µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/17 - 23:58:24 | 200 |      97.378µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/17 - 23:58:50 | 200 |  726.669837ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/17 - 23:59:00 | 200 |     112.709µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/17 - 23:59:04 | 404 |      56.137µs |   45.56.108.128 | GET      "/ZnEO"
+[GIN] 2023/08/17 - 23:59:06 | 200 |       113.7µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/17 - 23:59:24 | 200 |     152.548µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/17 - 23:59:31 | 200 |    1.027345ms |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/17 - 23:59:31 | 200 |   461.92401ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/17 - 23:59:35 | 200 |  377.744219ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/17 - 23:59:48 | 200 |     655.574µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/17 - 23:59:48 | 200 |  380.693918ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/17 - 23:59:52 | 200 |      108.29µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:00:49 | 200 |    1.105075ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 00:00:50 | 200 |  839.412729ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:00:55 | 200 |  484.166089ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3D2CEF9B5F49ECC76D92893ABBB8D750E7"
+[GIN] 2023/08/18 - 00:00:55 | 200 |  491.123786ms | 175.167.146.208 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3D2CEF9B5F49ECC76D92893ABBB8D750E7"
+[GIN] 2023/08/18 - 00:01:10 | 200 |  680.392914ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:01:15 | 200 |  658.928151ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:01:20 | 200 |  598.208185ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:01:42 | 200 |  765.433009ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:01:48 | 200 |     101.329µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:02:22 | 200 |     189.957µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:02:41 | 200 |     110.953µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:02:43 | 200 |     114.317µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:03:28 | 200 |      824.28µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 00:03:29 | 200 |  477.749721ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:03:31 | 200 |  402.051642ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:03:48 | 200 |     150.893µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:04:10 | 200 |  685.175635ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:04:56 | 200 |  661.144634ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+{}
+[GIN] 2023/08/18 - 00:05:25 | 200 |  994.145443ms | 175.167.146.208 | GET      "/api/v1/auth/sendemail?email=hackerxiao%40foxmail.com&mode=sign"
+[GIN] 2023/08/18 - 00:06:14 | 200 |    7.222721ms | 175.167.146.208 | POST     "/api/v1/auth/signup"
+
+2023/08/18 00:06:19 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:56 [35;1mrecord not found
+[0m[33m[0.396ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22711211531440128 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 00:06:19 | 200 |    1.182864ms | 175.167.146.208 | POST     "/api/v1/auth/login"
+
+2023/08/18 00:06:25 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:109 [35;1mrecord not found
+[0m[33m[0.587ms] [34;1m[rows:0][0m SELECT * FROM `sylu_passes` WHERE uuid = 22711211531440128 AND `sylu_passes`.`deleted_at` IS NULL ORDER BY `sylu_passes`.`id` LIMIT 1
+[GIN] 2023/08/18 - 00:06:25 | 200 |     766.382µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+
+2023/08/18 00:06:53 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:91 [35;1mrecord not found
+[0m[33m[0.568ms] [34;1m[rows:0][0m SELECT * FROM `sylu_passes` WHERE uuid = 22711211531440128 AND `sylu_passes`.`deleted_at` IS NULL ORDER BY `sylu_passes`.`id` LIMIT 1
+
+2023/08/18 00:06:54 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:101 [35;1mrecord not found
+[0m[33m[0.704ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22711211531440128 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 00:06:54 | 200 |  2.050738932s | 175.167.146.208 | POST     "/api/v1/edu/bind"
+[GIN] 2023/08/18 - 00:07:02 | 200 |  495.340001ms | 175.167.146.208 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3DD14BFB81BAFA3F07A7B70C3BEB09E6A6"
+[GIN] 2023/08/18 - 00:07:22 | 200 |  706.567348ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:13:46 | 200 |  811.470814ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:14:18 | 200 |     973.588µs |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 00:14:19 | 200 |  827.671762ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:14:56 | 200 |  503.368296ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3D883C074F95C5F9D02F6F337F7E6DF65A"
+[GIN] 2023/08/18 - 00:14:56 | 200 |  531.581554ms | 175.167.146.208 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3D883C074F95C5F9D02F6F337F7E6DF65A"
+[GIN] 2023/08/18 - 00:15:26 | 200 |  749.482957ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+
+2023/08/18 00:17:02 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:109 [35;1mrecord not found
+[0m[33m[0.806ms] [34;1m[rows:0][0m SELECT * FROM `sylu_passes` WHERE uuid = 22711211531440128 AND `sylu_passes`.`deleted_at` IS NULL ORDER BY `sylu_passes`.`id` LIMIT 1
+[GIN] 2023/08/18 - 00:17:02 | 200 |    1.066525ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+{}
+[GIN] 2023/08/18 - 00:17:32 | 200 |  1.045877515s |    42.55.155.12 | GET      "/api/v1/auth/sendemail?email=hackerxiao%40foxmail.com&mode=sign"
+[GIN] 2023/08/18 - 00:18:04 | 200 |    8.016468ms |    42.55.155.12 | POST     "/api/v1/auth/signup"
+
+2023/08/18 00:18:09 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:56 [35;1mrecord not found
+[0m[33m[0.270ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22714187478208512 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 00:18:09 | 200 |    1.029695ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+
+2023/08/18 00:18:35 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:91 [35;1mrecord not found
+[0m[33m[0.663ms] [34;1m[rows:0][0m SELECT * FROM `sylu_passes` WHERE uuid = 22714187478208512 AND `sylu_passes`.`deleted_at` IS NULL ORDER BY `sylu_passes`.`id` LIMIT 1
+
+2023/08/18 00:18:36 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:101 [35;1mrecord not found
+[0m[33m[0.521ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22714187478208512 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 00:18:36 | 200 |  1.877590366s |    42.55.155.12 | POST     "/api/v1/edu/bind"
+[GIN] 2023/08/18 - 00:18:59 | 200 |  523.709695ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3D282B08BAC90DF26F428A33B055871031"
+[GIN] 2023/08/18 - 00:18:59 | 200 |   590.18044ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3D282B08BAC90DF26F428A33B055871031"
+[GIN] 2023/08/18 - 00:19:06 | 200 |    1.032739ms |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 00:19:06 | 200 |  419.783046ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:19:14 | 200 |  616.972929ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:19:22 | 200 |  724.607135ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:21:59 | 200 |  652.547239ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:22:08 | 404 |      66.123µs | 185.180.143.188 | GET      "/"
+[GIN] 2023/08/18 - 00:22:10 | 200 |      767.07µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 00:22:11 | 200 |  447.423865ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:22:38 | 404 |      77.338µs | 185.180.143.188 | GET      "/cf_scripts/scripts/ajax/ckeditor/ckeditor.js"
+[GIN] 2023/08/18 - 00:28:06 | 200 |  724.243223ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:28:12 | 200 |     702.303µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 00:28:13 | 200 |  426.555331ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:28:16 | 200 |  423.070356ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:28:18 | 200 |     101.642µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:29:50 | 200 |  653.371994ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:32:08 | 404 |      69.161µs |  162.243.132.16 | GET      "/owa/auth/x.js"
+[GIN] 2023/08/18 - 00:34:48 | 200 |  719.196722ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:34:57 | 200 |     123.512µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:35:30 | 200 |     868.462µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 00:35:30 | 200 |  446.129028ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:35:33 | 200 |  257.406118ms |    42.55.155.12 | POST     "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/18 - 00:37:12 | 200 |  701.743709ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:37:32 | 200 |     676.268µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 00:37:32 | 200 |  465.132848ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 00:39:55 | 200 |  730.164625ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:40:03 | 200 |     102.679µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:40:06 | 200 |     103.052µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:40:12 | 200 |     101.624µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:40:46 | 200 |  625.644883ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:41:13 | 200 |  659.621542ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:41:21 | 200 |     154.177µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:44:15 | 200 |  669.990957ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:47:23 | 200 |  645.442766ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:50:37 | 200 |  634.232443ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 00:51:26 | 200 |     156.131µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 00:51:42 | 200 |  715.847069ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 01:18:09 | 200 |  781.604939ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 01:18:16 | 200 |  739.492044ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 01:18:20 | 200 |  720.502595ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 01:20:37 | 200 |  690.393898ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 01:21:15 | 200 |     770.131µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 01:21:16 | 200 |  571.032515ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 01:21:19 | 200 |  384.656229ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 01:21:21 | 200 |  174.004196ms |    42.55.155.12 | POST     "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/18 - 01:22:41 | 200 |  736.010989ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 01:22:42 | 200 |     749.036µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 01:22:42 | 200 |  433.672294ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 01:22:44 | 200 |  167.726219ms | 175.167.146.208 | POST     "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/18 - 01:28:07 | 404 |      70.737µs |  118.123.105.69 | GET      "/"
+[GIN] 2023/08/18 - 01:32:48 | 200 |  721.364154ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 01:32:50 | 200 |      108.39µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 03:23:58 | 404 |       73.92µs |  208.100.26.229 | GET      "/"
+[GIN] 2023/08/18 - 03:25:50 | 404 |      72.369µs |  208.100.26.229 | POST     "/sdk"
+[GIN] 2023/08/18 - 03:25:52 | 404 |     110.047µs |  208.100.26.229 | GET      "/"
+[GIN] 2023/08/18 - 03:25:52 | 404 |      70.682µs |  208.100.26.229 | HEAD     "/"
+[GIN] 2023/08/18 - 03:25:52 | 404 |      63.163µs |  208.100.26.229 | GET      "/nmaplowercheck1692300348"
+[GIN] 2023/08/18 - 03:25:52 | 404 |      88.452µs |  208.100.26.229 | GET      "/"
+[GIN] 2023/08/18 - 03:25:53 | 404 |       76.58µs |  208.100.26.229 | GET      "/"
+[GIN] 2023/08/18 - 03:25:53 | 404 |      62.655µs |  208.100.26.229 | GET      "/HNAP1"
+[GIN] 2023/08/18 - 03:25:53 | 404 |      61.253µs |  208.100.26.229 | GET      "/evox/about"
+[GIN] 2023/08/18 - 03:26:44 | 404 |     100.341µs |  164.90.193.143 | GET      "/ab2g"
+[GIN] 2023/08/18 - 03:26:45 | 404 |      62.369µs |  164.90.193.143 | GET      "/ab2h"
+[GIN] 2023/08/18 - 03:26:51 | 404 |      56.446µs |  164.90.193.143 | GET      "/"
+[GIN] 2023/08/18 - 03:26:52 | 404 |      56.709µs |  164.90.193.143 | GET      "/t4"
+[GIN] 2023/08/18 - 03:26:54 | 404 |      57.053µs |  164.90.193.143 | GET      "/favicon.ico"
+[GIN] 2023/08/18 - 03:26:55 | 404 |       50.12µs |  164.90.193.143 | GET      "/"
+[GIN] 2023/08/18 - 05:26:09 | 404 |      77.473µs | 167.248.133.191 | GET      "/"
+[GIN] 2023/08/18 - 05:51:58 | 404 |      74.115µs |    106.75.26.84 | GET      "/"
+[GIN] 2023/08/18 - 05:52:38 | 404 |     126.674µs |  106.75.181.137 | GET      "/"
+[GIN] 2023/08/18 - 05:52:39 | 404 |       58.27µs |  106.75.181.137 | GET      "/favicon.ico"
+[GIN] 2023/08/18 - 06:16:06 | 404 |      64.281µs |   164.90.202.89 | GET      "/"
+[GIN] 2023/08/18 - 06:31:25 | 200 |  758.522556ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 06:37:58 | 404 |      79.699µs |   52.12.185.230 | GET      "/.git/config"
+[GIN] 2023/08/18 - 07:03:37 | 404 |      70.987µs | 167.248.133.186 | GET      "/"
+[GIN] 2023/08/18 - 07:03:38 | 404 |     115.732µs | 167.248.133.186 | GET      "/"
+[GIN] 2023/08/18 - 08:13:20 | 404 |      63.553µs |  47.112.193.218 | GET      "/"
+[GIN] 2023/08/18 - 08:27:07 | 404 |      67.242µs |   198.199.93.63 | GET      "/"
+[GIN] 2023/08/18 - 08:47:21 | 404 |      66.311µs |  185.233.19.163 | GET      "/"
+[GIN] 2023/08/18 - 09:10:54 | 200 |   645.92054ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:10:56 | 200 |      96.623µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:11:12 | 200 |  493.952532ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3DD9A01928AE7B208DE5563DE11964895C"
+[GIN] 2023/08/18 - 09:11:15 | 200 |     794.408µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:11:15 | 200 |  548.863312ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:11:18 | 200 |  421.670059ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:20:46 | 200 |  758.248652ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:20:48 | 200 |      97.883µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:20:55 | 200 |  656.405189ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:20:58 | 200 |     123.566µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:21:00 | 200 |       97.43µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:21:06 | 200 |     699.547µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:21:06 | 200 |  517.553988ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:21:10 | 200 |  393.993385ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:21:24 | 200 |     162.888µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:22:44 | 200 |  951.185094ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:24:56 | 200 |  609.898989ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:25:26 | 200 |     100.387µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:25:30 | 200 |     104.913µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:26:15 | 200 |     883.387µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:26:16 | 200 |  432.213126ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:26:21 | 200 |  379.616095ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:26:22 | 200 |  173.954938ms | 175.167.146.208 | POST     "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/18 - 09:26:26 | 200 |     680.374µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:26:27 | 200 |  391.930019ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:26:32 | 200 |     698.759µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:26:32 | 200 |  398.157333ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:28:23 | 200 |  671.104793ms | 175.167.146.208 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:28:26 | 200 |     710.178µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:28:26 | 200 |  455.646304ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:28:30 | 200 |  385.354361ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:28:31 | 200 |     694.382µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:28:32 | 200 |   385.21806ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:28:34 | 200 |  236.856654ms | 175.167.146.208 | POST     "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/18 - 09:28:39 | 200 |     750.084µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:28:39 | 200 |  412.671745ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:28:43 | 200 |     685.931µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:28:43 | 200 |  373.722288ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:28:48 | 200 |     105.764µs | 175.167.146.208 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 09:29:08 | 200 |     673.203µs | 175.167.146.208 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 09:29:09 | 200 |   385.93867ms | 175.167.146.208 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 09:30:42 | 200 |  688.807399ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:38:50 | 200 |  631.595094ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:40:08 | 200 |     981.135µs |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 09:40:09 | 200 |  645.688827ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:42:45 | 200 |     982.662µs |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 09:42:45 | 200 |  611.154193ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+{}
+[GIN] 2023/08/18 - 09:44:48 | 200 |  964.687523ms |    42.55.155.12 | GET      "/api/v1/auth/sendemail?email=hackerxiao%40foxmail.com&mode=sign"
+[GIN] 2023/08/18 - 09:45:29 | 200 |    5.789646ms |    42.55.155.12 | POST     "/api/v1/auth/signup"
+
+2023/08/18 09:45:33 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:56 [35;1mrecord not found
+[0m[33m[0.369ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22856985317740544 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 09:45:33 | 200 |    1.263065ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 09:49:19 | 200 |     1.17143ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 09:49:19 | 200 |  615.996863ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:51:19 | 200 |  761.442493ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:53:20 | 200 |    1.029679ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 09:53:21 | 200 |  647.826531ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:54:50 | 200 |    1.064676ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 09:54:51 | 200 |  614.994758ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 09:58:09 | 200 |  936.388424ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:01:00 | 200 |    1.260722ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 10:01:01 | 200 |  716.221555ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:01:27 | 200 |  673.956949ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+
+2023/08/18 10:03:26 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:56 [35;1mrecord not found
+[0m[33m[0.340ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22856985317740544 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 10:03:26 | 200 |    1.205079ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+
+2023/08/18 10:05:01 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:109 [35;1mrecord not found
+[0m[33m[0.719ms] [34;1m[rows:0][0m SELECT * FROM `sylu_passes` WHERE uuid = 22856985317740544 AND `sylu_passes`.`deleted_at` IS NULL ORDER BY `sylu_passes`.`id` LIMIT 1
+[GIN] 2023/08/18 - 10:05:01 | 200 |    1.181098ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:07:49 | 200 |    1.227732ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 10:07:50 | 200 |  670.532462ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+
+2023/08/18 10:08:30 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:56 [35;1mrecord not found
+[0m[33m[0.347ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22856985317740544 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 10:08:30 | 200 |    1.270826ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+
+2023/08/18 10:08:56 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:91 [35;1mrecord not found
+[0m[33m[0.621ms] [34;1m[rows:0][0m SELECT * FROM `sylu_passes` WHERE uuid = 22856985317740544 AND `sylu_passes`.`deleted_at` IS NULL ORDER BY `sylu_passes`.`id` LIMIT 1
+
+2023/08/18 10:08:57 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:101 [35;1mrecord not found
+[0m[33m[0.724ms] [34;1m[rows:0][0m SELECT * FROM `sylu_users` WHERE uuid = 22856985317740544 AND `sylu_users`.`deleted_at` IS NULL ORDER BY `sylu_users`.`id` LIMIT 1
+[GIN] 2023/08/18 - 10:08:57 | 200 |  1.924969091s |    42.55.155.12 | POST     "/api/v1/edu/bind"
+[GIN] 2023/08/18 - 10:09:43 | 200 |   643.20231ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:09:47 | 200 |  576.473165ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3DE462DF0106FA9AF35113030CDD54A4C0"
+[GIN] 2023/08/18 - 10:09:47 | 200 |  500.661681ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3DE462DF0106FA9AF35113030CDD54A4C0"
+[GIN] 2023/08/18 - 10:10:15 | 200 |  477.081186ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3DE462DF0106FA9AF35113030CDD54A4C0"
+[GIN] 2023/08/18 - 10:10:22 | 200 |     722.193µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 10:10:22 | 200 |  455.226751ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 10:10:48 | 200 |     695.086µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 10:10:49 | 200 |  373.728281ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 10:10:57 | 200 |     682.776µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 10:10:57 | 200 |  392.827795ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 10:11:05 | 200 |     699.564µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 10:11:05 | 200 |  376.203089ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 10:11:08 | 200 |  208.081527ms |    42.55.155.12 | POST     "/api/v1/edu/grade/detaile"
+[GIN] 2023/08/18 - 10:11:16 | 200 |     765.498µs |    42.55.155.12 | GET      "/api/v1/edu/semester"
+[GIN] 2023/08/18 - 10:11:17 | 200 |  410.766414ms |    42.55.155.12 | POST     "/api/v1/edu/grades"
+[GIN] 2023/08/18 - 10:12:36 | 200 |  675.887429ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:12:48 | 200 |  645.488971ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:12:59 | 200 |     104.877µs |    42.55.155.12 | GET      "/api/v1/about"
+[GIN] 2023/08/18 - 10:13:27 | 404 |      67.108µs |  162.243.143.49 | GET      "/autodiscover/autodiscover.json?@zdi/Powershell"
+
+2023/08/18 10:25:00 [31;1m/home/hackerxiao/go_project/sylu_project/dao/mysql/user.go:109 [35;1mrecord not found
+[0m[33m[0.664ms] [34;1m[rows:0][0m SELECT * FROM `sylu_passes` WHERE uuid = 22714187478208512 AND `sylu_passes`.`deleted_at` IS NULL ORDER BY `sylu_passes`.`id` LIMIT 1
+[GIN] 2023/08/18 - 10:25:00 | 200 |     852.259µs |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:25:41 | 200 |    1.221405ms |    42.55.155.12 | POST     "/api/v1/auth/login"
+[GIN] 2023/08/18 - 10:25:42 | 200 |  996.115585ms |    42.55.155.12 | GET      "/api/v1/edu/cookie"
+[GIN] 2023/08/18 - 10:25:46 | 200 |  592.622276ms |    42.55.155.12 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3DB5503281A24013B00C50B99D5B1ECF85"
+[GIN] 2023/08/18 - 10:25:47 | 200 |  551.907514ms | 175.167.146.208 | GET      "/api/v1/edu/courses/auto?cookie=JSESSIONID%3DB5503281A24013B00C50B99D5B1ECF85"
+[GIN] 2023/08/18 - 10:27:03 | 200 |     140.202µs |    42.55.155.12 | GET      "/api/v1/about"
