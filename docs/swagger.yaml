@@ -123,6 +123,16 @@ definitions:
     - semester
     - year
     type: object
+  models.ParamFeedBack:
+    properties:
+      content:
+        type: string
+      title:
+        type: string
+    required:
+    - content
+    - title
+    type: object
   models.ParamGpa:
     properties:
       cookie:
@@ -690,4 +700,29 @@ paths:
       summary: 获取学期接口
       tags:
       - sylu相关接口
+  /feedback:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 反馈参数,必填
+        in: body
+        name: object
+        required: true
+        schema:
+          $ref: '#/definitions/models.ParamFeedBack'
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",data="null
+          schema:
+            type: string
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 反馈接口
+      tags:
+      - 反馈相关接口
 swagger: "2.0"

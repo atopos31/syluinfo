@@ -36,6 +36,8 @@ func Setup(cfg *settings.AppConfig) {
 	baseapi.GET("/log", showLog)
 	//关于页面
 	baseapi.StaticFile("/about", "./about/about.md")
+	//反馈
+	baseapi.POST("/feedback", middlewares.JWTAuthMiddleware(), controller.FeedBackHandler)
 	//auth相关
 	authen := baseapi.Group("/auth")
 	{

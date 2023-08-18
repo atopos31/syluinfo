@@ -113,3 +113,17 @@ func GetSyluPassByUuid(uuid int64) (userPass *models.SyluPass, err error) {
 	}
 	return
 }
+
+func GetUserInfoByUuid(uuid int64) (userInfo *models.User, err error) {
+	userInfo = new(models.User)
+	err = db.Model(&models.User{}).Where("uuid = ?", uuid).First(&userInfo).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return
+}
+
+func CreatFeed(feedInfo *models.FeedBack) error {
+	return db.Create(feedInfo).Error
+}

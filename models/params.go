@@ -54,3 +54,8 @@ type ParamGradeDetaile struct {
 type ParamGpa struct {
 	Cookie string `json:"cookie"`
 }
+
+type ParamFeedBack struct {
+	Title   string `json:"title" binding:"required"`
+	Content string `json:"content" binding:"required"`
+}

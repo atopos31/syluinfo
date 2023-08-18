@@ -587,6 +587,45 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/feedback": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "反馈相关接口"
+                ],
+                "summary": "反馈接口",
+                "parameters": [
+                    {
+                        "description": "反馈参数,必填",
+                        "name": "object",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ParamFeedBack"
+                        }
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",data=\"null",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -760,6 +799,21 @@ const docTemplate = `{
                 },
                 "year": {
                     "type": "integer"
+                }
+            }
+        },
+        "models.ParamFeedBack": {
+            "type": "object",
+            "required": [
+                "content",
+                "title"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
                 }
             }
         },
