@@ -1,5 +1,5 @@
 # SYLU-EOA
-沈阳理工大学校园一体化服务平台--基于爬虫获取正方教务系统数据，客户端为基于Uniapp开发的安卓app/微信小程序，预计2023年8月下旬上线。
+沈阳理工大学校园一体化服务平台--基于爬虫获取正方教务系统数据，客户端为基于Uniapp/原生小程序开发的安卓app/微信小程序，预计2023年8月下旬上线。
 # 框架
 - 主体：[gin](https://github.com/gin-gonic/gin) [gorm](https://github.com/go-gorm/gorm)
 - 爬虫部分: [colly](https://github.com/gocolly/colly) [resty](https://github.com/go-resty/resty)
