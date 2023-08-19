@@ -31,6 +31,8 @@ email:
   password: "your email pass"
   expires: 500
 
+secret: "hackerxiao"
+
 jwt:
   timeout: 168 #小时
   issuer: "hackerxiao"

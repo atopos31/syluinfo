@@ -9,3 +9,4 @@ conf/config.yaml
 .air.toml
 about/
 nohup.out
+main
