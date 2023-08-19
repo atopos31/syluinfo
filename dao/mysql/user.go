@@ -29,7 +29,8 @@ func Login(loginReq *models.ParamLogin) (user *models.User, err error) {
 		return nil, err
 	}
 	//密码错误
-	if loginReq.Password != user.Password {
+	enPassword := encryptPassword(loginReq.Password)
+	if user.Password != enPassword {
 		return nil, ErrorInvalidPassword
 	}
 
@@ -37,6 +38,8 @@ func Login(loginReq *models.ParamLogin) (user *models.User, err error) {
 }
 
 func CreateUser(siginUserInfo *models.User) (err error) {
+	//密码加密
+	siginUserInfo.Password = encryptPassword(siginUserInfo.Password)
 	return db.Model(&models.User{}).Create(siginUserInfo).Error
 }
 
@@ -77,6 +80,7 @@ func GetSyluInfoByUUID(uuid int64) (resyluInfo *models.ReqSyluInfo, err error) {
 }
 
 func UpDatePassByEmail(email string, newPassword string) (err error) {
+	newPassword = encryptPassword(newPassword)
 	return db.Model(&models.User{}).Where("email = ?", email).Update("password", newPassword).Error
 }
 

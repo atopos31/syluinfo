@@ -22,6 +22,7 @@ type Config struct {
 	Snowflake SnowflakeConfig `mapstructrue:"snowflake"`
 	Proxy     ProxyConfig     `mapstructrue:"proxy"`
 	Cos       CosConfig       `mapstructrue:"cos"`
+	Secret    string          `mapstructrue:"secret"`
 }
 
 type AppConfig struct {

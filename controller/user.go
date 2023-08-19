@@ -107,7 +107,8 @@ func SendEmailHandler(c *gin.Context) {
 // 重置密码处理函数
 // @Summary 重置密码验证接口
 // @Tags auth相关接口
-// @Param object body models.ParamReSet true "使用邮箱旧密码新密码重置"
+// @Param Authorization header string true "Bearer JWT"
+// @Param object body models.ParamReSet true "使用旧密码新密码重置"
 // @Success 1000 {object} ResponseData "code=1000,msg="success",data=null"
 // @Failure 1005 {object} ResponseData "code=1000+，msg里面是错误信息,data=null"
 // @Router /auth/resetpass [post]
@@ -117,8 +118,13 @@ func ReSetPassHandler(c *gin.Context) {
 		ResponseBindError(c, err)
 		return
 	}
+	userID, err := getCurrentUser(c)
+	if err != nil {
+		ResponseError(c, CodeNeedLogin)
+		return
+	}
 
-	if err := logic.ReSetPass(paramReSet); err != nil {
+	if err := logic.ReSetPass(userID, paramReSet); err != nil {
 		zap.L().Error("logic.ReSetPass Error", zap.Error(err))
 		if errors.Is(err, mysql.ErrorInvalidPassword) {
 			ResponseError(c, CodeInvalidPassword)

@@ -14,7 +14,6 @@ type ParamLogin struct {
 }
 
 type ParamReSet struct {
-	Email         string `json:"email" binding:"required,email"`
 	Password      string `json:"password" binding:"required,min=8"`
 	NewPassword   string `json:"newpassword" binding:"required,min=8,nefield=Password"`
 	ReNewPassword string `json:"renewpassword" binding:"required,min=8,eqfield=NewPassword"`

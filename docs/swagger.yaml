@@ -201,8 +201,6 @@ definitions:
     type: object
   models.ParamReSet:
     properties:
-      email:
-        type: string
       newpassword:
         minLength: 8
         type: string
@@ -213,7 +211,6 @@ definitions:
         minLength: 8
         type: string
     required:
-    - email
     - newpassword
     - password
     - renewpassword
@@ -400,7 +397,12 @@ paths:
   /auth/resetpass:
     post:
       parameters:
-      - description: 使用邮箱旧密码新密码重置
+      - description: Bearer JWT
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: 使用旧密码新密码重置
         in: body
         name: object
         required: true

@@ -151,9 +151,13 @@ func RecoverSendEmail(email string) (err error) {
 	return
 }
 
-func ReSetPass(parmReSet *models.ParamReSet) (err error) {
+func ReSetPass(uuid int64, parmReSet *models.ParamReSet) (err error) {
+	userInfo, err := mysql.GetUserInfoByUuid(uuid)
+	if err != nil {
+		return err
+	}
 	loginTest := &models.ParamLogin{
-		Email:    parmReSet.Email,
+		Email:    userInfo.Email,
 		Password: parmReSet.Password,
 	}
 
@@ -161,7 +165,7 @@ func ReSetPass(parmReSet *models.ParamReSet) (err error) {
 		return err
 	}
 
-	if err := mysql.UpDatePassByEmail(parmReSet.Email, parmReSet.NewPassword); err != nil {
+	if err := mysql.UpDatePassByEmail(userInfo.Email, parmReSet.NewPassword); err != nil {
 		return err
 	}
 

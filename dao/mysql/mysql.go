@@ -10,6 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
+var secret = settings.Conf.Secret
 var db *gorm.DB
 
 func Init(cfg *settings.MySQLConfig) (err error) {

@@ -130,7 +130,14 @@ const docTemplate = `{
                 "summary": "重置密码验证接口",
                 "parameters": [
                     {
-                        "description": "使用邮箱旧密码新密码重置",
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "使用旧密码新密码重置",
                         "name": "object",
                         "in": "body",
                         "required": true,
@@ -916,15 +923,11 @@ const docTemplate = `{
         "models.ParamReSet": {
             "type": "object",
             "required": [
-                "email",
                 "newpassword",
                 "password",
                 "renewpassword"
             ],
             "properties": {
-                "email": {
-                    "type": "string"
-                },
                 "newpassword": {
                     "type": "string",
                     "minLength": 8

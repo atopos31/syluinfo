@@ -44,7 +44,7 @@ func Setup(cfg *settings.AppConfig) {
 		authen.POST("/login", controller.LoginHandler)
 		authen.POST("/signup", controller.SignUpHandler)
 		authen.GET("/sendemail", controller.SendEmailHandler)
-		authen.POST("/resetpass", controller.ReSetPassHandler)
+		authen.POST("/resetpass", middlewares.JWTAuthMiddleware(), controller.ReSetPassHandler)
 		authen.POST("/recoverpass", controller.ReCoverPassHandler)
 
 		authen.GET("/coskey", middlewares.JWTAuthMiddleware(), controller.GetCosKeyHandler)
