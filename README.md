@@ -16,6 +16,8 @@
 - [ ] 绩点排行榜
 - [ ] 课程讨论区
 - [ ] 青年大截图
+# 运行项目
+修改conf下的demo_config文件为你的配置信息，重命名为config即可，数据库表结构在mysql初始化时自动建表。
 # 接口文档
 接口文档使用swagger框架实现，运行项目后，访问```http://host:port/swagger/index.html```即可查看。
 # 正方教务相关爬虫教程
