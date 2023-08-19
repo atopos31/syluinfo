@@ -41,7 +41,7 @@ jwt:
 snowflake:
   start_time: "2023-06-16"
   machine_id: 1
-# 这里都不填写，既视为不使用代理
+# 教务网ban了很多云服务的ip，所以如果部署到云端，可能会需要代理，这里都不填写，既视为不使用代理
 proxy:
   host: ""
   port: ""
