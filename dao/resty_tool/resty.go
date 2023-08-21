@@ -50,12 +50,16 @@ func GetIndexCookieAndCsrfToken(client *resty.Client) (csrftoken string, err err
 		学校的教务有时候会抽风,重连多次才会有响应，不然会一直超时，这里使用goto语句优化
 		不用担心死循环，一般一次两次就响应成功了，gin框架60秒也会强制推出的
 	*/
+	retryLimit := 4
+	retries := 0
+
 	client.SetTimeout(3 * time.Second)
 lable:
 	initResp, err := client.R().SetHeaders(baseHttpHeaders()).
 		Get(indexUrl + "/login_slogin.html")
 	if err != nil {
-		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() {
+		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() && retries < retryLimit {
+			retries++
 			goto lable
 		}
 		return "", err
