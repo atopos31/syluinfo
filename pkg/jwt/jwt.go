@@ -31,7 +31,7 @@ func GenToken(userID int64, email string) (string, error) {
 	return token.SignedString([]byte(settings.Conf.Jwt.Secret))
 }
 
-// 解析Toeken
+// 解析Token
 func ParseToken(tokenstring string) (*MyCustomClaims, error) {
 	var mc = new(MyCustomClaims)
 	token, err := jwt.ParseWithClaims(tokenstring, mc, func(t *jwt.Token) (interface{}, error) {
