@@ -34,7 +34,7 @@ func Setup(cfg *settings.AppConfig) {
 	baseapi := r.Group("/api/v1")
 	//日志对外显示接口 dev阶段
 	baseapi.GET("/log", showLog)
-	//关于页面
+	//关于页面，可选，自行创建对应目录以及md文件
 	baseapi.StaticFile("/about", "./about/about.md")
 	//反馈
 	baseapi.POST("/feedback", middlewares.JWTAuthMiddleware(), controller.FeedBackHandler)
