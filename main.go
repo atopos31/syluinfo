@@ -20,6 +20,7 @@ import (
 // @contact.url http://www.hackerxiao.online
 // @BasePath /api/v1
 func main() {
+	//这里是dev分支
 	//1.加载配置文件
 	if err := settings.Init(); err != nil {
 		fmt.Println("init setting failed, err :" + err.Error())
