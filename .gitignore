@@ -5,6 +5,7 @@ restest
 tmp/
 test/
 conf/config.yaml
+conf/dev_config.yaml
 .VSCodeCounter
 .air.toml
 about/
