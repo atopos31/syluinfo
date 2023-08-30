@@ -84,7 +84,6 @@ func (c *MyCollector) GetInforamation(cookiestring string, username string) (stu
 func (c *MyCollector) GetGradeDetail(bindInfo *models.ParamGradeDetaile) (resGradeDetail []*models.ResGradeDetail, err error) {
 	resGradeDetail = make([]*models.ResGradeDetail, 0, 5)
 	queryParams := url.Values{}
-
 	queryParams.Add("gnmkdm", "N305005")
 
 	c.OnRequest(func(r *colly.Request) {
