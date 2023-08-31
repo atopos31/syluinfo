@@ -6,7 +6,6 @@ import (
 	"cld/settings"
 	"errors"
 	"fmt"
-	"net/http"
 	"net/url"
 	"regexp"
 	"strconv"
@@ -38,12 +37,13 @@ func NewMyCollector() *MyCollector {
 		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.82"),
 	)
 
-	proxyURL, err := getProxyURL()
-	if err == nil {
-		c.SetProxyFunc(func(r *http.Request) (*url.URL, error) {
-			return proxyURL, nil
-		})
-	}
+	// proxyURL, err := getProxyURL()
+	// if err == nil {
+	// 	c.SetProxyFunc(func(r *http.Request) (*url.URL, error) {
+	// 		return proxyURL, nil
+	// 	})
+	// }
+	c.SetProxy("socks5://127.0.0.1:8899")
 
 	return &MyCollector{c}
 }

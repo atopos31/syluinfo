@@ -28,7 +28,7 @@ func SendEmail(mode string, email string, code string) (err error) {
 	m := gomail.NewMessage()
 	m.SetAddressHeader("From", settings.Conf.Email.Username, "hackerxiao")
 	m.SetHeader("To", email)
-	m.SetHeader("Subject", "[我的验证码]"+mode)
+	m.SetHeader("Subject", "[微沈理]"+mode)
 	m.SetBody("text/html", getBody(email, code))
 
 	config := gomail.NewDialer(
