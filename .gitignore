@@ -1,4 +1,5 @@
 web_app.log
+dev_web_app.log
 nginx.conf
 .vscode
 restest

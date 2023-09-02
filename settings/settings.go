@@ -75,6 +75,7 @@ type SnowflakeConfig struct {
 }
 
 type ProxyConfig struct {
+	Type string `mapstructure:"type"`
 	Host string `mapstructure:"host"`
 	Port string `mapstructure:"port"`
 }
