@@ -59,7 +59,7 @@ func SignUpHandler(c *gin.Context) {
 
 	err := logic.SignUp(siginReq)
 	if err != nil {
-		zap.L().Error("LoginHandler logic.Login Error", zap.Error(err))
+		zap.L().Error("SignUpHandler logic.SignUp Error", zap.Error(err))
 		if errors.Is(err, redis.ErrorNotExists) {
 			ResponseError(c, CodeCaptchaNotExistOrTimeOut)
 			return

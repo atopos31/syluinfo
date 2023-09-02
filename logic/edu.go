@@ -5,7 +5,6 @@ import (
 	"cld/dao/mysql"
 	"cld/dao/resty_tool"
 	"cld/models"
-	"cld/settings"
 	"fmt"
 	"net/http"
 	"strings"
@@ -16,10 +15,10 @@ import (
 
 // 获取代理
 func getHttpProxy() string {
-	if settings.Conf.Proxy.Host != "" && settings.Conf.Proxy.Port != "" {
-		return "http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port
-	}
-	return ""
+	// if settings.Conf.Proxy.Host != "" && settings.Conf.Proxy.Port != "" {
+	// 	return "http://" + settings.Conf.Proxy.Host + ":" + settings.Conf.Proxy.Port
+	// }
+	return "socks5://127.0.0.1:8899"
 }
 
 // 绑定教务处理

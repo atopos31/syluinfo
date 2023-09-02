@@ -6,7 +6,6 @@ import (
 	"cld/settings"
 	"errors"
 	"fmt"
-	"net/http"
 	"net/url"
 	"regexp"
 	"strconv"
@@ -38,12 +37,13 @@ func NewMyCollector() *MyCollector {
 		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.82"),
 	)
 
-	proxyURL, err := getProxyURL()
-	if err == nil {
-		c.SetProxyFunc(func(r *http.Request) (*url.URL, error) {
-			return proxyURL, nil
-		})
-	}
+	// proxyURL, err := getProxyURL()
+	// if err == nil {
+	// 	c.SetProxyFunc(func(r *http.Request) (*url.URL, error) {
+	// 		return proxyURL, nil
+	// 	})
+	// }
+	c.SetProxy("socks5://127.0.0.1:8899")
 
 	return &MyCollector{c}
 }
@@ -84,7 +84,6 @@ func (c *MyCollector) GetInforamation(cookiestring string, username string) (stu
 func (c *MyCollector) GetGradeDetail(bindInfo *models.ParamGradeDetaile) (resGradeDetail []*models.ResGradeDetail, err error) {
 	resGradeDetail = make([]*models.ResGradeDetail, 0, 5)
 	queryParams := url.Values{}
-
 	queryParams.Add("gnmkdm", "N305005")
 
 	c.OnRequest(func(r *colly.Request) {
