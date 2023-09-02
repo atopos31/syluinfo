@@ -3,11 +3,13 @@ package resty_tool
 import (
 	"cld/models"
 	"cld/pkg/tool"
+	"cld/settings"
 	"crypto/rand"
 	"crypto/rsa"
 	"encoding/base64"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"math/big"
 	"net/http"
 	"net/url"
@@ -35,12 +37,96 @@ var (
 	ErrorGradesNoOpen = errors.New("当前学期暂无成绩！")
 )
 
+type Myresty struct {
+	userInfo  *models.ParamBind
+	publicKey *PublicKey
+	csrfToken string
+	*resty.Client
+}
+
 // 一个请求头
 func baseHttpHeaders() map[string]string {
 	return map[string]string{
 		"User-Agent":    "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0",
 		"Content-Type":  "application/x-www-form-urlencoded;charset=uft-8",
 		"Cache-Control": "no-cache",
+	}
+}
+
+// 创建MyResty对象
+func NewMyResty() *Myresty {
+	cfg := settings.Conf.Proxy
+
+	restyClient := resty.New()
+	restyClient.SetHeaders(baseHttpHeaders())
+
+	if cfg.Host != "" && cfg.Port != "" && cfg.Type != "" {
+
+		pUrl := fmt.Sprintf("%s://%s:%s", cfg.Type, cfg.Host, cfg.Port)
+		restyClient.SetProxy(pUrl)
+
+	}
+
+	return &Myresty{
+		Client: restyClient,
+	}
+}
+
+// 获取初始Cookie和CsrfToken
+func (myRes *Myresty) GetIndexCookieAndCsrfToken() (csrftoken string, err error) {
+	retryLimit := 4
+	retries := 0
+
+	myRes.SetTimeout(3 * time.Second)
+lable:
+	initResp, err := myRes.R().SetHeaders(baseHttpHeaders()).
+		Get(indexUrl + "/login_slogin.html")
+	if err != nil {
+		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() && retries < retryLimit {
+			retries++
+			goto lable
+		}
+		return "", err
+	}
+
+	Findcsrftoken := regexp.MustCompile(`id="csrftoken" name="csrftoken" value="([^"]+)"`)
+	csrftoken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
+	myRes.Cookies = initResp.Cookies()
+
+	return
+}
+
+// 获取公钥
+func (myRes *Myresty) GetPublicKey() (publicKey *PublicKey, err error) {
+	nowTime := tool.NowTime()
+	getPublicKeyResp, err := myRes.R().SetHeaders(baseHttpHeaders()).
+		SetQueryParams(map[string]string{
+			"time": nowTime,
+			"_":    nowTime,
+		}).Get(indexUrl + "/login_getPublicKey.html")
+	if err != nil {
+		return nil, err
+	}
+
+	json.Unmarshal([]byte(getPublicKeyResp.String()), &publicKey)
+	return
+}
+
+func (myResty *Myresty) SyluLogin() (cookies []*http.Cookie, err error) {
+	loginresponse, err := myResty.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
+		"csrftoken": myResty.csrfToken,
+		"language":  "zh_CN",
+		"yhm":       myResty.userInfo.StudentID,
+		"mm":        myResty.userInfo.Password,
+	}).SetQueryParam("time", tool.NowTime()).SetHeaders(baseHttpHeaders()).
+		Post(indexUrl + "/login_slogin.html")
+
+	if err != nil && err.Error() == Error302.Error() {
+		return loginresponse.Cookies(), nil
+	} else if err != nil {
+		return nil, errors.New("服务器连接失败:" + err.Error())
+	} else {
+		return nil, errors.New("账号或密码错误")
 	}
 }
 
@@ -64,9 +150,11 @@ lable:
 		}
 		return "", err
 	}
+
 	Findcsrftoken := regexp.MustCompile(`id="csrftoken" name="csrftoken" value="([^"]+)"`)
 	csrftoken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
 	client.Cookies = initResp.Cookies()
+
 	return
 }
 

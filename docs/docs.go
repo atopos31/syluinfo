@@ -1103,7 +1103,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.1",
 	Host:             "",
-	BasePath:         "/api/v1",
+	BasePath:         "/dev/api/v1",
 	Schemes:          []string{},
 	Title:            "sylu项目接口文档",
 	Description:      "致力于为同学们提供校园服务(忽略状态码，所有响应都是200)",

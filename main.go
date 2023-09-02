@@ -18,7 +18,7 @@ import (
 // @description 致力于为同学们提供校园服务(忽略状态码，所有响应都是200)
 // @contact.name hakcerxiao
 // @contact.url http://www.hackerxiao.online
-// @BasePath /api/v1
+// @BasePath /dev/api/v1
 func main() {
 	//这里是dev分支
 	//1.加载配置文件

@@ -1,4 +1,4 @@
-basePath: /api/v1
+basePath: /dev/api/v1
 definitions:
   controller._ResponseLoginData:
     properties:

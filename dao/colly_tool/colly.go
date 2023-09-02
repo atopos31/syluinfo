@@ -25,18 +25,18 @@ type MyCollector struct {
 func NewMyCollector() *MyCollector {
 	cfg := settings.Conf.Proxy
 
-	c := colly.NewCollector(
+	collector := colly.NewCollector(
 		colly.UserAgent(userAgent),
 	)
 
 	if cfg.Host != "" && cfg.Port != "" && cfg.Type != "" {
 
 		pUrl := fmt.Sprintf("%s://%s:%s", cfg.Type, cfg.Host, cfg.Port)
-		c.SetProxy(pUrl)
+		collector.SetProxy(pUrl)
 
 	}
 
-	return &MyCollector{c}
+	return &MyCollector{collector}
 }
 
 func (c *MyCollector) GetInforamation(cookiestring string, username string) (studentInfo *models.SyluUser, err error) {
