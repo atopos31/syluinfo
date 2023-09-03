@@ -38,9 +38,6 @@ var (
 )
 
 type Myresty struct {
-	userInfo  *models.ParamBind
-	publicKey *PublicKey
-	csrfToken string
 	*resty.Client
 }
 
@@ -72,15 +69,39 @@ func NewMyResty() *Myresty {
 	}
 }
 
+// 通过模拟登录获取Cookie
+func (myRes *Myresty) LoginAndGetCookie(studentID string, password string) (cookie string, err error) {
+	csrfToken, err := myRes.setIndexCookieAndGetCsrfToken()
+	if err != nil {
+		return "", err
+	}
+
+	publicKey, err := myRes.getPublicKey()
+	if err != nil {
+		return "", err
+	}
+
+	enPass, err := rsaByPublicKey(password, publicKey)
+	if err != nil {
+		return "", err
+	}
+
+	resCookies, err := myRes.syluLogin(studentID, enPass, csrfToken)
+	if err != nil {
+		return "", err
+	}
+
+	return resCookies[1].String(), nil
+}
+
 // 获取初始Cookie和CsrfToken
-func (myRes *Myresty) GetIndexCookieAndCsrfToken() (csrftoken string, err error) {
+func (myRes *Myresty) setIndexCookieAndGetCsrfToken() (csrfToken string, err error) {
 	retryLimit := 4
 	retries := 0
 
 	myRes.SetTimeout(3 * time.Second)
 lable:
-	initResp, err := myRes.R().SetHeaders(baseHttpHeaders()).
-		Get(indexUrl + "/login_slogin.html")
+	initResp, err := myRes.R().SetHeaders(baseHttpHeaders()).Get(indexUrl + "/login_slogin.html")
 	if err != nil {
 		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() && retries < retryLimit {
 			retries++
@@ -88,16 +109,16 @@ lable:
 		}
 		return "", err
 	}
+	myRes.Cookies = initResp.Cookies()
 
 	Findcsrftoken := regexp.MustCompile(`id="csrftoken" name="csrftoken" value="([^"]+)"`)
-	csrftoken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
-	myRes.Cookies = initResp.Cookies()
+	csrfToken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
 
 	return
 }
 
 // 获取公钥
-func (myRes *Myresty) GetPublicKey() (publicKey *PublicKey, err error) {
+func (myRes *Myresty) getPublicKey() (publicKey *PublicKey, err error) {
 	nowTime := tool.NowTime()
 	getPublicKeyResp, err := myRes.R().SetHeaders(baseHttpHeaders()).
 		SetQueryParams(map[string]string{
@@ -108,16 +129,18 @@ func (myRes *Myresty) GetPublicKey() (publicKey *PublicKey, err error) {
 		return nil, err
 	}
 
-	json.Unmarshal([]byte(getPublicKeyResp.String()), &publicKey)
+	if err := json.Unmarshal([]byte(getPublicKeyResp.String()), publicKey); err != nil {
+		return nil, err
+	}
 	return
 }
 
-func (myResty *Myresty) SyluLogin() (cookies []*http.Cookie, err error) {
+func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken string) (cookies []*http.Cookie, err error) {
 	loginresponse, err := myResty.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
-		"csrftoken": myResty.csrfToken,
+		"csrftoken": csrfToken,
 		"language":  "zh_CN",
-		"yhm":       myResty.userInfo.StudentID,
-		"mm":        myResty.userInfo.Password,
+		"yhm":       studentID,
+		"mm":        enPass,
 	}).SetQueryParam("time", tool.NowTime()).SetHeaders(baseHttpHeaders()).
 		Post(indexUrl + "/login_slogin.html")
 
@@ -130,52 +153,7 @@ func (myResty *Myresty) SyluLogin() (cookies []*http.Cookie, err error) {
 	}
 }
 
-// 获取初始cookie与csrftoken
-func GetIndexCookieAndCsrfToken(client *resty.Client) (csrftoken string, err error) {
-	/*
-		学校的教务有时候会抽风,重连多次才会有响应，不然会一直超时，这里使用goto语句优化
-		不用担心死循环，一般一次两次就响应成功了，gin框架60秒也会强制推出的
-	*/
-	retryLimit := 4
-	retries := 0
-
-	client.SetTimeout(3 * time.Second)
-lable:
-	initResp, err := client.R().SetHeaders(baseHttpHeaders()).
-		Get(indexUrl + "/login_slogin.html")
-	if err != nil {
-		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() && retries < retryLimit {
-			retries++
-			goto lable
-		}
-		return "", err
-	}
-
-	Findcsrftoken := regexp.MustCompile(`id="csrftoken" name="csrftoken" value="([^"]+)"`)
-	csrftoken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
-	client.Cookies = initResp.Cookies()
-
-	return
-}
-
-// 获取公匙
-func GetPublicKey(client *resty.Client) (publicKey *PublicKey, err error) {
-	nowTime := tool.NowTime()
-	getPublicKeyResp, err := client.R().SetHeaders(baseHttpHeaders()).
-		SetQueryParams(map[string]string{
-			"time": nowTime,
-			"_":    nowTime,
-		}).Get(indexUrl + "/login_getPublicKey.html")
-	if err != nil {
-		return nil, err
-	}
-
-	json.Unmarshal([]byte(getPublicKeyResp.String()), &publicKey)
-	return
-}
-
-// rsa加密
-func RsaByPublicKey(password string, publicKey *PublicKey) (string, error) {
+func (myResty *Myresty) RsaByPublicKey(password string, publicKey *PublicKey) (string, error) {
 	modulusBytes, err := base64.StdEncoding.DecodeString(publicKey.Modulus)
 	if err != nil {
 		return "", err
@@ -205,28 +183,10 @@ func RsaByPublicKey(password string, publicKey *PublicKey) (string, error) {
 	return encryptedPassword, nil
 }
 
-func SyluLogin(client *resty.Client, userInfo *models.ParamBind, csrfToken string) (cookies []*http.Cookie, err error) {
-	loginresponse, err := client.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
-		"csrftoken": csrfToken,
-		"language":  "zh_CN",
-		"yhm":       userInfo.StudentID,
-		"mm":        userInfo.Password,
-	}).SetQueryParam("time", tool.NowTime()).SetHeaders(baseHttpHeaders()).
-		Post(indexUrl + "/login_slogin.html")
+func (myResty *Myresty) GetCourseByCourseInfo(getCourseInfo *models.ParamCourse) (courses *models.ReqCourse, err error) {
 
-	if err != nil && err.Error() == Error302.Error() {
-		return loginresponse.Cookies(), nil
-	} else if err != nil {
-		return nil, errors.New("服务器连接失败:" + err.Error())
-	} else {
-		return nil, errors.New("账号或密码错误")
-	}
-}
-
-func GetCourseByCourseInfo(client *resty.Client, getCourseInfo *models.ParamCourse) (courses *models.ReqCourse, err error) {
-
-	client.SetHostURL(courseUrl)
-	defer client.GetClient().CloseIdleConnections()
+	myResty.SetHostURL(courseUrl)
+	defer myResty.GetClient().CloseIdleConnections()
 
 	formData := map[string]string{
 		"xnm":    strconv.Itoa(getCourseInfo.Year),
@@ -235,7 +195,7 @@ func GetCourseByCourseInfo(client *resty.Client, getCourseInfo *models.ParamCour
 		"xqm":    strconv.Itoa(getCourseInfo.Semester),
 		"kblx":   "1",
 	}
-	response, err := client.R().
+	response, err := myResty.R().
 		SetFormData(formData).
 		SetHeader("Cookie", getCourseInfo.Cookie).
 		Post("/xskbcxMobile_cxXsKb.html?gnmkdm=N2154")
@@ -275,9 +235,9 @@ func GetCourseByCourseInfo(client *resty.Client, getCourseInfo *models.ParamCour
 	return
 }
 
-func GetGradesByGradesInfo(client *resty.Client, gradesInfo *models.ParamGrades) (jsongrades []models.JsonGrades, err error) {
-	client.SetHostURL(gradeUrl)
-	defer client.GetClient().CloseIdleConnections()
+func (myResty *Myresty) GetGradesByGradesInfo(gradesInfo *models.ParamGrades) (jsongrades []models.JsonGrades, err error) {
+	myResty.SetHostURL(gradeUrl)
+	defer myResty.GetClient().CloseIdleConnections()
 
 	querData := map[string]string{
 		"doType": "query",
@@ -290,7 +250,7 @@ func GetGradesByGradesInfo(client *resty.Client, gradesInfo *models.ParamGrades)
 		"queryModel.showCount": "30", //这个参数是成绩的门数，直接拉到30，应该不会有人超过这个数吧
 	}
 
-	response, err := client.R().SetQueryParams(querData).
+	response, err := myResty.R().SetQueryParams(querData).
 		SetFormData(formData).
 		SetHeader("Cookie", gradesInfo.Cookie).
 		Post("/cjcx_cxXsgrcj.html")
@@ -326,60 +286,5 @@ func GetGradesByGradesInfo(client *resty.Client, gradesInfo *models.ParamGrades)
 		jsongrades = append(jsongrades, grade)
 	}
 
-	return
-}
-
-func isDegree(degree string) bool {
-	if degree == "是" {
-		return true
-	} else {
-		return false
-	}
-}
-
-func parseWeeks(input string) []int {
-	var weeks []int
-
-	ranges := strings.Split(input, ",")
-	for _, r := range ranges {
-		re := regexp.MustCompile(`(\d+)`)
-		bounds := re.FindAllString(r, -1)
-
-		var start int
-		var end int
-		//有些是1-2周 有些是2周这种 分开看待
-		if len(bounds) > 1 {
-			start, _ = strconv.Atoi(bounds[0])
-			end, _ = strconv.Atoi(bounds[1])
-		} else {
-			start, _ = strconv.Atoi(bounds[0])
-			end = start
-		}
-
-		for i := start; i <= end; i++ {
-			weeks = append(weeks, i)
-		}
-	}
-
-	return weeks
-}
-
-func timeToInt(time string) (section int, sectionCount int) {
-	if len(time) <= 1 {
-		var err error
-		section, err = strconv.Atoi(time)
-		if err != nil {
-			section = 0
-		}
-		sectionCount = 0
-		return
-	}
-
-	sections := strings.Split(time, "-")
-	section, _ = strconv.Atoi(sections[0])
-	lastTime, _ := strconv.Atoi(sections[1])
-	sectionCount = lastTime - section + 1
-
-	//我觉得应该不会有15-16节吧
 	return
 }
