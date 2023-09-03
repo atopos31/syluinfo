@@ -14,7 +14,7 @@ func BintLogin(syluInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 	myRes := restytool.NewMyResty()
 	cookieString, err := myRes.LoginAndGetCookie(syluInfo.StudentID, syluInfo.Password)
 	if err != nil {
-		zap.L().Error("myRes.LoginAndGetCookie err", zap.String("id", syluInfo.StudentID))
+		zap.L().Error("myRes.LoginAndGetCookie err", zap.String("id", syluInfo.StudentID), zap.Error(err))
 		return
 	}
 

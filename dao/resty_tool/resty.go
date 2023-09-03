@@ -4,13 +4,9 @@ import (
 	"cld/models"
 	"cld/pkg/tool"
 	"cld/settings"
-	"crypto/rand"
-	"crypto/rsa"
-	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"math/big"
 	"net/http"
 	"net/url"
 	"regexp"
@@ -90,8 +86,8 @@ func (myRes *Myresty) LoginAndGetCookie(studentID string, password string) (cook
 	if err != nil {
 		return "", err
 	}
-
-	return resCookies[1].String(), nil
+	cookie = resCookies[1].Name + "=" + resCookies[1].Value
+	return
 }
 
 // 获取初始Cookie和CsrfToken
@@ -128,8 +124,8 @@ func (myRes *Myresty) getPublicKey() (publicKey *PublicKey, err error) {
 	if err != nil {
 		return nil, err
 	}
-
-	if err := json.Unmarshal([]byte(getPublicKeyResp.String()), publicKey); err != nil {
+	//对指针取&避免空指针
+	if err := json.Unmarshal([]byte(getPublicKeyResp.String()), &publicKey); err != nil {
 		return nil, err
 	}
 	return
@@ -151,36 +147,6 @@ func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken str
 	} else {
 		return nil, errors.New("账号或密码错误")
 	}
-}
-
-func (myResty *Myresty) RsaByPublicKey(password string, publicKey *PublicKey) (string, error) {
-	modulusBytes, err := base64.StdEncoding.DecodeString(publicKey.Modulus)
-	if err != nil {
-		return "", err
-	}
-
-	exponentBytes, err := base64.StdEncoding.DecodeString(publicKey.Exponent)
-	if err != nil {
-		return "", err
-	}
-
-	// 解析公钥
-	pubKey := &rsa.PublicKey{
-		N: new(big.Int).SetBytes(modulusBytes),
-		E: int(new(big.Int).SetBytes(exponentBytes).Int64()),
-	}
-
-	// 加密密码
-	bypassword := []byte(password)
-	encryptedBytes, err := rsa.EncryptPKCS1v15(rand.Reader, pubKey, bypassword)
-	if err != nil {
-		panic(err)
-	}
-
-	// Base64 编码加密后的密码
-	encryptedPassword := base64.StdEncoding.EncodeToString(encryptedBytes)
-
-	return encryptedPassword, nil
 }
 
 func (myResty *Myresty) GetCourseByCourseInfo(getCourseInfo *models.ParamCourse) (courses *models.ReqCourse, err error) {
