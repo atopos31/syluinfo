@@ -90,6 +90,7 @@ func (myRes *Myresty) LoginAndGetCookie(studentID string, password string) (cook
 	return
 }
 
+// 通过学期信息获取课表
 func (myResty *Myresty) GetCourseByCourseInfo(getCourseInfo *models.ParamCourse) (courses *models.ReqCourse, err error) {
 
 	myResty.SetHostURL(courseUrl)
@@ -142,6 +143,7 @@ func (myResty *Myresty) GetCourseByCourseInfo(getCourseInfo *models.ParamCourse)
 	return
 }
 
+// 通过学期信息获取成绩列表
 func (myResty *Myresty) GetGradesByGradesInfo(gradesInfo *models.ParamGrades) (jsongrades []models.JsonGrades, err error) {
 	myResty.SetHostURL(gradeUrl)
 	defer myResty.GetClient().CloseIdleConnections()

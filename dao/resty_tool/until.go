@@ -41,6 +41,7 @@ func rsaByPublicKey(password string, publicKey *PublicKey) (string, error) {
 	return encryptedPassword, nil
 }
 
+// 判断是否为学位课
 func isDegree(degree string) bool {
 	if degree == "是" {
 		return true
@@ -49,6 +50,7 @@ func isDegree(degree string) bool {
 	}
 }
 
+// 将返回的周数格式化为便于前端渲染的数据
 func parseWeeks(input string) []int {
 	var weeks []int
 
@@ -76,6 +78,7 @@ func parseWeeks(input string) []int {
 	return weeks
 }
 
+// 上课节数格式化
 func timeToInt(time string) (section int, sectionCount int) {
 	if len(time) <= 1 {
 		var err error
