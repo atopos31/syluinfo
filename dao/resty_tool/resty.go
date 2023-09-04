@@ -90,65 +90,6 @@ func (myRes *Myresty) LoginAndGetCookie(studentID string, password string) (cook
 	return
 }
 
-// 获取初始Cookie和CsrfToken
-func (myRes *Myresty) setIndexCookieAndGetCsrfToken() (csrfToken string, err error) {
-	retryLimit := 4
-	retries := 0
-
-	myRes.SetTimeout(3 * time.Second)
-lable:
-	initResp, err := myRes.R().SetHeaders(baseHttpHeaders()).Get(indexUrl + "/login_slogin.html")
-	if err != nil {
-		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() && retries < retryLimit {
-			retries++
-			goto lable
-		}
-		return "", err
-	}
-	myRes.Cookies = initResp.Cookies()
-
-	Findcsrftoken := regexp.MustCompile(`id="csrftoken" name="csrftoken" value="([^"]+)"`)
-	csrfToken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
-
-	return
-}
-
-// 获取公钥
-func (myRes *Myresty) getPublicKey() (publicKey *PublicKey, err error) {
-	nowTime := tool.NowTime()
-	getPublicKeyResp, err := myRes.R().SetHeaders(baseHttpHeaders()).
-		SetQueryParams(map[string]string{
-			"time": nowTime,
-			"_":    nowTime,
-		}).Get(indexUrl + "/login_getPublicKey.html")
-	if err != nil {
-		return nil, err
-	}
-	//对指针取&避免空指针
-	if err := json.Unmarshal([]byte(getPublicKeyResp.String()), &publicKey); err != nil {
-		return nil, err
-	}
-	return
-}
-
-func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken string) (cookies []*http.Cookie, err error) {
-	loginresponse, err := myResty.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
-		"csrftoken": csrfToken,
-		"language":  "zh_CN",
-		"yhm":       studentID,
-		"mm":        enPass,
-	}).SetQueryParam("time", tool.NowTime()).SetHeaders(baseHttpHeaders()).
-		Post(indexUrl + "/login_slogin.html")
-
-	if err != nil && err.Error() == Error302.Error() {
-		return loginresponse.Cookies(), nil
-	} else if err != nil {
-		return nil, errors.New("服务器连接失败:" + err.Error())
-	} else {
-		return nil, errors.New("账号或密码错误")
-	}
-}
-
 func (myResty *Myresty) GetCourseByCourseInfo(getCourseInfo *models.ParamCourse) (courses *models.ReqCourse, err error) {
 
 	myResty.SetHostURL(courseUrl)
@@ -253,4 +194,63 @@ func (myResty *Myresty) GetGradesByGradesInfo(gradesInfo *models.ParamGrades) (j
 	}
 
 	return
+}
+
+// 获取初始Cookie和CsrfToken
+func (myRes *Myresty) setIndexCookieAndGetCsrfToken() (csrfToken string, err error) {
+	retryLimit := 4
+	retries := 0
+
+	myRes.SetTimeout(3 * time.Second)
+lable:
+	initResp, err := myRes.R().SetHeaders(baseHttpHeaders()).Get(indexUrl + "/login_slogin.html")
+	if err != nil {
+		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() && retries < retryLimit {
+			retries++
+			goto lable
+		}
+		return "", err
+	}
+	myRes.Cookies = initResp.Cookies()
+
+	Findcsrftoken := regexp.MustCompile(`id="csrftoken" name="csrftoken" value="([^"]+)"`)
+	csrfToken = Findcsrftoken.FindStringSubmatch(string(initResp.Body()))[1]
+
+	return
+}
+
+// 获取公钥
+func (myRes *Myresty) getPublicKey() (publicKey *PublicKey, err error) {
+	nowTime := tool.NowTime()
+	getPublicKeyResp, err := myRes.R().SetHeaders(baseHttpHeaders()).
+		SetQueryParams(map[string]string{
+			"time": nowTime,
+			"_":    nowTime,
+		}).Get(indexUrl + "/login_getPublicKey.html")
+	if err != nil {
+		return nil, err
+	}
+	//对指针取&避免空指针
+	if err := json.Unmarshal([]byte(getPublicKeyResp.String()), &publicKey); err != nil {
+		return nil, err
+	}
+	return
+}
+
+func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken string) (cookies []*http.Cookie, err error) {
+	loginresponse, err := myResty.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
+		"csrftoken": csrfToken,
+		"language":  "zh_CN",
+		"yhm":       studentID,
+		"mm":        enPass,
+	}).SetQueryParam("time", tool.NowTime()).SetHeaders(baseHttpHeaders()).
+		Post(indexUrl + "/login_slogin.html")
+
+	if err != nil && err.Error() == Error302.Error() {
+		return loginresponse.Cookies(), nil
+	} else if err != nil {
+		return nil, errors.New("服务器连接失败:" + err.Error())
+	} else {
+		return nil, errors.New("账号或密码错误")
+	}
 }
