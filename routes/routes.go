@@ -7,7 +7,6 @@ import (
 	"cld/middlewares"
 	"cld/settings"
 	"fmt"
-	"os"
 
 	"net/http"
 	"strconv"
@@ -15,7 +14,6 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"go.uber.org/zap"
 )
 
 var r *gin.Engine
@@ -32,8 +30,6 @@ func Setup(cfg *settings.AppConfig) {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	//路由组
 	baseapi := r.Group("/api/v1")
-	//日志对外显示接口 dev阶段
-	baseapi.GET("/log", showLog)
 	//关于页面，可选，自行创建对应目录以及md文件
 	baseapi.StaticFile("/about", "./about/about.md")
 	//反馈
@@ -73,13 +69,4 @@ func Setup(cfg *settings.AppConfig) {
 
 func StartServer(p int) {
 	r.Run(fmt.Sprintf(":%s", strconv.Itoa(p)))
-}
-
-func showLog(c *gin.Context) {
-	data, err := os.ReadFile("./web_app.log")
-	if err != nil {
-		zap.L().Error("ioutil.ReadFile Error :", zap.Error(err))
-		c.String(http.StatusOK, "日志加载失败")
-	}
-	c.String(http.StatusOK, string(data))
 }

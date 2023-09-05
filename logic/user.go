@@ -78,6 +78,7 @@ func SignUp(signReq *models.ParamSignUp) (err error) {
 	if err := mysql.CreateUser(userInfo); err != nil {
 		return err
 	}
+
 	//删除验证码防止多次注册！
 	redis.DelCodeByEmail(redis.KeyModeSignUp, signReq.Email)
 

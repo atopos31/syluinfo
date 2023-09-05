@@ -233,14 +233,14 @@ func (myRes *Myresty) getPublicKey() (publicKey *PublicKey, err error) {
 		return nil, err
 	}
 	//对指针取&避免空指针
-	if err := json.Unmarshal([]byte(getPublicKeyResp.String()), &publicKey); err != nil {
+	if err := json.Unmarshal(getPublicKeyResp.Body(), &publicKey); err != nil {
 		return nil, err
 	}
 	return
 }
 
 func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken string) (cookies []*http.Cookie, err error) {
-	loginresponse, err := myResty.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
+	loginResponse, err := myResty.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
 		"csrftoken": csrfToken,
 		"language":  "zh_CN",
 		"yhm":       studentID,
@@ -249,7 +249,7 @@ func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken str
 		Post(indexUrl + "/login_slogin.html")
 
 	if err != nil && err.Error() == Error302.Error() {
-		return loginresponse.Cookies(), nil
+		return loginResponse.Cookies(), nil
 	} else if err != nil {
 		return nil, errors.New("服务器连接失败:" + err.Error())
 	} else {

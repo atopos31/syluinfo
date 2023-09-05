@@ -57,4 +57,6 @@ func DelCodeByEmail(KeyMode, email string) {
 	if err := rdb.Del(ctx, KeyMode+email).Err(); err != nil {
 		zap.L().Error(" rdb.Del(ctx,KeyEmail+email).Err()", zap.Error(err), zap.String("email", email))
 	}
+
+	return
 }
