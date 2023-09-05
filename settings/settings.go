@@ -56,11 +56,15 @@ type RedisConfig struct {
 }
 
 type EmailConfig struct {
-	Host     string `mapstructure:"host"`
-	Port     int    `mapstructure:"port"`
+	Host      string            `mapstructure:"host"`
+	Port      int               `mapstructure:"port"`
+	EmailPass []EmailPassConfig `mapstructure:"email_pass"`
+	Expires   int               `mapstructure:"expires"`
+}
+
+type EmailPassConfig struct {
 	Username string `mapstructure:"username"`
 	Password string `mapstructure:"password"`
-	Expires  int    `mapstructure:"expires"`
 }
 
 type JwtConfig struct {

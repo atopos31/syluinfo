@@ -35,7 +35,7 @@ var codeMsgMap = map[ResCode]string{
 	CodeSuccess:                  "success",
 	CodeInvalidParam:             "请求参数错误",
 	CodeEmailExist:               "邮箱已被注册",
-	CodeEmailNotExist:            "邮箱不存在",
+	CodeEmailNotExist:            "邮箱尚未注册",
 	CodeInvalidPassword:          "邮箱或密码错误",
 	CodeInvalidCaptcha:           "验证码错误",
 	CodeCaptchaNotExistOrTimeOut: "验证码不存在或已过期",

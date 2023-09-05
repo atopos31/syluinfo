@@ -96,6 +96,10 @@ func SendEmailHandler(c *gin.Context) {
 			ResponseError(c, CodeEmailExist)
 			return
 		}
+		if errors.Is(err, logic.ErrorEmailNotExist) {
+			ResponseError(c, CodeEmailNotExist)
+			return
+		}
 		ResponseError(c, CodeServerBusy)
 		return
 	}
