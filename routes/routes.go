@@ -59,6 +59,7 @@ func Setup(cfg *settings.AppConfig) {
 		edu.POST("/grades", controller.GradesHandler)
 		edu.POST("/grade/detaile", controller.GradeDetaileHandler)
 		edu.POST("/gpas", controller.GpaHandler)
+		edu.GET("/cale", controller.CaleHandler)
 	}
 
 	r.GET("/ping", func(c *gin.Context) {

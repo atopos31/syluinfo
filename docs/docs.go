@@ -287,6 +287,50 @@ const docTemplate = `{
                 }
             }
         },
+        "/edu/cale": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sylu相关接口"
+                ],
+                "summary": "获取校历接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "query一个cookie即可，自动推断当前学期",
+                        "name": "cookie",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResSchoolCale"
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
         "/edu/cookie": {
             "get": {
                 "consumes": [
@@ -1068,6 +1112,26 @@ const docTemplate = `{
                 }
             }
         },
+        "models.ResSchoolCale": {
+            "type": "object",
+            "properties": {
+                "endtime": {
+                    "type": "string"
+                },
+                "schoolcale": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.SchoolCale"
+                    }
+                },
+                "starttime": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
         "models.ResSemeSter": {
             "type": "object",
             "properties": {
@@ -1079,6 +1143,23 @@ const docTemplate = `{
                     "items": {
                         "$ref": "#/definitions/models.SemeSterList"
                     }
+                }
+            }
+        },
+        "models.SchoolCale": {
+            "type": "object",
+            "properties": {
+                "endtime": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "starttime": {
+                    "type": "string"
                 }
             }
         },

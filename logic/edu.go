@@ -124,3 +124,8 @@ func GetGpas(bindGpa *models.ParamGpa) (resGpa *models.ResGpa, err error) {
 	col := collytool.NewMyCollector()
 	return col.GetGpas(bindGpa.Cookie)
 }
+
+func GetCale(cookie string) (*models.ResSchoolCale, error) {
+	col := collytool.NewMyCollector()
+	return col.GetSchoolCalendar(cookie)
+}

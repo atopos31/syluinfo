@@ -274,3 +274,25 @@ func GpaHandler(c *gin.Context) {
 
 	ResponseSuccess(c, resGpa)
 }
+
+// 获取校历请求处理函数
+// @Summary 获取校历接口
+// @Tags sylu相关接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string true "Bearer JWT"
+// @Param cookie  query string  true "query一个cookie即可，自动推断当前学期"
+// @Success 1000 {object} models.ResSchoolCale "code=1000,msg="success","
+// @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
+// @Router /edu/cale [get]
+func CaleHandler(c *gin.Context) {
+	cookie := c.Query("cookie")
+	resCale, err := logic.GetCale(cookie)
+	if err != nil {
+		zap.L().Error("GpaHandler logic.GetGpas Error", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+
+	ResponseSuccess(c, resCale)
+}

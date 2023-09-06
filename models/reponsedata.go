@@ -94,3 +94,17 @@ type ResGpa struct {
 	AllGpa    string `json:"allgpa"`
 	DegreeGpa string `json:"degreegpa"`
 }
+
+type ResSchoolCale struct {
+	Title      string       `json:"title"`
+	StartTime  string       `json:"starttime"`
+	EndTime    string       `json:"endtime"`
+	SchoolCale []SchoolCale `json:"schoolcale"`
+}
+
+type SchoolCale struct {
+	ID        string `josn:"id"`
+	Name      string `json:"name"`
+	StartTime string `json:"starttime"`
+	EndTime   string `json:"endtime"`
+}

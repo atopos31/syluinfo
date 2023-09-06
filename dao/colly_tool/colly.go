@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"regexp"
 	"strconv"
+	"strings"
 
 	"github.com/gocolly/colly"
 )
@@ -17,6 +18,7 @@ const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 
 const informationUrl = "https://jxw.sylu.edu.cn/xsxxxggl"
 const gradeUrl = "https://jxw.sylu.edu.cn/cjcx"
 const gpaUrl = "https://jxw.sylu.edu.cn/xsxy"
+const caleUrl = "https://jxw.sylu.edu.cn/xtgl"
 
 type MyCollector struct {
 	*colly.Collector
@@ -149,6 +151,59 @@ func (c *MyCollector) GetGpas(cookies string) (resGpa *models.ResGpa, err error)
 		return nil, errVisit
 	}
 	c.Wait()
+
+	return
+}
+
+func (c *MyCollector) GetSchoolCalendar(cookiestring string) (res *models.ResSchoolCale, err error) {
+	queryParams := url.Values{}
+	queryParams.Add("gnmkdm", "index")
+	queryParams.Add("localeKey", "zh_Cn")
+
+	c.OnRequest(func(r *colly.Request) {
+		r.URL.RawQuery = queryParams.Encode()
+		r.Headers.Set("Cookie", cookiestring)
+		r.Headers.Set("Connection", "close")
+	})
+
+	res = new(models.ResSchoolCale)
+
+	c.OnHTML("#rcStr", func(h *colly.HTMLElement) {
+		value := h.Attr("value")
+		parts := strings.Split(value, "!two!")
+		fmt.Println(parts)
+		for _, v := range parts {
+			if v == "" {
+				break
+			}
+			fields := strings.Split(v, "!one!")
+			caleDate := models.SchoolCale{
+				ID:        fields[0],
+				Name:      fields[1],
+				StartTime: fields[2],
+				EndTime:   fields[3],
+			}
+
+			res.SchoolCale = append(res.SchoolCale, caleDate)
+		}
+	})
+
+	c.OnHTML("thead tr:first-child th[colspan='24']", func(e *colly.HTMLElement) {
+		text := e.Text
+
+		parts := strings.Split(text, "(")
+		term := parts[0]
+
+		dateParts := strings.Split(parts[1], "至")
+		startDate := dateParts[0]
+		endDate := strings.TrimRight(dateParts[1], ")")
+
+		res.Title = term
+		res.StartTime = startDate
+		res.EndTime = endDate
+	})
+
+	c.Visit(caleUrl + "/index_cxAreaSix.html")
 
 	return
 }
