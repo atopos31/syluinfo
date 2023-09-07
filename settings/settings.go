@@ -105,7 +105,7 @@ type ResourceConfig struct {
 
 func Init() (err error) {
 	//设置配置文件路径
-	viper.SetConfigFile("./conf/dev_config.yaml")
+	viper.SetConfigFile("./conf/config.yaml")
 
 	//读取配置文件
 	if err := viper.ReadInConfig(); err != nil {
