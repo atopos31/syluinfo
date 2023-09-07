@@ -770,6 +770,9 @@ const docTemplate = `{
                 "teacher": {
                     "type": "string"
                 },
+                "teachingClasses": {
+                    "type": "string"
+                },
                 "weekday": {
                     "type": "integer"
                 },

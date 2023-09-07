@@ -171,7 +171,6 @@ func (c *MyCollector) GetSchoolCalendar(cookiestring string) (res *models.ResSch
 	c.OnHTML("#rcStr", func(h *colly.HTMLElement) {
 		value := h.Attr("value")
 		parts := strings.Split(value, "!two!")
-		fmt.Println(parts)
 		for _, v := range parts {
 			if v == "" {
 				break

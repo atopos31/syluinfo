@@ -129,6 +129,7 @@ func (myResty *Myresty) GetCourseByCourseInfo(getCourseInfo *models.ParamCourse)
 	var course models.JsonCourse
 	for _, v := range schedule.KbList {
 		course.Name = v.Name
+		course.TeachingClasses = v.TeachingClasses
 		course.Teacher = v.Teacher
 		course.Location = v.Location
 		course.Category = v.Category
@@ -200,6 +201,7 @@ func (myResty *Myresty) GetGradesByGradesInfo(gradesInfo *models.ParamGrades) (j
 
 // 获取初始Cookie和CsrfToken
 func (myRes *Myresty) setIndexCookieAndGetCsrfToken() (csrfToken string, err error) {
+	//这里我为什么要多次循环呢，因为教务会抽风，保障接口一次通，所以加入循环
 	retryLimit := 4
 	retries := 0
 
