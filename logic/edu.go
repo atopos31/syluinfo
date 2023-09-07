@@ -3,6 +3,7 @@ package logic
 import (
 	collytool "cld/dao/colly_tool"
 	"cld/dao/mysql"
+	"cld/dao/redis"
 	restytool "cld/dao/resty_tool"
 	"cld/models"
 
@@ -114,9 +115,19 @@ func GetGrades(gradesInfo *models.ParamGrades) (resGrades *models.ResGrades, err
 }
 
 // 根据课程id获取成绩详情
-func GetGradeDetail(gradeDetailInfo *models.ParamGradeDetaile) (resGradeDetail []*models.ResGradeDetail, err error) {
+func GetGradeDetail(uuid int64, gradeDetailInfo *models.ParamGradeDetaile) (resGradeDetail []*models.ResGradeDetail, err error) {
+	resGradeDetail, err = redis.GetGradeDetail(uuid, gradeDetailInfo.ClassID)
+	if err == nil {
+		return
+	}
+
 	col := collytool.NewMyCollector()
-	return col.GetGradeDetail(gradeDetailInfo)
+	resGradeDetail, err = col.GetGradeDetail(gradeDetailInfo)
+
+	if err := redis.SetGradeDetail(uuid, gradeDetailInfo.ClassID, resGradeDetail); err != nil {
+		zap.L().Error("redis.SetGradeDetail", zap.Error(err))
+	}
+	return
 }
 
 // 获取全部课程平均绩点和学位课平均绩点
@@ -125,6 +136,7 @@ func GetGpas(bindGpa *models.ParamGpa) (resGpa *models.ResGpa, err error) {
 	return col.GetGpas(bindGpa.Cookie)
 }
 
+// 获取校历
 func GetCale(cookie string) (*models.ResSchoolCale, error) {
 	col := collytool.NewMyCollector()
 	return col.GetSchoolCalendar(cookie)

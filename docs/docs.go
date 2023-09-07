@@ -309,7 +309,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "query一个cookie即可，自动推断当前学期",
+                        "description": "query一个cookie即可",
                         "name": "cookie",
                         "in": "query",
                         "required": true

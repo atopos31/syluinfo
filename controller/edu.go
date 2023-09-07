@@ -228,8 +228,13 @@ func GradeDetaileHandler(c *gin.Context) {
 		ResponseBindError(c, err)
 		return
 	}
+	userID, err := getCurrentUser(c)
+	if err != nil {
+		ResponseError(c, CodeNeedLogin)
+		return
+	}
 
-	gradeDetail, err := logic.GetGradeDetail(bindGradeDetail)
+	gradeDetail, err := logic.GetGradeDetail(userID, bindGradeDetail)
 	if err != nil {
 		zap.L().Error("GradeDetaileHandler logic.GetGradeDetail Error", zap.Error(err))
 		if errors.Is(err, resty_tool.ErrorLapse) {
@@ -281,7 +286,7 @@ func GpaHandler(c *gin.Context) {
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
-// @Param cookie  query string  true "query一个cookie即可，自动推断当前学期"
+// @Param cookie  query string  true "query一个cookie即可"
 // @Success 1000 {object} models.ResSchoolCale "code=1000,msg="success","
 // @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
 // @Router /edu/cale [get]
