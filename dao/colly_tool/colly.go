@@ -205,5 +205,9 @@ func (c *MyCollector) GetSchoolCalendar(cookiestring string) (res *models.ResSch
 
 	c.Visit(caleUrl + "/index_cxAreaSix.html")
 
+	if res.SchoolCale == nil {
+		return nil, resty_tool.ErrorLapse
+	}
+
 	return
 }

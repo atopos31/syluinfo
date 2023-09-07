@@ -290,6 +290,10 @@ func CaleHandler(c *gin.Context) {
 	resCale, err := logic.GetCale(cookie)
 	if err != nil {
 		zap.L().Error("GpaHandler logic.GetGpas Error", zap.Error(err))
+		if errors.Is(err, resty_tool.ErrorLapse) {
+			ResponseError(c, CodeInvalidCookie)
+			return
+		}
 		ResponseError(c, CodeServerBusy)
 		return
 	}
