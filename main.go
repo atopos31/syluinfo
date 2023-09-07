@@ -49,21 +49,21 @@ func main() {
 	}
 	defer redis.Close()
 
-	//雪花算法初始化
+	//5.雪花算法初始化
 	if err := snowflake.Init(settings.Conf.Snowflake.StartTime, settings.Conf.Snowflake.MachineID); err != nil {
 		fmt.Println("snowflake redis failed, err :" + err.Error())
 		return
 	}
 
-	//COS初始化
+	//6.COS初始化
 	if err := cos.Init(&settings.Conf.Cos); err != nil {
 		fmt.Println("cos init err:" + err.Error())
 		return
 	}
 
-	//5.注册路由
+	//7.注册路由
 	routes.Setup(&settings.Conf.App)
 
-	//6.启动服务
+	//8.启动服务
 	routes.StartServer(settings.Conf.App.Port)
 }

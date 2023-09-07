@@ -30,6 +30,8 @@ func Setup(cfg *settings.AppConfig) {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	//路由组
 	baseapi := r.Group("/api/v1")
+	//接口限流
+	baseapi.Use(middlewares.RateLimitMiddleware(0.1, 300))
 	//关于页面，可选，自行创建对应目录以及md文件
 	baseapi.StaticFile("/about", "./about/about.md")
 	//反馈
@@ -37,12 +39,13 @@ func Setup(cfg *settings.AppConfig) {
 	//auth相关
 	authen := baseapi.Group("/auth")
 	{
+		//账号相关路由
 		authen.POST("/login", controller.LoginHandler)
 		authen.POST("/signup", controller.SignUpHandler)
 		authen.GET("/sendemail", controller.SendEmailHandler)
 		authen.POST("/resetpass", middlewares.JWTAuthMiddleware(), controller.ReSetPassHandler)
 		authen.POST("/recoverpass", controller.ReCoverPassHandler)
-
+		//COS密钥
 		authen.GET("/coskey", middlewares.JWTAuthMiddleware(), controller.GetCosKeyHandler)
 	}
 	//edu相关
@@ -50,6 +53,7 @@ func Setup(cfg *settings.AppConfig) {
 	//加入token中间件验证
 	edu.Use(middlewares.JWTAuthMiddleware())
 	{
+		//教务系统相关路由
 		edu.GET("/cookie", controller.CookieHandler)
 		edu.GET("/semester", controller.SemesterHandler)
 
@@ -62,7 +66,7 @@ func Setup(cfg *settings.AppConfig) {
 		edu.GET("/cale", controller.CaleHandler)
 	}
 
-	r.GET("/ping", func(c *gin.Context) {
+	baseapi.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, cfg.Name)
 	})
 
