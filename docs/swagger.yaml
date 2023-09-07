@@ -1,4 +1,4 @@
-basePath: /api/v1
+basePath: /dev/api/v1
 definitions:
   controller._ResponseLoginData:
     properties:
@@ -66,6 +66,8 @@ definitions:
       sectionCount:
         type: integer
       teacher:
+        type: string
+      teachingClasses:
         type: string
       weekday:
         type: integer
@@ -302,6 +304,19 @@ definitions:
       weight:
         type: string
     type: object
+  models.ResSchoolCale:
+    properties:
+      endtime:
+        type: string
+      schoolcale:
+        items:
+          $ref: '#/definitions/models.SchoolCale'
+        type: array
+      starttime:
+        type: string
+      title:
+        type: string
+    type: object
   models.ResSemeSter:
     properties:
       index:
@@ -310,6 +325,17 @@ definitions:
         items:
           $ref: '#/definitions/models.SemeSterList'
         type: array
+    type: object
+  models.SchoolCale:
+    properties:
+      endtime:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      starttime:
+        type: string
     type: object
   models.SemeSterList:
     properties:
@@ -499,6 +525,35 @@ paths:
           schema:
             $ref: '#/definitions/controller.ResponseData'
       summary: 绑定接口
+      tags:
+      - sylu相关接口
+  /edu/cale:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bearer JWT
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: query一个cookie即可
+        in: query
+        name: cookie
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",
+          schema:
+            $ref: '#/definitions/models.ResSchoolCale'
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 获取校历接口
       tags:
       - sylu相关接口
   /edu/cookie:

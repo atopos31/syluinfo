@@ -5,8 +5,8 @@ import (
 	"cld/dao/mysql"
 	"cld/dao/redis"
 	"cld/models"
+	"cld/pkg/emailsm"
 	"cld/pkg/jwt"
-	"cld/pkg/sendemail"
 	"cld/pkg/snowflake"
 	"cld/settings"
 	"errors"
@@ -78,6 +78,7 @@ func SignUp(signReq *models.ParamSignUp) (err error) {
 	if err := mysql.CreateUser(userInfo); err != nil {
 		return err
 	}
+
 	//删除验证码防止多次注册！
 	redis.DelCodeByEmail(redis.KeyModeSignUp, signReq.Email)
 
@@ -108,10 +109,10 @@ func SignUpSendEmail(email string) (err error) {
 	if err := redis.ExitCodeTimeOut(redis.KeyModeSignUp, email); err != nil {
 		return err
 	}
-	//获取6位随机验证码
-	code := sendemail.GetCode()
-	//发送验证码
-	if err := sendemail.SendEmail(TitleSign, email, code); err != nil {
+
+	emailDia := emailsm.NewEmailDialer()
+	code, err := emailDia.SendEmail(TitleSign, email)
+	if err != nil {
 		return err
 	}
 	//设置超时和检验缓存
@@ -137,10 +138,9 @@ func RecoverSendEmail(email string) (err error) {
 		return err
 	}
 
-	//获取6位随机验证码
-	code := sendemail.GetCode()
-	//发送验证码
-	if err := sendemail.SendEmail(TitleRecoverPassword, email, code); err != nil {
+	emailDia := emailsm.NewEmailDialer()
+	code, err := emailDia.SendEmail(TitleRecoverPassword, email)
+	if err != nil {
 		return err
 	}
 	//设置超时和检验缓存

@@ -7,7 +7,6 @@ import (
 	"cld/middlewares"
 	"cld/settings"
 	"fmt"
-	"os"
 
 	"net/http"
 	"strconv"
@@ -15,25 +14,29 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"go.uber.org/zap"
 )
 
 var r *gin.Engine
 
 func Setup(cfg *settings.AppConfig) {
-	r = gin.Default()
+	if cfg.Mode == "dev" {
+		r = gin.Default()
+		//接口文档UI
+		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	} else {
+		r = gin.New()
+	}
 	//翻译器初始化
 	controller.InitTrans("zh")
 	//跨域
 	r.Use(middlewares.AllAlowCors())
 	//日志写入中间件
 	r.Use(logger.GinLogger(), logger.GinRecovery(false))
-	//接口文档UI
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+
 	//路由组
 	baseapi := r.Group("/api/v1")
-	//日志对外显示接口 dev阶段
-	baseapi.GET("/log", showLog)
+	//接口限流
+	baseapi.Use(middlewares.RateLimitMiddleware(0.1, 300))
 	//关于页面，可选，自行创建对应目录以及md文件
 	baseapi.StaticFile("/about", "./about/about.md")
 	//反馈
@@ -41,12 +44,13 @@ func Setup(cfg *settings.AppConfig) {
 	//auth相关
 	authen := baseapi.Group("/auth")
 	{
+		//账号相关路由
 		authen.POST("/login", controller.LoginHandler)
 		authen.POST("/signup", controller.SignUpHandler)
 		authen.GET("/sendemail", controller.SendEmailHandler)
 		authen.POST("/resetpass", middlewares.JWTAuthMiddleware(), controller.ReSetPassHandler)
 		authen.POST("/recoverpass", controller.ReCoverPassHandler)
-
+		//COS密钥
 		authen.GET("/coskey", middlewares.JWTAuthMiddleware(), controller.GetCosKeyHandler)
 	}
 	//edu相关
@@ -54,6 +58,7 @@ func Setup(cfg *settings.AppConfig) {
 	//加入token中间件验证
 	edu.Use(middlewares.JWTAuthMiddleware())
 	{
+		//教务系统相关路由
 		edu.GET("/cookie", controller.CookieHandler)
 		edu.GET("/semester", controller.SemesterHandler)
 
@@ -63,9 +68,10 @@ func Setup(cfg *settings.AppConfig) {
 		edu.POST("/grades", controller.GradesHandler)
 		edu.POST("/grade/detaile", controller.GradeDetaileHandler)
 		edu.POST("/gpas", controller.GpaHandler)
+		edu.GET("/cale", controller.CaleHandler)
 	}
 
-	r.GET("/ping", func(c *gin.Context) {
+	baseapi.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, cfg.Name)
 	})
 
@@ -73,13 +79,4 @@ func Setup(cfg *settings.AppConfig) {
 
 func StartServer(p int) {
 	r.Run(fmt.Sprintf(":%s", strconv.Itoa(p)))
-}
-
-func showLog(c *gin.Context) {
-	data, err := os.ReadFile("./web_app.log")
-	if err != nil {
-		zap.L().Error("ioutil.ReadFile Error :", zap.Error(err))
-		c.String(http.StatusOK, "日志加载失败")
-	}
-	c.String(http.StatusOK, string(data))
 }

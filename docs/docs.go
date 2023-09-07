@@ -287,6 +287,50 @@ const docTemplate = `{
                 }
             }
         },
+        "/edu/cale": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sylu相关接口"
+                ],
+                "summary": "获取校历接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer JWT",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "query一个cookie即可",
+                        "name": "cookie",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResSchoolCale"
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
         "/edu/cookie": {
             "get": {
                 "consumes": [
@@ -726,6 +770,9 @@ const docTemplate = `{
                 "teacher": {
                     "type": "string"
                 },
+                "teachingClasses": {
+                    "type": "string"
+                },
                 "weekday": {
                     "type": "integer"
                 },
@@ -1068,6 +1115,26 @@ const docTemplate = `{
                 }
             }
         },
+        "models.ResSchoolCale": {
+            "type": "object",
+            "properties": {
+                "endtime": {
+                    "type": "string"
+                },
+                "schoolcale": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.SchoolCale"
+                    }
+                },
+                "starttime": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
         "models.ResSemeSter": {
             "type": "object",
             "properties": {
@@ -1079,6 +1146,23 @@ const docTemplate = `{
                     "items": {
                         "$ref": "#/definitions/models.SemeSterList"
                     }
+                }
+            }
+        },
+        "models.SchoolCale": {
+            "type": "object",
+            "properties": {
+                "endtime": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "starttime": {
+                    "type": "string"
                 }
             }
         },
@@ -1103,7 +1187,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.1",
 	Host:             "",
-	BasePath:         "/api/v1",
+	BasePath:         "/dev/api/v1",
 	Schemes:          []string{},
 	Title:            "sylu项目接口文档",
 	Description:      "致力于为同学们提供校园服务(忽略状态码，所有响应都是200)",

@@ -54,9 +54,8 @@ func CheckEmailExist(email string) (bool, error) {
 
 func GetSyluInfoByUUID(uuid int64) (resyluInfo *models.ReqSyluInfo, err error) {
 	syluInfo := new(models.SyluUser)
-	err = db.Model(&models.SyluUser{}).
-		Where("uuid = ?", uuid).
-		First(&syluInfo).Error
+	err = db.Model(&models.SyluUser{}).Where("uuid = ?", uuid).First(&syluInfo).Error
+
 	//教务信息不存在，未绑定，不返回错误
 	if err == gorm.ErrRecordNotFound {
 		return nil, nil

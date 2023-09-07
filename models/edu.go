@@ -28,15 +28,16 @@ type Schedule struct {
 }
 
 type Course struct {
-	Category string `json:"kcxz"`
-	Method   string `json:"khfsmc"`
-	Name     string `json:"kcmc"`
-	Teacher  string `json:"xm"`
-	ID       string `json:"kch_id"`
-	Location string `json:"cdmc"`
-	Time     string `json:"jcor"`
-	WeekDay  string `json:"xqj"`
-	WeekS    string `json:"zcd"`
+	Category        string `json:"kcxz"`
+	Method          string `json:"khfsmc"`
+	Name            string `json:"kcmc"`
+	TeachingClasses string `json:"jxbzc"`
+	Teacher         string `json:"xm"`
+	ID              string `json:"kch_id"`
+	Location        string `json:"cdmc"`
+	Time            string `json:"jcor"`
+	WeekDay         string `json:"xqj"`
+	WeekS           string `json:"zcd"`
 }
 
 type DayOff struct {

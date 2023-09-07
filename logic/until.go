@@ -9,6 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// 获取当前学期
 func GetNowSem() (semyear, sem int) {
 	now := time.Now()
 	month := now.Month()
@@ -26,6 +27,7 @@ func GetNowSem() (semyear, sem int) {
 	return
 }
 
+// 获取学期列表
 func getSemeList(id string) ([]*models.SemeSterList, error) {
 	firstTwo := id[:2]
 	indexYear := "20" + firstTwo
@@ -56,6 +58,7 @@ func getSemeList(id string) ([]*models.SemeSterList, error) {
 
 }
 
+// 获取当前时间为第几个学期
 func getIndesSeme(id string) (int, error) {
 	now := time.Now()
 	firstTwo := id[:2]
@@ -81,6 +84,7 @@ func getIndesSeme(id string) (int, error) {
 	return ((yearFormated-num)*2 + semenum) - 1, nil
 }
 
+// 获取学年字符串
 func getYear(year int) string {
 	start := strconv.Itoa(year)
 	end := strconv.Itoa(year + 1)
@@ -88,6 +92,7 @@ func getYear(year int) string {
 	return fmt.Sprintf("%s-%s学年", start, end)
 }
 
+// 获取学期字符串
 func getSemester(mounth int) string {
 	if mounth == 3 {
 		return "第一学期"

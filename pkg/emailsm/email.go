@@ -1,13 +1,12 @@
-package sendemail
+package emailsm
 
 import (
 	"cld/settings"
 	"errors"
 	"fmt"
-	"math/rand"
-	"strconv"
 	"time"
 
+	"go.uber.org/zap"
 	"gopkg.in/gomail.v2"
 )
 
@@ -15,34 +14,45 @@ var (
 	ErrorSendFalied = errors.New("验证码发送失败！")
 )
 
-// 随机验证码生成
-func GetCode() string {
-	rand.Seed(time.Now().UnixNano())
-	code := rand.Intn(899999) + 100000
-	res := strconv.Itoa(code) //转字符串返回
-	return res
+type myEmailDia struct {
+	address string
+	*gomail.Dialer
+}
+
+func NewEmailDialer() *myEmailDia {
+	cfg := settings.Conf.Email
+	max := len(cfg.EmailPass)
+	index := randomInt(max)
+
+	dialer := gomail.NewDialer(
+		cfg.Host,
+		cfg.Port,
+		cfg.EmailPass[index].Username,
+		cfg.EmailPass[index].Password,
+	)
+
+	return &myEmailDia{
+		address: cfg.EmailPass[index].Username,
+		Dialer:  dialer,
+	}
 }
 
 // 发送验证码
-func SendEmail(mode string, email string, code string) (err error) {
+func (myED *myEmailDia) SendEmail(mode string, email string) (code string, err error) {
 	m := gomail.NewMessage()
-	m.SetAddressHeader("From", settings.Conf.Email.Username, "hackerxiao")
+	m.SetAddressHeader("From", myED.address, "hackerxiao")
 	m.SetHeader("To", email)
 	m.SetHeader("Subject", "[微沈理]"+mode)
+
+	code = getCode()
 	m.SetBody("text/html", getBody(email, code))
 
-	config := gomail.NewDialer(
-		settings.Conf.Email.Host,
-		settings.Conf.Email.Port,
-		settings.Conf.Email.Username,
-		settings.Conf.Email.Password,
-	)
-
-	if err := config.DialAndSend(m); err != nil {
-		return ErrorSendFalied
+	if err := myED.DialAndSend(m); err != nil {
+		zap.L().Error("emailDia.SendEmail(TitleSign, email)", zap.Error(err))
+		return "", ErrorSendFalied
 	}
 
-	return
+	return code, nil
 }
 
 // 获取邮件主体

@@ -1,4 +1,5 @@
 web_app.log
+dev_web_app.log
 nginx.conf
 .vscode
 restest
@@ -11,5 +12,3 @@ conf/dev_config.yaml
 about/
 nohup.out
 main
-dev_web_app.log
-shell
