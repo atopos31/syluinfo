@@ -125,7 +125,7 @@ func GetGradeDetail(uuid int64, gradeDetailInfo *models.ParamGradeDetaile) (resG
 	resGradeDetail, err = col.GetGradeDetail(gradeDetailInfo)
 
 	if err := redis.SetGradeDetail(uuid, gradeDetailInfo.ClassID, resGradeDetail); err != nil {
-		zap.L().Error("redis.SetGradeDetail", zap.Error(err))
+		zap.L().Error("redis.SetGradeDetail Error:", zap.Error(err))
 	}
 	return
 }

@@ -31,6 +31,7 @@ var (
 	ErrorLapse        = errors.New("Cookie已失效！")
 	ErrorCourseNoOpen = errors.New("当前学期课表暂未开放！")
 	ErrorGradesNoOpen = errors.New("当前学期暂无成绩！")
+	ErrorPass         = errors.New("账号或密码错误")
 )
 
 type Myresty struct {
@@ -71,21 +72,22 @@ func (myRes *Myresty) LoginAndGetCookie(studentID string, password string) (cook
 	if err != nil {
 		return "", err
 	}
-
+	//获取公钥
 	publicKey, err := myRes.getPublicKey()
 	if err != nil {
 		return "", err
 	}
-
+	//加密密码
 	enPass, err := rsaByPublicKey(password, publicKey)
 	if err != nil {
 		return "", err
 	}
-
+	//尝试登录
 	resCookies, err := myRes.syluLogin(studentID, enPass, csrfToken)
 	if err != nil {
 		return "", err
 	}
+	//返回前端Cookie
 	cookie = resCookies[1].Name + "=" + resCookies[1].Value
 	return
 }
@@ -209,6 +211,7 @@ func (myRes *Myresty) setIndexCookieAndGetCsrfToken() (csrfToken string, err err
 lable:
 	initResp, err := myRes.R().SetHeaders(baseHttpHeaders()).Get(indexUrl + "/login_slogin.html")
 	if err != nil {
+		//超时就重试
 		if urlErr, ok := err.(*url.Error); ok && urlErr.Timeout() && retries < retryLimit {
 			retries++
 			goto lable
@@ -241,6 +244,7 @@ func (myRes *Myresty) getPublicKey() (publicKey *PublicKey, err error) {
 	return
 }
 
+// 尝试登录
 func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken string) (cookies []*http.Cookie, err error) {
 	loginResponse, err := myResty.SetRedirectPolicy(resty.NoRedirectPolicy()).R().SetFormData(map[string]string{
 		"csrftoken": csrfToken,
@@ -249,12 +253,12 @@ func (myResty *Myresty) syluLogin(studentID string, enPass string, csrfToken str
 		"mm":        enPass,
 	}).SetQueryParam("time", tool.NowTime()).SetHeaders(baseHttpHeaders()).
 		Post(indexUrl + "/login_slogin.html")
-
+	//登陆成功会302重定向
 	if err != nil && err.Error() == Error302.Error() {
 		return loginResponse.Cookies(), nil
 	} else if err != nil {
 		return nil, errors.New("服务器连接失败:" + err.Error())
 	} else {
-		return nil, errors.New("账号或密码错误")
+		return nil, ErrorPass
 	}
 }

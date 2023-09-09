@@ -20,6 +20,7 @@ var r *gin.Engine
 
 func Setup(cfg *settings.AppConfig) {
 	if cfg.Mode == "dev" {
+		gin.SetMode(gin.DebugMode)
 		r = gin.Default()
 		//接口文档UI
 		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
@@ -32,7 +33,6 @@ func Setup(cfg *settings.AppConfig) {
 	r.Use(middlewares.AllAlowCors())
 	//日志写入中间件
 	r.Use(logger.GinLogger(), logger.GinRecovery(false))
-
 	//路由组
 	baseapi := r.Group("/api/v1")
 	//接口限流
