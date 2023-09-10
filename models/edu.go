@@ -157,3 +157,32 @@ type Items struct {
 	ZyhID              string     `json:"zyh_id"`
 	Zymc               string     `json:"zymc"`
 }
+
+type Innovation struct {
+	CurrentPage   int               `json:"currentPage"`
+	CurrentResult int               `json:"currentResult"`
+	EntityOrField bool              `json:"entityOrField"`
+	Items         []InnovationItems `json:"items"`
+	Limit         int               `json:"limit"`
+	Offset        int               `json:"offset"`
+	PageNo        int               `json:"pageNo"`
+	PageSize      int               `json:"pageSize"`
+	ShowCount     int               `json:"showCount"`
+	SortName      string            `json:"sortName"`
+	SortOrder     string            `json:"sortOrder"`
+	Sorts         []any             `json:"sorts"`
+	TotalCount    int               `json:"totalCount"`
+	TotalPage     int               `json:"totalPage"`
+	TotalResult   int               `json:"totalResult"`
+}
+type InnovationItems struct {
+	Hdfz        float64 `json:"hdfz"`
+	XhID        string  `json:"xh_id"`
+	Sjyxfz      float64 `json:"sjyxfz"`
+	Zgfzyq      string  `json:"zgfzyq"`
+	Thfzcz      string  `json:"thfzcz"`
+	Cj          string  `json:"cj"`
+	Xmlbmc      string  `json:"xmlbmc"`
+	RowID       int     `json:"row_id"`
+	Totalresult int     `json:"totalresult"`
+}

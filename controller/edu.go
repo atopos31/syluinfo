@@ -305,3 +305,36 @@ func CaleHandler(c *gin.Context) {
 
 	ResponseSuccess(c, resCale)
 }
+
+func InnovationHandler(c *gin.Context) {
+	cookie := c.Query("cookie")
+	resInva, err := logic.GetInva(cookie)
+	if err != nil {
+		zap.L().Error("InnovationHandler logic.GetInva Error", zap.Error(err))
+		if errors.Is(err, resty_tool.ErrorLapse) {
+			ResponseError(c, CodeInvalidCookie)
+			return
+		}
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+
+	ResponseSuccess(c, resInva)
+}
+
+func InnovationDetailHandler(c *gin.Context) {
+	cookie := c.Query("cookie")
+	name := c.Query("name")
+	resInvaDetail, err := logic.GetInvaDetail(cookie, name)
+	if err != nil {
+		zap.L().Error("InnovationDetailHandler logic.GetInvaDetail Error", zap.Error(err))
+		if errors.Is(err, resty_tool.ErrorLapse) {
+			ResponseError(c, CodeInvalidCookie)
+			return
+		}
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+
+	ResponseSuccess(c, resInvaDetail)
+}

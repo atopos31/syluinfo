@@ -20,6 +20,7 @@ import (
 const indexUrl = "https://jxw.sylu.edu.cn/xtgl"
 const courseUrl = "https://jxw.sylu.edu.cn/kbcx"
 const gradeUrl = "https://jxw.sylu.edu.cn/cjcx"
+const invaUrl = "https://jxw.sylu.edu.cn/xmfzgl"
 
 type PublicKey struct {
 	Modulus  string `json:"modulus"`
@@ -31,6 +32,7 @@ var (
 	ErrorLapse        = errors.New("Cookie已失效！")
 	ErrorCourseNoOpen = errors.New("当前学期课表暂未开放！")
 	ErrorGradesNoOpen = errors.New("当前学期暂无成绩！")
+	ErrorInvation     = errors.New("暂无创新创业学分！")
 	ErrorPass         = errors.New("账号或密码错误")
 )
 
@@ -174,8 +176,6 @@ func (myResty *Myresty) GetGradesByGradesInfo(gradesInfo *models.ParamGrades) (j
 		return nil, ErrorLapse
 	}
 
-	jsongrades = make([]models.JsonGrades, 0)
-
 	Grades := new(models.Grades)
 	json.Unmarshal([]byte(response.String()), Grades)
 
@@ -183,6 +183,7 @@ func (myResty *Myresty) GetGradesByGradesInfo(gradesInfo *models.ParamGrades) (j
 		return nil, ErrorGradesNoOpen
 	}
 
+	jsongrades = make([]models.JsonGrades, 0)
 	var grade models.JsonGrades
 	for _, v := range Grades.Items {
 		grade.Name = v.Kcmc
@@ -196,6 +197,43 @@ func (myResty *Myresty) GetGradesByGradesInfo(gradesInfo *models.ParamGrades) (j
 		grade.Fraction, _ = strconv.ParseFloat(v.Bfzcj, 64)
 		grade.Grade = v.Cj
 		jsongrades = append(jsongrades, grade)
+	}
+
+	return
+}
+
+func (myResty *Myresty) GetInva(cookie string) (jsonInvas []models.ResInva, err error) {
+	myResty.SetHostURL(invaUrl)
+	defer myResty.GetClient().CloseIdleConnections()
+	querData := map[string]string{
+		"doType": "query",
+		"gnmkdm": "N4780",
+	}
+
+	response, err := myResty.R().SetQueryParams(querData).
+		SetHeader("Cookie", cookie).
+		Post("xshdfzcx_cxXshdfzcxIndex.html")
+
+	if err != nil {
+		return nil, err
+	}
+	if strings.Contains(string(response.Header().Get("Content-Type")), "text/html") {
+		return nil, ErrorLapse
+	}
+
+	invas := new(models.Innovation)
+	json.Unmarshal([]byte(response.String()), invas)
+
+	if len(invas.Items) < 1 {
+		return nil, ErrorInvation
+	}
+
+	jsonInvas = make([]models.ResInva, 0)
+	var inva models.ResInva
+	for _, v := range invas.Items {
+		inva.Name = v.Xmlbmc
+		inva.Grade = v.Sjyxfz
+		jsonInvas = append(jsonInvas, inva)
 	}
 
 	return

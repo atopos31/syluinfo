@@ -109,3 +109,8 @@ type SchoolCale struct {
 	StartTime string `json:"starttime"`
 	EndTime   string `json:"endtime"`
 }
+
+type ResInva struct {
+	Name  string  `json:"name"`
+	Grade float64 `json:"grade"`
+}

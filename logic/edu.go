@@ -141,3 +141,12 @@ func GetCale(cookie string) (*models.ResSchoolCale, error) {
 	col := collytool.NewMyCollector()
 	return col.GetSchoolCalendar(cookie)
 }
+
+func GetInva(cookie string) (resInva []models.ResInva, err error) {
+	myRes := restytool.NewMyResty()
+	return myRes.GetInva(cookie)
+}
+
+func GetInvaDetail(cookie string, name string) (resInva []models.ResInva, err error) {
+	return
+}
