@@ -186,3 +186,37 @@ type InnovationItems struct {
 	RowID       int     `json:"row_id"`
 	Totalresult int     `json:"totalresult"`
 }
+
+type InnovationDetail struct {
+	CurrentPage   int                     `json:"currentPage"`
+	CurrentResult int                     `json:"currentResult"`
+	EntityOrField bool                    `json:"entityOrField"`
+	Items         []InnovationDetailItems `json:"items"`
+	Limit         int                     `json:"limit"`
+	Offset        int                     `json:"offset"`
+	PageNo        int                     `json:"pageNo"`
+	PageSize      int                     `json:"pageSize"`
+	ShowCount     int                     `json:"showCount"`
+	SortName      string                  `json:"sortName"`
+	SortOrder     string                  `json:"sortOrder"`
+	Sorts         []any                   `json:"sorts"`
+	TotalCount    int                     `json:"totalCount"`
+	TotalPage     int                     `json:"totalPage"`
+	TotalResult   int                     `json:"totalResult"`
+}
+type InnovationDetailItems struct {
+	Sbxmmc      string `json:"sbxmmc"`
+	XmbmqkID    string `json:"xmbmqk_id"`
+	XhID        string `json:"xh_id"`
+	Xmnr        string `json:"xmnr"`
+	Xmflmc      string `json:"xmflmc"`
+	Qrfzsj      string `json:"qrfzsj"`
+	XmfzxssqID  string `json:"xmfzxssq_id"`
+	Yxfz        string `json:"yxfz"`
+	Xmlxmc      string `json:"xmlxmc"`
+	Xm          string `json:"xm"`
+	Sbfz        string `json:"sbfz"`
+	Xmlbmc      string `json:"xmlbmc"`
+	RowID       int    `json:"row_id"`
+	Totalresult int    `json:"totalresult"`
+}

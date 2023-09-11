@@ -239,6 +239,48 @@ func (myResty *Myresty) GetInva(cookie string) (jsonInvas []models.ResInva, err 
 	return
 }
 
+func (myResty *Myresty) GetInvaDetail(cookie string, name string) (resInvaDetails []models.ResInvaDetail, err error) {
+	myResty.SetHostURL(invaUrl)
+	defer myResty.GetClient().CloseIdleConnections()
+	querData := map[string]string{
+		"doType": "query",
+		"gnmkdm": "N4780",
+	}
+	formdata := map[string]string{
+		"xmlbmc": name,
+	}
+
+	response, err := myResty.R().SetQueryParams(querData).
+		SetFormData(formdata).
+		SetHeader("Cookie", cookie).
+		Post("xshdfzcx_cxXmfzqr.html")
+
+	if err != nil {
+		return nil, err
+	}
+	if strings.Contains(string(response.Header().Get("Content-Type")), "text/html") {
+		return nil, ErrorLapse
+	}
+
+	invaDetails := new(models.InnovationDetail)
+	json.Unmarshal([]byte(response.String()), invaDetails)
+
+	if len(invaDetails.Items) < 1 {
+		return nil, ErrorInvation
+	}
+
+	resInvaDetails = make([]models.ResInvaDetail, 0)
+	var invaDetail models.ResInvaDetail
+	for _, v := range invaDetails.Items {
+		invaDetail.Name = v.Xmnr
+		invaDetail.Grade = v.Yxfz
+		invaDetail.Time = v.Sbxmmc
+		resInvaDetails = append(resInvaDetails, invaDetail)
+	}
+
+	return
+}
+
 // 获取初始Cookie和CsrfToken
 func (myRes *Myresty) setIndexCookieAndGetCsrfToken() (csrfToken string, err error) {
 	//这里我为什么要多次循环呢，因为教务会抽风，保障接口一次通，所以加入循环

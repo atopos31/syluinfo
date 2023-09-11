@@ -147,6 +147,7 @@ func GetInva(cookie string) (resInva []models.ResInva, err error) {
 	return myRes.GetInva(cookie)
 }
 
-func GetInvaDetail(cookie string, name string) (resInva []models.ResInva, err error) {
-	return
+func GetInvaDetail(cookie string, name string) (resInva []models.ResInvaDetail, err error) {
+	myRes := restytool.NewMyResty()
+	return myRes.GetInvaDetail(cookie, name)
 }

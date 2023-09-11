@@ -114,3 +114,9 @@ type ResInva struct {
 	Name  string  `json:"name"`
 	Grade float64 `json:"grade"`
 }
+
+type ResInvaDetail struct {
+	Name  string `json:"name"`
+	Grade string `josn:"grade"`
+	Time  string `json:"time"`
+}
