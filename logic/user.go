@@ -46,13 +46,6 @@ func Login(loginReq *models.ParamLogin) (data *models.ReqLogin, err error) {
 		Email:    user.Email,
 		Token:    token,
 	}
-	//获取教务信息
-	syluinfo, err := mysql.GetSyluInfoByUUID(user.Uuid)
-	if err != nil {
-		return
-	}
-
-	data.SyluInfo = syluinfo
 	return
 }
 

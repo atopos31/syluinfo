@@ -1049,9 +1049,6 @@ const docTemplate = `{
                 "email": {
                     "type": "string"
                 },
-                "syluinfo": {
-                    "$ref": "#/definitions/models.ReqSyluInfo"
-                },
                 "token": {
                     "type": "string"
                 },

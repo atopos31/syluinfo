@@ -2,7 +2,6 @@ package logic
 
 import (
 	collytool "cld/dao/colly_tool"
-	"cld/dao/mysql"
 	"cld/dao/redis"
 	restytool "cld/dao/resty_tool"
 	"cld/models"
@@ -19,11 +18,6 @@ func BintLogin(syluInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 		return
 	}
 
-	//存储或更新账号密码
-	if err := mysql.CreateOrUpdateSyluPass(syluInfo, userID); err != nil {
-		return nil, err
-	}
-
 	col := collytool.NewMyCollector()
 	syluUser, err := col.GetInforamation(cookieString, syluInfo.StudentID)
 	if err != nil {
@@ -31,10 +25,6 @@ func BintLogin(syluInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 		return
 	}
 
-	syluUser.Uuid = userID
-	if err := mysql.CreateOrUpdateSyluUser(syluUser); err != nil {
-		return nil, err
-	}
 	//构建返回数据
 	userSyluInfo = &models.ReqBind{
 		Cookie: cookieString,
@@ -51,18 +41,14 @@ func BintLogin(syluInfo *models.ParamBind, userID int64) (userSyluInfo *models.R
 }
 
 // 根据学号获取学期列表
-func GetSemeSter(userID int64) (semeList *models.ResSemeSter, err error) {
-	syluPass, err := mysql.GetSyluPassByUuid(userID)
-	if err != nil {
-		return nil, err
-	}
+func GetSemeSter(userID string) (semeList *models.ResSemeSter, err error) {
 
 	semeList = new(models.ResSemeSter)
-	semeList.Index, err = getIndesSeme(syluPass.StudentID)
+	semeList.Index, err = getIndesSeme(userID)
 	if err != nil {
 		return nil, err
 	}
-	semeList.List, err = getSemeList(syluPass.StudentID)
+	semeList.List, err = getSemeList(userID)
 	if err != nil {
 		return nil, err
 	}
@@ -72,11 +58,7 @@ func GetSemeSter(userID int64) (semeList *models.ResSemeSter, err error) {
 }
 
 // 获取教务cookie
-func GetCookie(userID int64) (cookieString string, err error) {
-	syluInfo, err := mysql.GetSyluPassByUuid(userID)
-	if err != nil {
-		return "", err
-	}
+func GetCookie(syluInfo *models.ParamBind) (cookieString string, err error) {
 
 	myRes := restytool.NewMyResty()
 	cookieString, err = myRes.LoginAndGetCookie(syluInfo.StudentID, syluInfo.Password)

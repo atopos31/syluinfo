@@ -39,6 +39,7 @@ func Setup(cfg *settings.AppConfig) {
 	baseapi.Use(middlewares.RateLimitMiddleware(0.1, 300))
 	//关于页面，可选，自行创建对应目录以及md文件
 	baseapi.StaticFile("/about", "./about/about.md")
+	baseapi.StaticFile("/update", "./about/update.md")
 	//反馈
 	baseapi.POST("/feedback", middlewares.JWTAuthMiddleware(), controller.FeedBackHandler)
 	//auth相关
@@ -69,7 +70,7 @@ func Setup(cfg *settings.AppConfig) {
 		edu.POST("/grade/detaile", controller.GradeDetaileHandler)
 		edu.POST("/gpas", controller.GpaHandler)
 		edu.GET("/cale", controller.CaleHandler)
-
+		//大创学分
 		edu.GET("/Innovation", controller.InnovationHandler)
 		edu.GET("/Innovation/detaile", controller.InnovationDetailHandler)
 	}

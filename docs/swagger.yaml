@@ -258,8 +258,6 @@ definitions:
     properties:
       email:
         type: string
-      syluinfo:
-        $ref: '#/definitions/models.ReqSyluInfo'
       token:
         type: string
       username:

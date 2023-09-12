@@ -1,10 +1,9 @@
 package models
 
 type ReqLogin struct {
-	Username string       `json:"username"`
-	Email    string       `json:"email"`
-	Token    string       `json:"token"`
-	SyluInfo *ReqSyluInfo `json:"syluinfo"`
+	Username string `json:"username"`
+	Email    string `json:"email"`
+	Token    string `json:"token"`
 }
 
 type ResSemeSter struct {

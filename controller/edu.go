@@ -55,14 +55,15 @@ func BingEducationalHandler(c *gin.Context) {
 // @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
 // @Router /edu/cookie [get]
 func CookieHandler(c *gin.Context) {
-	// 获取当前请求的用户的id
-	userID, err := getCurrentUser(c)
-	if err != nil {
-		ResponseError(c, CodeNeedLogin)
+	bindReq := new(models.ParamBind)
+
+	if err := c.ShouldBindJSON(bindReq); err != nil {
+		zap.L().Error("CookieHandler ShouldBindJSON Error", zap.Error(err))
+		ResponseBindError(c, err)
 		return
 	}
 
-	cookisString, err := logic.GetCookie(userID)
+	cookisString, err := logic.GetCookie(bindReq)
 	if err != nil {
 		zap.L().Error("CookieHandler logic.GetCookie Error", zap.Error(err))
 		if errors.Is(err, mysql.ErrorUnbound) {
@@ -86,11 +87,7 @@ func CookieHandler(c *gin.Context) {
 // @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
 // @Router /edu/semester [get]
 func SemesterHandler(c *gin.Context) {
-	userID, err := getCurrentUser(c)
-	if err != nil {
-		ResponseError(c, CodeNeedLogin)
-		return
-	}
+	userID := c.Query("userID")
 
 	semeSterRes, err := logic.GetSemeSter(userID)
 	if err != nil {

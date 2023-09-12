@@ -41,10 +41,6 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 func initMigrate() {
 	//建立用户表
 	db.AutoMigrate(&models.User{})
-	//建立教务学生信息表
-	db.AutoMigrate(&models.SyluUser{})
-	//建立教务学生登录信息表
-	db.AutoMigrate(&models.SyluPass{})
 	//建立反馈信息表
 	db.AutoMigrate(&models.FeedBack{})
 }
