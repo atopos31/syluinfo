@@ -35,7 +35,7 @@ type Course struct {
 	Teacher         string `json:"xm"`
 	ID              string `json:"kch_id"`
 	Location        string `json:"cdmc"`
-	Time            string `json:"jcor"`
+	Time            string `json:"jcs"`
 	WeekDay         string `json:"xqj"`
 	WeekS           string `json:"zcd"`
 }

@@ -90,7 +90,16 @@ func (myRes *Myresty) LoginAndGetCookie(studentID string, password string) (cook
 		return "", err
 	}
 	//返回前端Cookie
-	cookie = resCookies[1].Name + "=" + resCookies[1].Value
+	myRes.Cookies[0].Value = resCookies[1].Value
+
+	var cookieStrings []string
+	for _, cookie := range myRes.Cookies {
+		cookieStrings = append(cookieStrings, cookie.String())
+	}
+
+	// 使用 strings.Join 将所有 Cookie 字符串连接起来
+	combinedCookies := strings.Join(cookieStrings, "; ")
+	cookie = combinedCookies
 	return
 }
 

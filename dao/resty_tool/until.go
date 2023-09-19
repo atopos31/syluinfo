@@ -69,10 +69,19 @@ func parseWeeks(input string) []int {
 			start, _ = strconv.Atoi(bounds[0])
 			end = start
 		}
-
-		for i := start; i <= end; i++ {
-			weeks = append(weeks, i)
+		if strings.Contains(r, "单") {
+			for i := start; i <= end; i++ {
+				if i%2 == 0 {
+					continue
+				}
+				weeks = append(weeks, i)
+			}
+		} else {
+			for i := start; i <= end; i++ {
+				weeks = append(weeks, i)
+			}
 		}
+
 	}
 
 	return weeks
