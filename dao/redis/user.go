@@ -66,7 +66,7 @@ func DelCodeByEmail(KeyMode, email string) {
 }
 
 func GetGradeDetail(uuid int64, classId string) (gradeDetail []*models.ResGradeDetail, err error) {
-	key := fmt.Sprintf("%s%s:%d", KeyGradeDetail, classId, uuid)
+	key := fmt.Sprintf("%s%d:%s", KeyGradeDetail, uuid, classId)
 	value, err := rdb.Get(ctx, key).Result()
 	if err != nil {
 		return nil, ErrorNotExists
@@ -79,7 +79,7 @@ func GetGradeDetail(uuid int64, classId string) (gradeDetail []*models.ResGradeD
 }
 
 func SetGradeDetail(uuid int64, classId string, gradeDetail []*models.ResGradeDetail) error {
-	key := fmt.Sprintf("%s%s:%d", KeyGradeDetail, classId, uuid)
+	key := fmt.Sprintf("%s%d:%s", KeyGradeDetail, uuid, classId)
 	gradeByte, err := json.Marshal(gradeDetail)
 	if err != nil {
 		return err
