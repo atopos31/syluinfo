@@ -6,6 +6,7 @@ import (
 
 	"go.uber.org/zap"
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 )
 
 var (
@@ -129,4 +130,15 @@ func GetUserInfoByUuid(uuid int64) (userInfo *models.User, err error) {
 
 func CreatFeed(feedInfo *models.FeedBack) error {
 	return db.Create(feedInfo).Error
+}
+
+func CreatOrUpdateRecord(record *models.Record) error {
+	return db.Clauses(clause.OnConflict{
+		Columns:   []clause.Column{{Name: "record_id"}},
+		UpdateAll: true,
+	}).Create(record).Error
+}
+
+func DelRecordByID(id int64) error {
+	return db.Where("record_id = ?", id).Delete(&models.Record{}).Error
 }

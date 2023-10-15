@@ -58,3 +58,10 @@ type ParamFeedBack struct {
 	Title   string `json:"title" binding:"required"`
 	Content string `json:"content" binding:"required"`
 }
+
+type ParamRecord struct {
+	Type     int    `json:"type" binding:"required,oneof=1 2 3"`
+	Title    string `json:"title" binding:"required"`
+	Content  string `json:"content" binding:"required"`
+	RecordID string `json:"id"`
+}

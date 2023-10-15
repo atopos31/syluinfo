@@ -123,7 +123,7 @@ func GetGradeDetail(uuid int64, gradeDetailInfo *models.ParamGradeDetaile) (resG
 
 	col := collytool.NewMyCollector()
 	resGradeDetail, err = col.GetGradeDetail(gradeDetailInfo)
-
+	//异步缓存
 	go func() {
 		if err := redis.SetGradeDetail(uuid, gradeDetailInfo.ClassID, resGradeDetail); err != nil {
 			zap.L().Error("redis.SetGradeDetail Error:", zap.Error(err))

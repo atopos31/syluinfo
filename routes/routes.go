@@ -73,6 +73,14 @@ func Setup(cfg *settings.AppConfig) {
 		edu.GET("/Innovation", controller.InnovationHandler)
 		edu.GET("/Innovation/detaile", controller.InnovationDetailHandler)
 	}
+	socail := baseapi.Group("/socail")
+	socail.Use(middlewares.JWTAuthMiddleware())
+	{
+		socail.POST("/record", controller.RecordHandler)
+		//获取全部便签
+		socail.GET("/records", controller.RecordsHandler)
+		socail.POST("/feedback", controller.FeedBackHandler)
+	}
 
 	baseapi.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, cfg.Name)

@@ -8,6 +8,42 @@ import (
 	"go.uber.org/zap"
 )
 
+func RecordHandler(c *gin.Context) {
+	bindReq := new(models.ParamRecord)
+	if err := c.ShouldBindJSON(bindReq); err != nil {
+		zap.L().Error("FeedBackHandler ShouldBindJSON Error", zap.Error(err))
+		ResponseBindError(c, err)
+		return
+	}
+	// 获取当前请求的用户的id
+	userID, err := getCurrentUser(c)
+	if err != nil {
+		ResponseError(c, CodeNeedLogin)
+		return
+	}
+	recordID, err := logic.Record(bindReq, userID)
+	if err != nil {
+		zap.L().Error("RecordHandler FeedBack Error", zap.Error(err))
+		ResponseErrorWithMsg(c, CodeServerBusy, err.Error())
+		return
+	}
+
+	ResponseSuccess(c, recordID)
+}
+
+func RecordsHandler(c *gin.Context) {
+	userID, err := getCurrentUser(c)
+	records, err := logic.GetRedords(userID)
+	if err != nil {
+		zap.L().Error("RecordHandler FeedBack Error", zap.Error(err))
+		ResponseErrorWithMsg(c, CodeServerBusy, err.Error())
+		return
+	}
+
+	ResponseSuccess(c, records)
+
+}
+
 // 反馈请求处理函数
 // @Summary 反馈接口
 // @Tags 反馈相关接口

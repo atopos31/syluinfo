@@ -32,3 +32,22 @@ type SyluPass struct {
 	StudentID string `json:"studentID"`
 	Password  string `json:"password"`
 }
+
+// 便签表
+type Record struct {
+	gorm.Model
+	RecordID int64  `json:"record_id" gorm:"unique"`
+	UserID   int64  `json:"userID"`
+	Title    string `json:"title"`
+	Content  string `json:"content"`
+}
+
+// 数据库反馈信息表
+type FeedBack struct {
+	gorm.Model
+	Uuid     int64  `json:"uuid" `
+	Username string `json:"username"`
+	Email    string `json:"email"`
+	Title    string `json:"title"`
+	Content  string `json:"content"`
+}

@@ -23,8 +23,6 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	)
 	mysqlConfig := gorm.Config{
 		SkipDefaultTransaction: false,
-		//这里可以添加这个gorm的logger
-		//Logger: ,
 	}
 
 	db, err = gorm.Open(mysql.Open(dsn), &mysqlConfig)
@@ -47,6 +45,8 @@ func initMigrate() {
 	db.AutoMigrate(&models.SyluPass{})
 	//建立反馈信息表
 	db.AutoMigrate(&models.FeedBack{})
+	//建立便签表
+	db.AutoMigrate(&models.Record{})
 }
 
 func Close() {
