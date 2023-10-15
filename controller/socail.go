@@ -33,6 +33,11 @@ func RecordHandler(c *gin.Context) {
 
 func RecordsHandler(c *gin.Context) {
 	userID, err := getCurrentUser(c)
+	if err != nil {
+		ResponseError(c, CodeNeedLogin)
+		return
+	}
+
 	records, err := logic.GetRedords(userID)
 	if err != nil {
 		zap.L().Error("RecordHandler FeedBack Error", zap.Error(err))

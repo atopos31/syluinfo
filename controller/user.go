@@ -105,7 +105,6 @@ func SendEmailHandler(c *gin.Context) {
 	}
 
 	ResponseSuccess(c, nil)
-	return
 }
 
 // 重置密码处理函数
@@ -139,7 +138,6 @@ func ReSetPassHandler(c *gin.Context) {
 	}
 
 	ResponseSuccess(c, nil)
-	return
 }
 
 // 找回密码处理函数
@@ -171,7 +169,6 @@ func ReCoverPassHandler(c *gin.Context) {
 	}
 
 	ResponseSuccess(c, nil)
-	return
 }
 
 // 获取COS临时密钥处理函数

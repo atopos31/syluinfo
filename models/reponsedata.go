@@ -1,7 +1,5 @@
 package models
 
-import "time"
-
 type ReqLogin struct {
 	Username string       `json:"username"`
 	Email    string       `json:"email"`
@@ -124,7 +122,8 @@ type ResInvaDetail struct {
 }
 
 type ResRcords struct {
-	Title   string    `json:"title"`
-	Content string    `json:"content"`
-	Time    time.Time `json:"time"`
+	ID      string `json:"id"`
+	Title   string `json:"title"`
+	Content string `json:"content"`
+	Time    int64  `json:"time"`
 }

@@ -25,8 +25,24 @@ func Record(req *models.ParamRecord, userID int64) (id string, err error) {
 	return strconv.FormatInt(int64id, 10), err
 }
 
-func GetRedords(userID int64) (string, error) {
-	return "", nil
+func GetRedords(userID int64) ([]models.ResRcords, error) {
+	records, err := mysql.GetRedordsByUserID(userID)
+	if err != nil {
+		return nil, err
+	}
+
+	var resRecords []models.ResRcords
+	var resRecord models.ResRcords
+	for _, v := range records {
+		resRecord.Title = v.Title
+		resRecord.Content = v.Content
+		resRecord.Time = v.CreatedAt.UnixMilli()
+		resRecord.ID = strconv.FormatInt(v.RecordID, 10)
+
+		resRecords = append(resRecords, resRecord)
+	}
+
+	return resRecords, nil
 }
 
 func pushOrChangeRecord(req *models.ParamRecord, id int64, userID int64) error {

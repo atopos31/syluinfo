@@ -142,3 +142,12 @@ func CreatOrUpdateRecord(record *models.Record) error {
 func DelRecordByID(id int64) error {
 	return db.Where("record_id = ?", id).Delete(&models.Record{}).Error
 }
+
+func GetRedordsByUserID(userID int64) ([]models.Record, error) {
+	var records []models.Record
+	if err := db.Model(&models.Record{}).Where("user_id = ?", userID).Order("created_at DESC").Find(&records).Error; err != nil {
+		return nil, err
+	}
+
+	return records, nil
+}
