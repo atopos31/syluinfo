@@ -51,3 +51,11 @@ type FeedBack struct {
 	Title    string `json:"title"`
 	Content  string `json:"content"`
 }
+
+// 校园资讯表
+type SchoolNews struct {
+	gorm.Model
+	LogoPath string `json:"logo"`
+	Title    string `json:"title"`
+	Content  string `json:"content"`
+}

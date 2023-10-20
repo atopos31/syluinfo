@@ -76,10 +76,18 @@ func Setup(cfg *settings.AppConfig) {
 	socail := baseapi.Group("/socail")
 	socail.Use(middlewares.JWTAuthMiddleware())
 	{
+		//便签相关
 		socail.POST("/record", controller.RecordHandler)
-		//获取全部便签
 		socail.GET("/records", controller.RecordsHandler)
 		socail.POST("/feedback", controller.FeedBackHandler)
+
+	}
+
+	news := baseapi.Group("/news")
+	{
+		//校园新闻相关
+		news.Static("/md", "./about/news/md/")
+		news.GET("/all", controller.NewsHandler)
 	}
 
 	baseapi.GET("/ping", func(c *gin.Context) {

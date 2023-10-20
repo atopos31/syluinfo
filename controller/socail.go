@@ -49,6 +49,17 @@ func RecordsHandler(c *gin.Context) {
 
 }
 
+func NewsHandler(c *gin.Context) {
+	news, err := logic.GetNews()
+	if err != nil {
+		zap.L().Error("RecordHandler FeedBack Error", zap.Error(err))
+		ResponseErrorWithMsg(c, CodeServerBusy, err.Error())
+		return
+	}
+
+	ResponseSuccess(c, news)
+}
+
 // 反馈请求处理函数
 // @Summary 反馈接口
 // @Tags 反馈相关接口

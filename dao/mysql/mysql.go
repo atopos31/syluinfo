@@ -47,6 +47,8 @@ func initMigrate() {
 	db.AutoMigrate(&models.FeedBack{})
 	//建立便签表
 	db.AutoMigrate(&models.Record{})
+	//建立校园资讯表
+	db.AutoMigrate(&models.SchoolNews{})
 }
 
 func Close() {

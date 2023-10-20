@@ -127,3 +127,11 @@ type ResRcords struct {
 	Content string `json:"content"`
 	Time    int64  `json:"time"`
 }
+
+type ResNews struct {
+	ID      string `json:"id"`
+	Path    string `json:"path"`
+	Title   string `json:"title"`
+	Content string `json:"content"`
+	Time    string `json:"time"`
+}

@@ -151,3 +151,13 @@ func GetRedordsByUserID(userID int64) ([]models.Record, error) {
 
 	return records, nil
 }
+
+func GetNews() ([]models.SchoolNews, error) {
+	var news []models.SchoolNews
+	if err := db.Model(&models.SchoolNews{}).Order("created_at DESC").Find(&news).Error; err != nil {
+		return nil, err
+	}
+
+	return news, nil
+
+}

@@ -5,6 +5,7 @@ import (
 	"cld/models"
 	"cld/pkg/snowflake"
 	"strconv"
+	"time"
 )
 
 func Record(req *models.ParamRecord, userID int64) (id string, err error) {
@@ -58,6 +59,27 @@ func pushOrChangeRecord(req *models.ParamRecord, id int64, userID int64) error {
 		return err
 	}
 	return nil
+}
+
+func GetNews() ([]models.ResNews, error) {
+	news, err := mysql.GetNews()
+	if err != nil {
+		return nil, err
+	}
+
+	var resNews []models.ResNews
+	var resNew models.ResNews
+
+	for _, v := range news {
+		resNew.ID = strconv.Itoa(int(v.ID))
+		resNew.Title = v.Title
+		resNew.Content = v.Content
+		resNew.Path = v.LogoPath
+		resNew.Time = v.CreatedAt.Format(time.DateTime)
+		resNews = append(resNews, resNew)
+	}
+
+	return resNews, nil
 }
 
 func FeedBack(req *models.ParamFeedBack, userID int64) error {
