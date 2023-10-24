@@ -13,7 +13,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// @title sylu项目接口文档
+// @title we校园小助手项目接口文档
 // @version 1.1
 // @description 致力于为同学们提供校园服务(忽略状态码，所有响应都是200)
 // @contact.name hakcerxiao

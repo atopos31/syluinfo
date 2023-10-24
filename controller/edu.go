@@ -13,7 +13,7 @@ import (
 
 // 绑定教务请求处理函数
 // @Summary 绑定接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -47,7 +47,7 @@ func BingEducationalHandler(c *gin.Context) {
 
 // 获取cookie请求处理函数
 // @Summary 获取cookie接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -78,7 +78,7 @@ func CookieHandler(c *gin.Context) {
 
 // 获取学期请求处理函数
 // @Summary 获取学期接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -108,7 +108,7 @@ func SemesterHandler(c *gin.Context) {
 
 // 获取课表请求处理函数
 // @Summary 获取课表接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -142,7 +142,7 @@ func CourseHandler(c *gin.Context) {
 
 // 自动获取课表请求处理函数
 // @Summary 自动获取课表接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -178,7 +178,7 @@ func AutoCourseHandler(c *gin.Context) {
 
 // 获取某学期全部成绩请求处理函数
 // @Summary 获取成绩接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -213,7 +213,7 @@ func GradesHandler(c *gin.Context) {
 
 // 获取成绩详情请求处理函数
 // @Summary 获取成绩详情接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -250,7 +250,7 @@ func GradeDetaileHandler(c *gin.Context) {
 
 // 获取绩点请求处理函数
 // @Summary 获取绩点接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"
@@ -282,7 +282,7 @@ func GpaHandler(c *gin.Context) {
 
 // 获取校历请求处理函数
 // @Summary 获取校历接口
-// @Tags sylu相关接口
+// @Tags 校园服务相关接口
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string true "Bearer JWT"

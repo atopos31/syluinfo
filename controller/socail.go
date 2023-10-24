@@ -8,6 +8,15 @@ import (
 	"go.uber.org/zap"
 )
 
+// 便签请求处理函数
+// @Summary 便签curd
+// @Tags 便签相关接口
+// @Accept application/json
+// @Produce application/json
+// @Param object body models.ParamRecord true "反馈参数,必填"
+// @Success 1000 {string} ResponseData "code=1000,msg="success",data="null""
+// @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
+// @Router /socail/record [post]
 func RecordHandler(c *gin.Context) {
 	bindReq := new(models.ParamRecord)
 	if err := c.ShouldBindJSON(bindReq); err != nil {
@@ -31,6 +40,14 @@ func RecordHandler(c *gin.Context) {
 	ResponseSuccess(c, recordID)
 }
 
+// 便签请求处理函数
+// @Summary 获取全部便签接口
+// @Tags 便签相关接口
+// @Accept application/json
+// @Produce application/json
+// @Success 1000 {string} ResponseData "code=1000,msg="success",data="null""
+// @Failure 1001 {object} ResponseData "请求错误参数,code=1000+，msg里面是错误信息"
+// @Router /socail/records [get]
 func RecordsHandler(c *gin.Context) {
 	userID, err := getCurrentUser(c)
 	if err != nil {

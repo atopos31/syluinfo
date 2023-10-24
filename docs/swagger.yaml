@@ -217,6 +217,25 @@ definitions:
     - password
     - renewpassword
     type: object
+  models.ParamRecord:
+    properties:
+      content:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      type:
+        enum:
+        - 1
+        - 2
+        - 3
+        type: integer
+    required:
+    - content
+    - title
+    - type
+    type: object
   models.ParamSignUp:
     properties:
       captcha:
@@ -351,7 +370,7 @@ info:
     name: hakcerxiao
     url: http://www.hackerxiao.online
   description: 致力于为同学们提供校园服务(忽略状态码，所有响应都是200)
-  title: sylu项目接口文档
+  title: we校园小助手项目接口文档
   version: "1.1"
 paths:
   /auth/coskey:
@@ -526,7 +545,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 绑定接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/cale:
     get:
       consumes:
@@ -555,7 +574,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取校历接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/cookie:
     get:
       consumes:
@@ -579,7 +598,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取cookie接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/courses:
     post:
       consumes:
@@ -609,7 +628,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取课表接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/courses/auto:
     get:
       consumes:
@@ -638,7 +657,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 自动获取课表接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/gpas:
     post:
       consumes:
@@ -668,7 +687,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取绩点接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/grade/detaile:
     post:
       consumes:
@@ -700,7 +719,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取成绩详情接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/grades:
     post:
       consumes:
@@ -732,7 +751,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取成绩接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /edu/semester:
     get:
       consumes:
@@ -756,7 +775,7 @@ paths:
             $ref: '#/definitions/controller.ResponseData'
       summary: 获取学期接口
       tags:
-      - sylu相关接口
+      - 校园服务相关接口
   /feedback:
     post:
       consumes:
@@ -782,4 +801,47 @@ paths:
       summary: 反馈接口
       tags:
       - 反馈相关接口
+  /socail/record:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 反馈参数,必填
+        in: body
+        name: object
+        required: true
+        schema:
+          $ref: '#/definitions/models.ParamRecord'
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",data="null
+          schema:
+            type: string
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 便签curd
+      tags:
+      - 便签相关接口
+  /socail/records:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "1000":
+          description: code=1000,msg="success",data="null
+          schema:
+            type: string
+        "1001":
+          description: 请求错误参数,code=1000+，msg里面是错误信息
+          schema:
+            $ref: '#/definitions/controller.ResponseData'
+      summary: 获取全部便签接口
+      tags:
+      - 便签相关接口
 swagger: "2.0"

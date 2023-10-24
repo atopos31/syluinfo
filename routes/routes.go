@@ -80,7 +80,6 @@ func Setup(cfg *settings.AppConfig) {
 		socail.POST("/record", controller.RecordHandler)
 		socail.GET("/records", controller.RecordsHandler)
 		socail.POST("/feedback", controller.FeedBackHandler)
-
 	}
 
 	news := baseapi.Group("/news")

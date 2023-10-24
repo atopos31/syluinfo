@@ -250,7 +250,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "绑定接口",
                 "parameters": [
@@ -296,7 +296,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "获取校历接口",
                 "parameters": [
@@ -340,7 +340,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "获取cookie接口",
                 "parameters": [
@@ -377,7 +377,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "获取课表接口",
                 "parameters": [
@@ -423,7 +423,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "自动获取课表接口",
                 "parameters": [
@@ -467,7 +467,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "获取绩点接口",
                 "parameters": [
@@ -513,7 +513,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "获取成绩详情接口",
                 "parameters": [
@@ -562,7 +562,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "获取成绩接口",
                 "parameters": [
@@ -611,7 +611,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sylu相关接口"
+                    "校园服务相关接口"
                 ],
                 "summary": "获取学期接口",
                 "parameters": [
@@ -662,6 +662,73 @@ const docTemplate = `{
                         }
                     }
                 ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",data=\"null",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
+        "/socail/record": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "便签相关接口"
+                ],
+                "summary": "便签curd",
+                "parameters": [
+                    {
+                        "description": "反馈参数,必填",
+                        "name": "object",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ParamRecord"
+                        }
+                    }
+                ],
+                "responses": {
+                    "1000": {
+                        "description": "code=1000,msg=\"success\",data=\"null",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "1001": {
+                        "description": "请求错误参数,code=1000+，msg里面是错误信息",
+                        "schema": {
+                            "$ref": "#/definitions/controller.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
+        "/socail/records": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "便签相关接口"
+                ],
+                "summary": "获取全部便签接口",
                 "responses": {
                     "1000": {
                         "description": "code=1000,msg=\"success\",data=\"null",
@@ -989,6 +1056,33 @@ const docTemplate = `{
                 }
             }
         },
+        "models.ParamRecord": {
+            "type": "object",
+            "required": [
+                "content",
+                "title",
+                "type"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
         "models.ParamSignUp": {
             "type": "object",
             "required": [
@@ -1189,7 +1283,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "/dev/api/v1",
 	Schemes:          []string{},
-	Title:            "sylu项目接口文档",
+	Title:            "we校园小助手项目接口文档",
 	Description:      "致力于为同学们提供校园服务(忽略状态码，所有响应都是200)",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
