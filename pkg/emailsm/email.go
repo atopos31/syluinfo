@@ -42,7 +42,7 @@ func (myED *myEmailDia) SendEmail(mode string, email string) (code string, err e
 	m := gomail.NewMessage()
 	m.SetAddressHeader("From", myED.address, "hackerxiao")
 	m.SetHeader("To", email)
-	m.SetHeader("Subject", "[微沈理]"+mode)
+	m.SetHeader("Subject", "[we校园小助手]"+mode)
 
 	code = getCode()
 	m.SetBody("text/html", getBody(email, code))
