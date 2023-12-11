@@ -25,7 +25,7 @@ type SyluUser struct {
 	Major      string `json:"major"`
 }
 
-// 数据库学生账号密码表
+// 数据库学生教务账号密码表
 type SyluPass struct {
 	gorm.Model
 	Uuid      int64  `json:"uuid"`
