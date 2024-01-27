@@ -21,7 +21,7 @@ func GetNowSem() (semyear, sem int) {
 
 	semyear = now.Year()
 
-	if sem == 12 {
+	if month <= 7 {
 		semyear--
 	}
 	return
@@ -75,7 +75,7 @@ func getIndesSeme(id string) (int, error) {
 	monthFormated := month
 
 	var semenum int
-	if monthFormated >= 3 && monthFormated <= 8 {
+	if monthFormated >= 1 && monthFormated <= 7 {
 		semenum = 0
 	} else {
 		semenum = 1

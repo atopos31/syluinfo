@@ -82,6 +82,7 @@ func Setup(cfg *settings.AppConfig) {
 		socail.POST("/feedback", controller.FeedBackHandler)
 	}
 
+	//暂时未对接真实校园新闻，仅作为示例
 	news := baseapi.Group("/news")
 	{
 		//校园新闻相关
