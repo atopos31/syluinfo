@@ -4,7 +4,9 @@ import (
 	"cld/dao/resty_tool"
 	"cld/models"
 	"cld/settings"
+	"crypto/tls"
 	"fmt"
+	"net/http"
 	"net/url"
 	"regexp"
 	"strconv"
@@ -37,6 +39,12 @@ func NewMyCollector() *MyCollector {
 		collector.SetProxy(pUrl)
 
 	}
+
+	collector.WithTransport(&http.Transport{
+		TLSClientConfig: &tls.Config{
+			InsecureSkipVerify: true, // 忽略 SSL 证书验证
+		},
+	})
 
 	return &MyCollector{collector}
 }

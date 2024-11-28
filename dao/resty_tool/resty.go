@@ -4,6 +4,7 @@ import (
 	"cld/models"
 	"cld/pkg/tool"
 	"cld/settings"
+	"crypto/tls"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -62,6 +63,10 @@ func NewMyResty() *Myresty {
 		restyClient.SetProxy(pUrl)
 
 	}
+
+	restyClient.SetTLSClientConfig(&tls.Config{
+		InsecureSkipVerify: true, // 忽略 SSL 证书验证
+	})
 
 	return &Myresty{
 		Client: restyClient,
